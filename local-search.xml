@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>my new blog</title>
-    <link href="/blog/2020/12/24/my-new-blog/"/>
-    <url>/blog/2020/12/24/my-new-blog/</url>
+    <title>我的博客</title>
+    <link href="/blog/2020/12/24/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/"/>
+    <url>/blog/2020/12/24/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/</url>
     
-    <content type="html"><![CDATA[<h2 id="dfsdfdsfafd"><a href="#dfsdfdsfafd" class="headerlink" title="dfsdfdsfafd"></a>dfsdfdsfafd</h2><p>fdsfdsfdf dsfdsfdfsfdsf<br>dsfdsfdsffjdsfjldsjf<br>fdsfdsfdfsjlsjfljsdlfjlsdjflsdjfdjfildsjfjijljljjl </p>]]></content>
+    <content type="html"><![CDATA[<h2 id="为什么要写博客"><a href="#为什么要写博客" class="headerlink" title="为什么要写博客"></a>为什么要写博客</h2><ul><li>生活记录</li><li>编程笔记</li></ul>]]></content>
     
     
     <categories>
@@ -17,12 +17,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>java</tag>
-      
-    </tags>
     
   </entry>
   
