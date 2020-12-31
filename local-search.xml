@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>photo</title>
+    <link href="/blog/2020/12/31/photo/"/>
+    <url>/blog/2020/12/31/photo/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>我的博客</title>
     <link href="/blog/2020/12/24/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/"/>
     <url>/blog/2020/12/24/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/</url>
@@ -28,6 +41,31 @@
     <url>/blog/2020/12/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/hexo/</url>
     
     <content type="html"><![CDATA[<p>什么是 Hexo？</p><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  —来自hexo官网<br><code>https://hexo.io/zh-cn/docs/</code></p><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ul><li>nodejs</li><li>git</li></ul><ol><li><p>安装hexo。 （npm默认镜像源在国外，会有下载失败情况，建议更换taobao镜像源）</p><p> <code>$ npm install -g hexo-cli</code></p></li><li><p>新建个人文件夹，初始化目录为hexo目录。命令如下：</p><pre><code> $ hexo init $ npm install 执行完毕后目录如下： hexo  ├── _config.landscape.yml ├── _config.yml ├── node_modules ├── package-lock.json ├── package.json ├── scaffolds ├── source └── themes</code></pre></li><li><p>启动hexo</p></li></ol><p>在hexo目录下执行 <code>hexo server</code><br><img src="/blog/blog/2020/12/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/hexo/hexo%E5%90%AF%E5%8A%A8%E5%9B%BE.png"><br>浏览器访问<strong><a href="http://localhost:4000/">http://localhost:4000</a></strong> 即可</p><h2 id="gitee网站配置"><a href="#gitee网站配置" class="headerlink" title="gitee网站配置"></a>gitee网站配置</h2><ol><li><p>在gitee新建仓库*<strong>.gitee.io</strong> (*号为任意名称)</p></li><li><p>修改<code>_config.yml</code>文件</p><pre><code> 这里只截取部分配置信息 # URL ## If your site is put in a subdirectory, set url as &#39;http://example.com/child&#39; and root as &#39;/child/&#39; url: 后续需要修改  root: 同目录名  deploy:   type: &#39;git&#39;   repo: git仓库地址   如： https://gitee.com/test/test   branch: master   message: blog update</code></pre></li><li><p>安装插件 <code>npm install --save hexo-deployer-git</code></p></li><li><p>执行命令<code>hexo g -d</code> 这里会提示用户名密码，成功后在gitee页面可以看到本地代码已提交到仓库中。<br><img src="/blog/blog/2020/12/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/hexo/gitee-pages.png"></p></li><li><p>如图操作后点击启动，成功后复制网站地址，访问发现静态资源没有加载。</p></li></ol><ul><li>将配置文件中的url修改为网站地址 例如： <a href="http://ccqi3.gitee.io/test">http://ccqi3.gitee.io/test</a></li><li>root 后是仓库名称如 root: /test/</li></ul><ol start="6"><li>修改完后在hexo目录下再次执行<code>hexo g -d</code> (以后配置有调整或者发布新的文章都用此命令即可)</li><li>在gitee的pages页面里点击更新，再次访问网址发现已经搭建好博客了。</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>工具方法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>基于gitee+hexo搭建个人博客</title>
+    <link href="/blog/2020/12/24/hexo/"/>
+    <url>/blog/2020/12/24/hexo/</url>
+    
+    <content type="html"><![CDATA[<p>什么是 Hexo？</p><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  —来自hexo官网<br><code>https://hexo.io/zh-cn/docs/</code></p><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ul><li>nodejs</li><li>git</li></ul><ol><li><p>安装hexo。 （npm默认镜像源在国外，会有下载失败情况，建议更换taobao镜像源）</p><p> <code>$ npm install -g hexo-cli</code></p></li><li><p>新建个人文件夹，初始化目录为hexo目录。命令如下：</p><pre><code> $ hexo init $ npm install 执行完毕后目录如下： hexo  ├── _config.landscape.yml ├── _config.yml ├── node_modules ├── package-lock.json ├── package.json ├── scaffolds ├── source └── themes</code></pre></li><li><p>启动hexo</p></li></ol><p>在hexo目录下执行 <code>hexo server</code><br><img src="/blog/blog/2020/12/24/hexo/hexo%E5%90%AF%E5%8A%A8%E5%9B%BE.png"><br>浏览器访问<strong><a href="http://localhost:4000/">http://localhost:4000</a></strong> 即可</p><h2 id="gitee网站配置"><a href="#gitee网站配置" class="headerlink" title="gitee网站配置"></a>gitee网站配置</h2><ol><li><p>在gitee新建仓库*<strong>.gitee.io</strong> (*号为任意名称)</p></li><li><p>修改<code>_config.yml</code>文件</p><pre><code> 这里只截取部分配置信息 # URL ## If your site is put in a subdirectory, set url as &#39;http://example.com/child&#39; and root as &#39;/child/&#39; url: 后续需要修改  root: 同目录名  deploy:   type: &#39;git&#39;   repo: git仓库地址   如： https://gitee.com/test/test   branch: master   message: blog update</code></pre></li><li><p>安装插件 <code>npm install --save hexo-deployer-git</code></p></li><li><p>执行命令<code>hexo g -d</code> 这里会提示用户名密码，成功后在gitee页面可以看到本地代码已提交到仓库中。<br><img src="/blog/blog/2020/12/24/hexo/gitee-pages.png"></p></li><li><p>如图操作后点击启动，成功后复制网站地址，访问发现静态资源没有加载。</p></li></ol><ul><li>将配置文件中的url修改为网站地址 例如： <a href="http://ccqi3.gitee.io/test">http://ccqi3.gitee.io/test</a></li><li>root 后是仓库名称如 root: /test/</li></ul><ol start="6"><li>修改完后在hexo目录下再次执行<code>hexo g -d</code> (以后配置有调整或者发布新的文章都用此命令即可)</li><li>在gitee的pages页面里点击更新，再次访问网址发现已经搭建好博客了。</li></ol>]]></content>
     
     
     <categories>
