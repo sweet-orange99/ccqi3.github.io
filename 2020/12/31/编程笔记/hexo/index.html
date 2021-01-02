@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      441 字
+      529 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      6
        分钟
     </span>
   
@@ -288,6 +288,11 @@
 <li>修改完后在hexo目录下再次执行<code>hexo g -d</code> (以后配置有调整或者发布新的文章都用此命令即可)</li>
 <li>在gitee的pages页面里点击更新，再次访问网址发现已经搭建好博客了。</li>
 </ol>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><ul>
+<li>修改<code>_config.yml</code> 文件中的 <code>post_asset_folder:false</code> 改为 <strong>true</strong><br>这样新建文档时会在文档同级生成同名文件夹，图片资源放入其中。</li>
+<li>安装插件<br><code>npm install https://github.com/7ym0n/hexo-asset-image --save</code></li>
+</ul>
+<p><code>&#123;% asset_img test.jpg This is an test image %&#125;</code><br>test.jpg 就是图片文件名称 后面文字是图片描述</p>
 
             </div>
             <hr>
