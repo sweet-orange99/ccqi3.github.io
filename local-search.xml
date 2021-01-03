@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>centos7安装MySQL</title>
+    <link href="/blog/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/centos7%E5%AE%89%E8%A3%85MySQL/"/>
+    <url>/blog/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/centos7%E5%AE%89%E8%A3%85MySQL/</url>
+    
+    <content type="html"><![CDATA[<h2 id="centos7安装MySQL"><a href="#centos7安装MySQL" class="headerlink" title="centos7安装MySQL"></a>centos7安装MySQL</h2><ol><li><p>配置YUM源</p><p> <code>wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm</code></p><p> <code>yum localinstall mysql57-community-release-el7-8.noarch.rpm</code></p><p> <code>yum repolist enabled | grep &quot;mysql.*-community.*&quot;</code></p><p> 可以修改<code>vim /etc/yum.repos.d/mysql-community.repo</code>源，改变默认安装的mysql版本。比如要安装5.6版本，将5.7源的enabled=1改成enabled=0。然后再将5.6源的enabled=0改成enabled=1即可。</p></li><li><p>安装MySQL</p><p> <code>yum install mysql-community-server</code></p></li><li><p>启动MySQL服务</p><p> <code>service mysqld start</code></p></li><li><p>开机启动</p><p> <code>systemctl enable mysqld</code></p><p> <code>systemctl daemon-reload</code></p></li><li><p>修改root本地登录密码</p><p> <code>grep &#39;temporary password&#39; /var/log/mysqld.log   ---AkY&gt;ts#9)Dcv</code></p><p> <code>mysql -uroot -p</code></p><p> <code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;a1b2c3d4&#39;; </code></p><p> 修改密码策略</p><p> 在<code>/etc/my.cnf</code>文件添加validate_password_policy配置，指定密码策略<br>选择0（LOW），1（MEDIUM），2（STRONG）其中一种，选择2需要提供密码字典文件<br>validate_password_policy=0</p><p> 如果不需要密码策略，添加my.cnf文件中添加如下配置禁用即可：<br><code>validate_password = off</code></p></li><li><p>添加远程登录用户</p><p> 默认只允许root帐户在本地登录，如果要在其它机器上连接mysql，必须修改root允许远程连接，或者添加一个允许远程连接的帐户，为了安全起见，我添加一个新的帐户：<br> mysql&gt; <code>GRANT ALL PRIVILEGES ON *.* TO &#39;mysql&#39;@&#39;%&#39; IDENTIFIED BY &#39;mysql123&#39; WITH GRANT OPTION;</code></p><p> 设置root用户远程登录</p><pre><code> use mysql; update user set host = &#39;%&#39; where user = &#39;root&#39;; FLUSH PRIVILEGES;</code></pre></li><li><p>配置默认编码为utf8</p><p> 修改<code>/etc/my.cnf</code>配置文件，在[mysqld]下添加编码配置，如下所示：</p><p> [mysqld]</p><p> character_set_server=utf8</p><p> init_connect=’SET NAMES utf8’</p></li><li><p>不区分大小写</p><p> 在<code>[mysqld]</code>下加上<code>lower_case_table_names=1</code></p></li><li><p>mysql重启服务</p><p> <code>service mysqld restart</code></p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mysql</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>基于gitee+hexo搭建个人博客</title>
     <link href="/blog/2020/12/31/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/hexo/"/>
     <url>/blog/2020/12/31/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/hexo/</url>
