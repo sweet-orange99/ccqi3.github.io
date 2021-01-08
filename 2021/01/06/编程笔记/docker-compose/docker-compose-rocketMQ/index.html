@@ -17,9 +17,25 @@
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
-  <title>分类 - 编程笔记 - ccQi3</title>
+  <title>rocketMQ-环境搭建 - ccQi3</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -141,14 +157,51 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/blog/img/banner/iceland.jpg') no-repeat center center;
+         style="background: url('/blog/img/banner/coding.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="分类 - 编程笔记">
+            <span class="h2" id="subtitle" title="rocketMQ-环境搭建">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-06 22:14" pubdate>
+        2021年1月6日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      85 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -161,61 +214,97 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 4 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/blog/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-zk/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">zookeeper-环境搭建</span>
-      <time style="float: right;">01-06</time>
-    </a>
-  
-    
-    <a href="/blog/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-rocketMQ/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">rocketMQ-环境搭建</span>
-      <time style="float: right;">01-06</time>
-    </a>
-  
-    
-    <a href="/blog/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/centos7%E5%AE%89%E8%A3%85MySQL/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">centos7安装MySQL</span>
-      <time style="float: right;">01-03</time>
-    </a>
-  
-    
-      
-      <p class="h5">2020</p>
-    
-    <a href="/blog/2020/12/31/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/hexo/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">基于gitee+hexo搭建个人博客</span>
-      <time style="float: right;">12-31</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">rocketMQ-环境搭建</h1>
+            
+            <div class="markdown-body">
+              <h2 id="rocketMQ环境搭建"><a href="#rocketMQ环境搭建" class="headerlink" title="rocketMQ环境搭建"></a>rocketMQ环境搭建</h2><p><code>git clone https://github.com/foxiswho/docker-rocketmq.git</code></p>
+<p>切换分支<code>git checkout v4.4.0</code></p>
+<p>该项目目录结构为</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">docker-rocketmq</span>/<br>├── <span class="hljs-selector-tag">base</span><br>│   ├── <span class="hljs-selector-tag">Dockerfile</span><br>│   ├── <span class="hljs-selector-tag">readme</span><span class="hljs-selector-class">.md</span><br>│   └── <span class="hljs-selector-tag">scripts</span><br>│       ├── <span class="hljs-selector-tag">runbroker-customize</span><span class="hljs-selector-class">.sh</span><br>│       ├── <span class="hljs-selector-tag">runserver-customize</span><span class="hljs-selector-class">.sh</span><br>│       └── <span class="hljs-selector-tag">to_bytes</span><span class="hljs-selector-class">.gawk</span><br>├── <span class="hljs-selector-tag">broker</span><br>│   ├── <span class="hljs-selector-tag">Dockerfile</span><br>│   └── <span class="hljs-selector-tag">readme</span><span class="hljs-selector-class">.md</span><br>├── <span class="hljs-selector-tag">README</span><span class="hljs-selector-class">.md</span><br>├── <span class="hljs-selector-tag">rmq</span>   #进入此目录<br>│   ├── <span class="hljs-selector-tag">docker-compose</span><span class="hljs-selector-class">.yml</span><br>│   └── <span class="hljs-selector-tag">rmq</span><br>│       ├── <span class="hljs-selector-tag">brokerconf</span><br>│       │   └── <span class="hljs-selector-tag">broker</span><span class="hljs-selector-class">.conf</span><br>│       ├── <span class="hljs-selector-tag">logs</span><br>│       ├── <span class="hljs-selector-tag">readme</span><span class="hljs-selector-class">.md</span><br>│       └── <span class="hljs-selector-tag">store</span><br>└── <span class="hljs-selector-tag">server</span><br>    ├── <span class="hljs-selector-tag">Dockerfile</span><br>    └── <span class="hljs-selector-tag">readme</span><span class="hljs-selector-class">.md</span><br></code></pre></td></tr></table></figure>
+<p>进入rmq目录下，执行<code>docker-compose up</code> 即可。</p>
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/docker/">docker</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-zk/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">zookeeper-环境搭建</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/centos7%E5%AE%89%E8%A3%85MySQL/">
+                        <span class="hidden-mobile">centos7安装MySQL</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -295,9 +384,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
