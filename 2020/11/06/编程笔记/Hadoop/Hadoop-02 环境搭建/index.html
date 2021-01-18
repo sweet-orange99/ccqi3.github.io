@@ -17,7 +17,7 @@
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
-  <title>我的博客 - ccQi3</title>
+  <title>Hadoop-02 环境搭建 - ccQi3</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="我的博客">
+            <span class="h2" id="subtitle" title="Hadoop-02 环境搭建">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-12-24 13:13" pubdate>
-        2020年12月24日 下午
+      <time datetime="2020-11-06 01:00" pubdate>
+        2020年11月6日 凌晨
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      15 字
+      306 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      5
        分钟
     </span>
   
@@ -224,13 +224,36 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">我的博客</h1>
+            <h1 style="display: none">Hadoop-02 环境搭建</h1>
             
             <div class="markdown-body">
-              <h2 id="为什么要写博客"><a href="#为什么要写博客" class="headerlink" title="为什么要写博客"></a>为什么要写博客</h2><ul>
-<li>生活记录</li>
-<li>编程笔记</li>
+              <h2 id="Hadoop-环境搭建"><a href="#Hadoop-环境搭建" class="headerlink" title="Hadoop 环境搭建"></a>Hadoop 环境搭建</h2><ol>
+<li><p>安装jdk</p>
+</li>
+<li><p>安装ssh 设置免密登录</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arcade">ssh-keygen -t rsa<br>cp ~<span class="hljs-regexp">/.ssh/i</span>d_rsa_.pub ~<span class="hljs-regexp">/.ssh/</span>authorized_keys<br></code></pre></td></tr></table></figure></li>
+<li><p>Hadoop 环境安装</p>
+<p><code>/etc/hadoop/hadoop-env.sh</code> 修改<code>java_home</code><br>Hadoop可运行于一般的商用服务器上，具有高容错、高可靠性、高扩展性等特点特别适合写一次，读多次的场景。</p>
+<ul>
+<li>3.1  <code>core-site.xml</code><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-params">&lt;configuration&gt;</span><br>    <span class="hljs-params">&lt;property&gt;</span><br>        <span class="hljs-params">&lt;name&gt;</span>fs.defaultFS<span class="hljs-params">&lt;/name&gt;</span><br>        <span class="hljs-params">&lt;value&gt;</span>hdfs:<span class="hljs-comment">//172.16.100.151:8020&lt;/value&gt;</span><br>    <span class="hljs-params">&lt;/property&gt;</span><br>    <span class="hljs-params">&lt;property&gt;</span><br>        <span class="hljs-params">&lt;name&gt;</span>hadoop.tmp.dir<span class="hljs-params">&lt;/name&gt;</span><br>        <span class="hljs-params">&lt;value&gt;</span><span class="hljs-meta-keyword">/home/</span>hadoop<span class="hljs-meta-keyword">/app/</span>tmp<span class="hljs-params">&lt;/value&gt;</span><br>    <span class="hljs-params">&lt;/property&gt;</span><br><span class="hljs-params">&lt;/configuration&gt;</span><br></code></pre></td></tr></table></figure></li>
+<li>3.2 <code>hdfs-site.xml</code><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br><span class="hljs-comment">&lt;!--副本个数--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.replication<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<code>解决安全模式问题</code> “hadoop Cannot create directory Name node is in safe mode.”</li>
 </ul>
+</li>
+</ol>
+<p>离开安全模式方法：<code>bin/hadoop dfsadmin -safemode leave</code></p>
+<h3 id="yarn-环境搭建："><a href="#yarn-环境搭建：" class="headerlink" title="yarn 环境搭建："></a>yarn 环境搭建：</h3><ol>
+<li><p><code>etc/hadoop/mapred-site.xml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>mapreduce.framework.name<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>yarn<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>     <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
+<li><p><code>etc/hadoop/yarn-site.xml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>mapreduce_shuffle<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>     <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>服务启动：</p>
+</li>
+</ol>
+<p><code>sbin/start-yarn.sh</code></p>
+<p>服务停止：</p>
+<p><code>sbin/stop-yarn.sh</code></p>
+<p>ResourceManager - <a target="_blank" rel="noopener" href="http://localhost:8088/">http://localhost:8088/</a></p>
 
             </div>
             <hr>
@@ -240,10 +263,23 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/blog/categories/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/">个人计划</a>
+                      <a class="hover-with-bg" href="/blog/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/">Hadoop</a>
                     
                   </div>
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                  </div>
                 
               </div>
               
@@ -254,9 +290,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2020/12/31/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/hexo/">
+                      <a href="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-03%20hdfs/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">基于gitee+hexo搭建个人博客</span>
+                        <span class="hidden-mobile">Hadoop-03 hdfs</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -264,8 +300,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-03%20hdfs/">
-                        <span class="hidden-mobile">Hadoop-03 hdfs</span>
+                      <a href="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-01/">
+                        <span class="hidden-mobile">Hadoop-01  初识Hadoop</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

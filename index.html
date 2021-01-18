@@ -649,7 +649,81 @@ git
     </article>
   </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-03%20hdfs/">Hadoop-03 hdfs</a>
+      </h1>
 
+      <p class="index-excerpt">
+        <a href="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-03%20hdfs/">
+          
+          
+            
+          
+          hdfs介绍： hdfs是Hadoop实现的分布式文件系统
+HDFS架构：
+
+1个Master（NameNode/NN） 带 N个Slaves（DataNode/DN）
+blocksize：128M
+NN：负责客户端请求的响应，负责元数据（文件的名称、副本系数、block存放的DN）的管理
+DN：存储用户的文件对应的数据块，要定期向NN发送心跳信息，汇报本身及其所有的block信息，健康状况。
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-06 02:00" pubdate>
+              2020-11-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/blog/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+            
+              <a href="/blog/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/">Hadoop</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
+            
+              <a href="/blog/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 

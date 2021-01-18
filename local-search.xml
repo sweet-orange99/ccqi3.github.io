@@ -234,5 +234,98 @@
   
   
   
+  <entry>
+    <title>Hadoop-03 hdfs</title>
+    <link href="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-03%20hdfs/"/>
+    <url>/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-03%20hdfs/</url>
+    
+    <content type="html"><![CDATA[<h2 id="hdfs"><a href="#hdfs" class="headerlink" title="hdfs"></a>hdfs</h2><p>介绍： hdfs是Hadoop实现的分布式文件系统</p><h3 id="HDFS架构："><a href="#HDFS架构：" class="headerlink" title="HDFS架构："></a>HDFS架构：</h3><img src="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-03%20hdfs/hdfs%E6%9E%B6%E6%9E%84%E5%9B%BE.png" class title="hdfs架构图"><p>1个Master（NameNode/NN） 带 N个Slaves（DataNode/DN）</p><p>blocksize：128M</p><p>NN：负责客户端请求的响应，负责元数据（文件的名称、副本系数、block存放的DN）的管理</p><p>DN：存储用户的文件对应的数据块，要定期向NN发送心跳信息，汇报本身及其所有的block信息，健康状况。</p><ul><li>NameNode<ol><li>存储文件的metadata，运行时所有数据都保存到内存，整个hdfs可存储的文件数受限于NameNode的内存大小。</li><li>一个Block在NameNode中对应一条记录（一般一个block占用150字节），如果大量小文件，会消耗大量内存。同时map task的数量是由splits来决定的，所以用MapReduce处理大量的小文件时，就会产生过多的map task，线程管理的开销将会增加作业时间。处理大量小文件的速度远远小于处理同等大小的大文件速度。因此，Hadoop建议存储大文件。</li><li>数据会定时保存到本地磁盘，但不保存block的位置信息，而是由DataNode注册时上报和运行时维护（NameNode和DateNode的相关信息并不保存到NameNode的文件系统中，而是NameNode每次重启后，动态重建）</li><li>NameNode失效则整个hdfs都会失效，所以要保证NameNode的可用性。</li></ol></li><li>DataNode<ol><li> 保存具体的block数据。</li><li> 负责数据的读写操作和复杂操作。</li><li>DataNode启动时会向NameNode报告当前存储的数据块信息，后续也会定时报告修改信息。</li><li>DataNode之间会互相进行通信，复制数据块，保证数据的冗余性。</li></ol></li><li>Block数据块<ol><li>基本存储单位，默认为128M（配置大的块主要是因为a.减少搜寻时间，一般硬盘传输速率比寻道时间要快，大的块可以减少寻道时间。b.减少管理块的数据开销，每个块需要在NameNode上有对应的记录。c.对数据块进行读写，减少建立网络的连接成本。）</li><li>一个大文件会被拆成多个块，然后存储于不同的机器。如果一个文件少于block的大小，那么实际占用的空间为文件的大小。</li><li>基本的读写资源，类似于磁盘的页，每次都是读写一个块。</li><li>每个块都是被复制到多台机器，默认是3份。</li></ol></li><li>Secondary NameNode<ol><li>定时与NameNode进行同步（定期合并文件系统镜像和编辑日志，然后把合并后的数据传给NameNode，替换其镜像，并清空编辑日志，类似于CheckPoint机制），但NameNode失效后仍需要手动将其设置为主机。</li></ol></li></ul><hr><h3 id="HDFS-写文件"><a href="#HDFS-写文件" class="headerlink" title="HDFS-写文件"></a>HDFS-写文件</h3><img src="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-03%20hdfs/hdfs-write.png" class><ol><li><p>客户端将文件写入本地磁盘的Hdfs Client文件中。</p></li><li><p>当临时文件大小达到一个block的时候，Hdfs Client通知NameNode，申请写入文件。</p></li><li><p>NameNode在Hdfs的文件系统中创建一个文件，并把该block id和要写入的DataNode的列表返回给客户端。</p></li><li><p>客户端收到这些信息后，将临时文件写入DataNodes。</p><ol><li>客户端将文件内容写入第一个DataNode（一般以4kb为单位进行传输）。</li><li> 第一个DataNode接收后，将数据写入本地磁盘，同时也传输给第二个DataNode。</li><li>以此类推到最后一个DataNode，数据在DataNode之间是通过pipline的方式进行复制的。</li><li>后面的DataNode接受完数据后，都会发送一个确认给前一个DataNode，最终第一个DataNode返回确认给客户端。</li><li>当客户端收到整个block的确认后，会向NameNode发送一个最终的确认信息。</li><li>如果写入某个DataNode失败，数据会继续写人其他的DataNode。然后NameNode会找另外一个好的DataNode继续复制，以保证冗余性。</li><li>每个block都会有一个校验码，并存放在独立的文件中，以便读的时候来验证其完整性。</li></ol></li><li><p>文件写完后（客户端关闭），NameNode提交文件（这时文件才可见，如果提交前，NameNode挂掉，那文件也就丢失了。只保证了数据信息写到NameNode上，并不能保证数据已经被写到了DataNode中）</p><h3 id="Rack-aware（机架感知）"><a href="#Rack-aware（机架感知）" class="headerlink" title="Rack aware（机架感知）"></a>Rack aware（机架感知）</h3><p> 通过配置文件指定机架名和DNS的对应关系</p><p> 假设复制参数是3，在写入文件时，会在本地的机架保存一份数据，然后在另外一个机架内保存两份数据（同机架内的传输速度快，从而提高性能）</p><p> 整个HDFS的集群，最好是负载平衡的，这样才能尽量利用集群的优势</p></li></ol><hr><h3 id="HDFS-读文件"><a href="#HDFS-读文件" class="headerlink" title="HDFS-读文件"></a>HDFS-读文件</h3><img src="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-03%20hdfs/hdfs-read.png" class><ol><li>客户端向NameNode发送读取请求。</li><li>NameNode返回文件所有Block和这些block所在的DataNodes(包括复制节点)</li><li>客户端直接从DataNode中读取数据，如果该DataNode读取失败(DataNode失效或校验码不对)，则从复制节点中读取(如果读取的数据就在本机，则直接读取，否则通过网络读取)。</li></ol><hr><h3 id="HDFS-可靠性"><a href="#HDFS-可靠性" class="headerlink" title="HDFS-可靠性"></a>HDFS-可靠性</h3><ul><li>冗余副本策略<ul><li>可以在hdfs-site.xml中设置复制因子指定副本数量。<br>所有数据块都可副本。</li><li>DataNode启动时，遍历本地文件系统，产生一份HDFS数据块和本地文件对应关系列表(blockreport)汇报给NameNode。</li></ul></li><li>机架策略<ul><li>HDFS的“机架感知”，通过节点之间发送一个数据包，来判断他们是否在同一个机架。</li><li>一般本机架放一个副本，在其他机架再存放一个副本，这样可以防止机架失效时丢失数据，也可以提高带宽利用率。</li></ul></li><li>心跳机制<ul><li>NataNode定期从DataNode接受心跳信息和块报告。</li><li>NameNode根据块报告验证元数据。</li><li>没有按时发送心跳的DataNode会被标记为宕机，不会再给他任何i/o请求。</li><li>如果DataNode失效造成副本数量下降，并且低于预先设置的值，NameNode会检测这些数据库，并在合适的时间重新复制。</li><li>引发重新复制的原因还包括数据副本本身损坏，磁盘错误，复制因子被增大等。</li></ul></li><li>安全模式<ul><li>NameNode启动时会经过一个“安全模式”阶段。</li><li>安全模式阶段不会产生数据写。</li><li>在此阶段NameNode收集各个DataNode的报告，当数据块达到最小副本数以上时，会被认为是“安全”的。</li><li>在一定比例(可设置)的数据块被确定为“安全”后，再过若干时间，安全模式结束。</li><li>当检测到副本不足数据块时，该块会被复制，直到达到最小副本数。</li></ul></li><li>检验和<ul><li>在文件创立时，每个块都产生校验和。</li><li>校验和会作为单独一个隐藏文件保存在命名空间下。</li><li>客户端获取数据时可以检查校验和是否相同，从而发现数据块是否损坏。</li><li>如果正在读取的数据块损坏，则可以继续读取其他副本。</li></ul></li><li>回收站<ul><li>删除文件时，其实是放入回收站/trach中。</li><li>回收站里的文件是可以快速恢复的。</li><li>可以设置一个时间值，当回收站里的文件的存放时间超过这个值，就被彻底删除，并且释放占用的数据块。</li></ul></li><li>元数据保护<ul><li>映像文件和事务日志是NameNode的核心数据，可以配置为拥有多个副本。</li><li>副本会降低NameNode的处理速度，但增加安全性。</li><li>NameNode依然是单点，如果发生故障需要切换。</li></ul></li><li>快照机制</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>大数据</category>
+      
+      <category>Hadoop</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>工具方法</tag>
+      
+      <tag>大数据</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hadoop-02 环境搭建</title>
+    <link href="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-02%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <url>/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-02%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Hadoop-环境搭建"><a href="#Hadoop-环境搭建" class="headerlink" title="Hadoop 环境搭建"></a>Hadoop 环境搭建</h2><ol><li><p>安装jdk</p></li><li><p>安装ssh 设置免密登录</p><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arcade">ssh-keygen -t rsa<br>cp ~<span class="hljs-regexp">/.ssh/i</span>d_rsa_.pub ~<span class="hljs-regexp">/.ssh/</span>authorized_keys<br></code></pre></td></tr></table></figure></li><li><p>Hadoop 环境安装</p><p><code>/etc/hadoop/hadoop-env.sh</code> 修改<code>java_home</code><br>Hadoop可运行于一般的商用服务器上，具有高容错、高可靠性、高扩展性等特点特别适合写一次，读多次的场景。</p><ul><li>3.1  <code>core-site.xml</code><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-params">&lt;configuration&gt;</span><br>    <span class="hljs-params">&lt;property&gt;</span><br>        <span class="hljs-params">&lt;name&gt;</span>fs.defaultFS<span class="hljs-params">&lt;/name&gt;</span><br>        <span class="hljs-params">&lt;value&gt;</span>hdfs:<span class="hljs-comment">//172.16.100.151:8020&lt;/value&gt;</span><br>    <span class="hljs-params">&lt;/property&gt;</span><br>    <span class="hljs-params">&lt;property&gt;</span><br>        <span class="hljs-params">&lt;name&gt;</span>hadoop.tmp.dir<span class="hljs-params">&lt;/name&gt;</span><br>        <span class="hljs-params">&lt;value&gt;</span><span class="hljs-meta-keyword">/home/</span>hadoop<span class="hljs-meta-keyword">/app/</span>tmp<span class="hljs-params">&lt;/value&gt;</span><br>    <span class="hljs-params">&lt;/property&gt;</span><br><span class="hljs-params">&lt;/configuration&gt;</span><br></code></pre></td></tr></table></figure></li><li>3.2 <code>hdfs-site.xml</code><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br><span class="hljs-comment">&lt;!--副本个数--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.replication<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></table></figure><code>解决安全模式问题</code> “hadoop Cannot create directory Name node is in safe mode.”</li></ul></li></ol><p>离开安全模式方法：<code>bin/hadoop dfsadmin -safemode leave</code></p><h3 id="yarn-环境搭建："><a href="#yarn-环境搭建：" class="headerlink" title="yarn 环境搭建："></a>yarn 环境搭建：</h3><ol><li><p><code>etc/hadoop/mapred-site.xml</code></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>mapreduce.framework.name<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>yarn<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>     <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></table></figure></li><li><p><code>etc/hadoop/yarn-site.xml</code></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>mapreduce_shuffle<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>     <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></table></figure><p>服务启动：</p></li></ol><p><code>sbin/start-yarn.sh</code></p><p>服务停止：</p><p><code>sbin/stop-yarn.sh</code></p><p>ResourceManager - <a href="http://localhost:8088/">http://localhost:8088/</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>大数据</category>
+      
+      <category>Hadoop</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>工具方法</tag>
+      
+      <tag>大数据</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hadoop-01  初识Hadoop</title>
+    <link href="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-01/"/>
+    <url>/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-01/</url>
+    
+    <content type="html"><![CDATA[<h2 id="初识Hadoop"><a href="#初识Hadoop" class="headerlink" title="初识Hadoop"></a>初识Hadoop</h2><p>Hadoop可运行于一般的商用服务器上，具有高容错、高可靠性、高扩展性等特点特别适合写一次，读多次的场景。</p><p>适合</p><ul><li>大规模数据</li><li>流式数据（写一次，读多次）</li><li>商用硬件（一般硬件）</li></ul><p>不适合</p><ul><li>低延时的数据访问</li><li>大量的小文件</li><li>频繁修改文件（基本就是写1次）<h2 id="Hadoop架构"><a href="#Hadoop架构" class="headerlink" title="Hadoop架构"></a>Hadoop架构</h2><img src="/blog/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-01/hadoop%E6%9E%B6%E6%9E%84%E5%9B%BE.png" class title="hadoop架构图"></li><li>分布式文件系统hdfs</li><li>分布式资源调度yarn</li><li>分布式计算框架MapReduce</li><li>Others: 利用YARN的资源管理功能实现其他的数据处理方式</li></ul><p>hadoop包含的模块：</p><ul><li>hadoop common  – 公共模块</li><li>hadoop distributed file system（hdfs）–提供数据存储</li><li>Hadoop yarn – 作业调度，资源管理</li><li>hadoop MapReduce –yarn之上并行处理框架</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>大数据</category>
+      
+      <category>Hadoop</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>工具方法</tag>
+      
+      <tag>大数据</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
   
 </search>
