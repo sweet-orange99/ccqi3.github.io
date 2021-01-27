@@ -233,17 +233,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-zk/">zookeeper-环境搭建</a>
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-elastic-search/">elastic-search-环境搭建</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-zk/">
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-elastic-search/">
           
           
             
           
-          zookeeper环境搭建新建文件docker-compose-zk.yml
-1234567891011121314151617181920212223242526272829303132version: &#x27;3.1&#x27;services:  zoo1:    image: zookeeper    restart: always    hostname: zoo1    ports
+          elastic-search环境搭建创建目录结构为
+1234567891011121314151617docker-es/├── docker-compose.yaml├── master│   ├── conf│   │   └── elasticsearch.yml│   ├── data│   └── logs├── node1│   ├── conf│   │   └── elastics
         </a>
       </p>
 
@@ -337,17 +337,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-elastic-search/">elastic-search-环境搭建</a>
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-zk/">zookeeper-环境搭建</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-elastic-search/">
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-zk/">
           
           
             
           
-          elastic-search环境搭建创建目录结构为
-1234567891011121314151617docker-es/├── docker-compose.yaml├── master│   ├── conf│   │   └── elasticsearch.yml│   ├── data│   └── logs├── node1│   ├── conf│   │   └── elastics
+          zookeeper环境搭建新建文件docker-compose-zk.yml
+1234567891011121314151617181920212223242526272829303132version: &#x27;3.1&#x27;services:  zoo1:    image: zookeeper    restart: always    hostname: zoo1    ports
         </a>
       </p>
 
@@ -357,113 +357,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2021-01-06 22:14" pubdate>
               2021-01-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/docker/">docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/linux/linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">linux常见问题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/linux/linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
-          
-          
-            
-          
-          
-max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
-解决：sysctl -w vm.max_map_count=262144
-重启虚拟机将失效在/etc/sysctl.conf文件最后添加一行vm.max_map_count=262144即可永久修改
-
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-04 22:14" pubdate>
-              2021-01-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/linux/">linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-run/">docker-run</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-run/">
-          
-          
-            
-          
-          docker run安装命令：
-12345streamsetsdocker run --restart on-failure -p 18630:18630 -d --name sdc streamsets/datacollectorpgsqldocker run --name postgres -e POSTGRES_PASSWORD=postgres369 -p 5432:5432 -d pos
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-04 22:14" pubdate>
-              2021-01-04
             </time>
           </div>
         
@@ -541,6 +434,113 @@ max virtual memory areas vm.max_map_count [65530] is too low, increase to at lea
               <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
             
               <a href="/tags/docker/">docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-run/">docker-run</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-run/">
+          
+          
+            
+          
+          docker run安装命令：
+12345streamsetsdocker run --restart on-failure -p 18630:18630 -d --name sdc streamsets/datacollectorpgsqldocker run --name postgres -e POSTGRES_PASSWORD=postgres369 -p 5432:5432 -d pos
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-04 22:14" pubdate>
+              2021-01-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
+            
+              <a href="/tags/docker/">docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/linux/linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">linux常见问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/linux/linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+          
+          
+            
+          
+          
+max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+解决：sysctl -w vm.max_map_count=262144
+重启虚拟机将失效在/etc/sysctl.conf文件最后添加一行vm.max_map_count=262144即可永久修改
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-04 22:14" pubdate>
+              2021-01-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
+            
+              <a href="/tags/linux/">linux</a>
             
           </div>
         
