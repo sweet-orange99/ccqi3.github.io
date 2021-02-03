@@ -181,22 +181,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/linux/linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">linux常见问题</a>
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-run/">docker-run</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/linux/linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-run/">
           
           
             
           
-          
-max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
-解决：sysctl -w vm.max_map_count=262144
-重启虚拟机将失效在/etc/sysctl.conf文件最后添加一行vm.max_map_count=262144即可永久修改
-
-
-
+          docker run安装命令：
+123456789101112131415161718192021222324252627streamsetsdocker run --restart on-failure -p 18630:18630 -d --name sdc streamsets/datacollectorpgsqldocker run --name postgres -e POSTGRES_
         </a>
       </p>
 
@@ -223,7 +218,7 @@ max virtual memory areas vm.max_map_count [65530] is too low, increase to at lea
             
               <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
             
-              <a href="/tags/linux/">linux</a>
+              <a href="/tags/docker/">docker</a>
             
           </div>
         
