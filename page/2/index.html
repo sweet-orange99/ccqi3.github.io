@@ -274,7 +274,64 @@ max virtual memory areas vm.max_map_count [65530] is too low, increase to at lea
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/02-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">02-简单工厂模式</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/02-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+          
+          
+            
+          
+          02-简单工厂模式简单工厂模式又叫静态方法模式。因为在简单工厂模式中创建的实例的方法通常为静态(static)方法。
+模式的结构与实现简单工厂模式的主要角色：
+
+简单工厂(SimpleFactory)：简单工厂模式的核心，负责实现创建所有实例的内部逻辑。工厂类的创建产品类的方法可以直接被外部调用，创建所需的产品对象。
+
+抽象产品(AbstractProduct)：简单工厂创建对象的所有对象的父类，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-04 22:14" pubdate>
+              2021-01-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
             
           </div>
         
@@ -648,66 +705,6 @@ JobTracker完成了太多的任务，造成了过多的资源消耗，当MapRedu
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
             <time datetime="2020-11-06 03:00" pubdate>
-              2020-11-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
-            
-              <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/">Hadoop</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-03%20HDFS/">Hadoop-03 HDFS</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-03%20HDFS/">
-          
-          
-            
-          
-          HDFS介绍： hdfs是Hadoop实现的分布式文件系统
-HDFS架构：
-
-1个Master（NameNode/NN） 带 N个Slaves（DataNode/DN）
-blocksize：128M
-NN：负责客户端请求的响应，负责元数据（文件的名称、副本系数、block存放的DN）的管理
-DN：存储用户的文件对应的数据块，要定期向NN发送心跳信息，汇报本身及其所有的block信息，健康状况。
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-11-06 02:00" pubdate>
               2020-11-06
             </time>
           </div>
