@@ -307,12 +307,12 @@ max virtual memory areas vm.max_map_count [65530] is too low, increase to at lea
           
             
           
-          02-简单工厂模式简单工厂模式又叫静态方法模式。因为在简单工厂模式中创建的实例的方法通常为静态(static)方法。
+          简单工厂模式简单工厂模式又叫静态方法模式。因为在简单工厂模式中创建的实例的方法通常为静态(static)方法。
 模式的结构与实现简单工厂模式的主要角色：
 
 简单工厂(SimpleFactory)：简单工厂模式的核心，负责实现创建所有实例的内部逻辑。工厂类的创建产品类的方法可以直接被外部调用，创建所需的产品对象。
 
-抽象产品(AbstractProduct)：简单工厂创建对象的所有对象的父类，
+抽象产品(AbstractProduct)：简单工厂创建对象的所有对象的父类，负责描
         </a>
       </p>
 
@@ -362,14 +362,68 @@ max virtual memory areas vm.max_map_count [65530] is too low, increase to at lea
           
             
           
-          03-工厂方法模式工厂方法模式是对简单工厂模式的进一步抽象化，好处是可以是系统在不修改原有代码情况下引入新的产品，即满足开闭原则。
+          工厂方法模式工厂方法模式是对简单工厂模式的进一步抽象化，好处是可以是系统在不修改原有代码情况下引入新的产品，即满足开闭原则。
 模式的结构与实现简单工厂模式的主要角色：
 
 抽象工厂(Abstract Factory):提供了创建产品的接口，调用者通过它访问具体工厂的工厂方法来创建产品。
 
 具体工厂(Factory)：主要实现抽象工厂中的抽象方法，完成具体产品的创建。
 
-抽象产品(Abstrac
+抽象产品(AbstractPr
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-04 22:14" pubdate>
+              2021-01-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/04-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">04-抽象工厂模式</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/04-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+          
+          
+            
+          
+          抽象工厂模式抽象工厂（AbstractFactory）模式是一种为访问类提供一个创建一组相关或互相依赖对象的接口，且访问者无需指定所要产品的具体类就能得到同族的不同等级的产品的模式结构。
+抽象工厂模式是工厂方法模式的升级版本，工厂方法模式一个工厂只能生产一个产品，而抽象工厂模式一个工厂可以生成多个产品。
+模式的结构与实现简单工厂模式的主要角色：
+
+抽象工厂(Abstract Factory):提供
         </a>
       </p>
 
@@ -644,62 +698,6 @@ InputFormat：将我们输入的数据进行分片(split):
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
             <time datetime="2020-11-06 05:00" pubdate>
-              2020-11-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
-            
-              <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/">Hadoop</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-05%20MapReduce/">Hadoop-05 MapReduce</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hadoop/Hadoop-05%20MapReduce/">
-          
-          
-            
-          
-          MapReduce旧的MapReduce的架构：一种分布式的计算方式指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（规约）函数，用来保证所有映射对中的每一个共享相同的键组。
-如图：
-
-
-map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: (K2, list(
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-11-06 04:00" pubdate>
               2020-11-06
             </time>
           </div>
