@@ -181,20 +181,242 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/ES6/">ES6</a>
+        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/04-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">04-抽象工厂模式</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/ES6/">
+        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/04-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
           
           
             
           
-          常用ES6语法
-var  let  const区别
- 在js中通常使用var，会发生变量提升，即脚本开始运行时，变量已经存在了，但是没有值，所以会输出undefined。
- let不会发生变量提升,这表示在声明它之前，变量是不存在的，这时如果用到它，就会抛出一个错误。
- 12345678910&#123;    var a     let b&#125;console.log(a)console.
+          抽象工厂模式抽象工厂（AbstractFactory）模式是一种为访问类提供一个创建一组相关或互相依赖对象的接口，且访问者无需指定所要产品的具体类就能得到同族的不同等级的产品的模式结构。
+抽象工厂模式是工厂方法模式的升级版本，工厂方法模式一个工厂只能生产一个产品，而抽象工厂模式一个工厂可以生成多个产品。
+模式的结构与实现简单工厂模式的主要角色：
+
+抽象工厂(Abstract Factory):提供
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-19 11:00" pubdate>
+              2021-02-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/03-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/">03-工厂方法模式</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/03-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/">
+          
+          
+            
+          
+          工厂方法模式工厂方法模式是对简单工厂模式的进一步抽象化，好处是可以是系统在不修改原有代码情况下引入新的产品，即满足开闭原则。
+模式的结构与实现简单工厂模式的主要角色：
+
+抽象工厂(Abstract Factory):提供了创建产品的接口，调用者通过它访问具体工厂的工厂方法来创建产品。
+
+具体工厂(Factory)：主要实现抽象工厂中的抽象方法，完成具体产品的创建。
+
+抽象产品(AbstractPr
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-19 10:00" pubdate>
+              2021-02-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/02-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">02-简单工厂模式</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/02-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+          
+          
+            
+          
+          简单工厂模式简单工厂模式又叫静态方法模式。因为在简单工厂模式中创建的实例的方法通常为静态(static)方法。
+模式的结构与实现简单工厂模式的主要角色：
+
+简单工厂(SimpleFactory)：简单工厂模式的核心，负责实现创建所有实例的内部逻辑。工厂类的创建产品类的方法可以直接被外部调用，创建所需的产品对象。
+
+抽象产品(AbstractProduct)：简单工厂创建对象的所有对象的父类，负责描
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-19 09:00" pubdate>
+              2021-02-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/01-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">01-设计模式</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/01-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+          
+          
+            
+          
+          设计模式设计模式是软件设计中常见问题的典型解决方案。
+模式包含的内容：
+
+意图部分简单描述问题和解决方案。
+动机部分将进一步解释问题并说明模式会如何提供解决方案。
+结构部分展示模式的每个部分和他们之间的关系。
+在不同的语言中实现提供流行编程语言的代码，让读者更好地理解模式背后的思想。
+
+设计模式分类不同设计模式的复杂程度，细节层次以及整个系统中应用范围等方面各不相同。
+最基础的、底层的模式通常被称
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-19 08:00" pubdate>
+              2021-02-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/Babel/">Babel</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/Babel/">
+          
+          
+            
+          
+          BabelBabel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有环境执行。
+配置文件.babelrc   Babel的配置文件是.babelrc，存放在项目的根目录下。使用Babel的第一步，就是配置这个文件。该文件用来设置转码规则和插件，基本格式如下:   1234&#123;  &quot;presets&quot;: [],  &quot;plugins&quot;: 
         </a>
       </p>
 
@@ -235,17 +457,20 @@ var  let  const区别
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/Babel/">Babel</a>
+        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/ES6/">ES6</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/Babel/">
+        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/ES6/">
           
           
             
           
-          BabelBabel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有环境执行。
-配置文件.babelrc   Babel的配置文件是.babelrc，存放在项目的根目录下。使用Babel的第一步，就是配置这个文件。该文件用来设置转码规则和插件，基本格式如下:   1234&#123;  &quot;presets&quot;: [],  &quot;plugins&quot;: 
+          常用ES6语法
+var  let  const区别
+ 在js中通常使用var，会发生变量提升，即脚本开始运行时，变量已经存在了，但是没有值，所以会输出undefined。
+ let不会发生变量提升,这表示在声明它之前，变量是不存在的，这时如果用到它，就会抛出一个错误。
+ 12345678910&#123;    var a     let b&#125;console.log(a)console.
         </a>
       </p>
 
@@ -451,61 +676,6 @@ HelloWorld
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-rocketMQ/">rocketMQ-环境搭建</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-rocketMQ/">
-          
-          
-            
-          
-          rocketMQ环境搭建git clone https://github.com/foxiswho/docker-rocketmq.git
-切换分支git checkout v4.4.0
-该项目目录结构为
-1234567891011121314151617181920212223docker-rocketmq/├── base│   ├── Dockerfile│   ├── readme.md│
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-06 22:14" pubdate>
-              2021-01-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker/">docker</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/docker/">docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-elastic-search/">elastic-search-环境搭建</a>
       </h1>
 
@@ -526,173 +696,6 @@ HelloWorld
             <i class="iconfont icon-date"></i>
             <time datetime="2021-01-06 22:14" pubdate>
               2021-01-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker/">docker</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/docker/">docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-zk/">zookeeper-环境搭建</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-zk/">
-          
-          
-            
-          
-          zookeeper环境搭建新建文件docker-compose-zk.yml
-1234567891011121314151617181920212223242526272829303132version: &#x27;3.1&#x27;services:  zoo1:    image: zookeeper    restart: always    hostname: zoo1    ports
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-06 22:14" pubdate>
-              2021-01-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker/">docker</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/docker/">docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-centos7/">docker-centos7</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-centos7/">
-          
-          
-            
-          
-          centos7安装docker安装命令：yum install -y docker 
-启动dockersystemctl start docker
-设置docker开机启动systemctl enable docker
-##安装docker-compose
-
-添加EPEL源
- yum install -y epel-release
-
-安装python-pip
- yum install -y pyt
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-04 22:14" pubdate>
-              2021-01-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker/">docker</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/docker/">docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-run/">docker-run</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-run/">
-          
-          
-            
-          
-          docker run安装命令：
-123456789101112131415161718192021222324252627streamsetsdocker run --restart on-failure -p 18630:18630 -d --name sdc streamsets/datacollectorpgsqldocker run --name postgres -e POSTGRES_
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-04 22:14" pubdate>
-              2021-01-04
             </time>
           </div>
         

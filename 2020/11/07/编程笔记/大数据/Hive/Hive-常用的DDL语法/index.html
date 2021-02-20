@@ -1,0 +1,505 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="橙橙橙的博客">
+  <meta name="author" content="ccQi3">
+  <meta name="keywords" content="">
+  <title>Hive-常用的DDL语法 - ccQi3</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>ccQi3</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                博客
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/coding.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Hive-常用的DDL语法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-07 00:00" pubdate>
+        2020年11月7日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Hive-常用的DDL语法</h1>
+            
+            <div class="markdown-body">
+              <h2 id="Hive-DDL"><a href="#Hive-DDL" class="headerlink" title="Hive DDL"></a>Hive DDL</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p><code>create database hive_test comment &#39;测试数据库&#39; location &#39;/home/hadoop/data&#39;;</code></p>
+<h3 id="显示数据库信息-EXTENDED-表示是否显示额外属性"><a href="#显示数据库信息-EXTENDED-表示是否显示额外属性" class="headerlink" title="显示数据库信息 EXTENDED 表示是否显示额外属性"></a>显示数据库信息 EXTENDED 表示是否显示额外属性</h3><p><code>desc database extended hive_test;</code></p>
+<h3 id="删除数据库信息"><a href="#删除数据库信息" class="headerlink" title="删除数据库信息"></a>删除数据库信息</h3><p><code>DROP (DATABASE|SCHEMA) [IF EXISTS] database_name [RESTRICT|CASCADE];</code></p>
+<ul>
+<li>默认行为是 RESTRICT，如果数据库中存在表则删除失败。要想删除库及其中的表，可以使用 CASCADE 级联删除。</li>
+</ul>
+<h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> [<span class="hljs-keyword">TEMPORARY</span>] [<span class="hljs-keyword">EXTERNAL</span>] <span class="hljs-keyword">TABLE</span> [<span class="hljs-keyword">IF</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span>] [db_name.]table_name     <span class="hljs-comment">--表名</span><br>  [(col_name data_type [<span class="hljs-keyword">COMMENT</span> col_comment],<br>    ... [constraint_specification])]  <span class="hljs-comment">--列名 列数据类型</span><br>  [<span class="hljs-keyword">COMMENT</span> table_comment]   <span class="hljs-comment">--表描述</span><br>  [PARTITIONED <span class="hljs-keyword">BY</span> (col_name data_type [<span class="hljs-keyword">COMMENT</span> col_comment], ...)]  <span class="hljs-comment">--分区表分区规则</span><br>  [<br>    CLUSTERED <span class="hljs-keyword">BY</span> (col_name, col_name, ...)<br>   [SORTED <span class="hljs-keyword">BY</span> (col_name [<span class="hljs-keyword">ASC</span>|<span class="hljs-keyword">DESC</span>], ...)] <span class="hljs-keyword">INTO</span> num_buckets BUCKETS<br>  ]  <span class="hljs-comment">--分桶表分桶规则</span><br>  [SKEWED <span class="hljs-keyword">BY</span> (col_name, col_name, ...) <span class="hljs-keyword">ON</span> ((col_value, col_value, ...), (col_value, col_value, ...), ...)<br>   [<span class="hljs-keyword">STORED</span> <span class="hljs-keyword">AS</span> DIRECTORIES]<br>  ]  <span class="hljs-comment">--指定倾斜列和值</span><br>  [<br>   [<span class="hljs-keyword">ROW</span> <span class="hljs-keyword">FORMAT</span> row_format]<br>   [<span class="hljs-keyword">STORED</span> <span class="hljs-keyword">AS</span> file_format]<br>     | <span class="hljs-keyword">STORED</span> <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;storage.handler.class.name&#x27;</span> [<span class="hljs-keyword">WITH</span> SERDEPROPERTIES (...)]<br>  ]  <span class="hljs-comment">-- 指定行分隔符、存储文件格式或采用自定义存储格式</span><br>  [LOCATION hdfs_path]  <span class="hljs-comment">-- 指定表的存储位置</span><br>  [TBLPROPERTIES (property_name=property_value, ...)]  <span class="hljs-comment">--指定表的属性</span><br>  [<span class="hljs-keyword">AS</span> select_statement];   <span class="hljs-comment">--从查询结果创建表</span><br></code></pre></td></tr></table></figure>
+<h4 id="创建内部表"><a href="#创建内部表" class="headerlink" title="创建内部表"></a>创建内部表</h4><p><code>create table hive_test1.test_hive(id int,name string) comment &#39;测试表&#39; row format delimited fields terminated by &quot;\t&quot;;</code></p>
+<h4 id="创建外部表"><a href="#创建外部表" class="headerlink" title="创建外部表"></a>创建外部表</h4><p><code>create external table hive_test1.test_hive2(id int,name string) comment &#39;测试表&#39; row format delimited fields terminated by &#39;\t&#39; location &#39;/hadoop/ext&#39;;</code></p>
+<h4 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h4><p><code>create external table hive_test1.testhive3(id int, name string) comment &#39;测试表&#39; partitioned by (user_no string) row format delimited fields terminated by &#39;\t&#39; location &#39;/home/hadoop/hive_test1/testhive3&#39;;</code></p>
+<h4 id="分桶表"><a href="#分桶表" class="headerlink" title="分桶表"></a>分桶表</h4><p><code>create external table hive_test1.testhive4(id int, name STRING) comment &#39;分桶表&#39; clustered by (id) sorted by (id asc) into 4 buckets row format delimited fields terminated by &#39;\t&#39; location &#39;/home/hadoop/hive_test1/test_hive4&#39;;</code></p>
+<h4 id="倾斜表"><a href="#倾斜表" class="headerlink" title="倾斜表"></a>倾斜表</h4><ul>
+<li>通过指定一个或者多个列经常出现的值（严重偏斜），Hive 会自动将涉及到这些值的数据拆分为单独的文件。在查询时，如果涉及到倾斜值，它就直接从独立文件中获取数据，而不是扫描所有文件，这使得性能得到提升。</li>
+</ul>
+<p><code>create external table hive_test1.test_hive5(id int,name STRING) comment &#39;倾斜表&#39; skewed by (id ) on (1,2,3) row format delimited fields terminated by &#39;\t&#39; location &#39;/home/hadoop/hive_test1/test_hive5&#39;;</code></p>
+<h4 id="临时表"><a href="#临时表" class="headerlink" title="临时表"></a>临时表</h4><ul>
+<li>临时表仅对当前 session 可见，临时表的数据将存储在用户的暂存目录中，并在会话结束后删除。如果临时表与永久表表名相同，则对该表名的任何引用都将解析为临时表，而不是永久表。临时表还具有以下两个限制：</li>
+<li>不支持分区列</li>
+<li>不支持创建索引</li>
+</ul>
+<p><code>create temporary table hive_test1.test_hive6(id int,name STRING) row format delimited fields terminated by &#39;\t&#39; ;</code></p>
+<h4 id="CTAS创建表"><a href="#CTAS创建表" class="headerlink" title="CTAS创建表"></a>CTAS创建表</h4><p><code>create table test_hive7 as SELECT * FROM emp WHERE deptno=&#39;20&#39;;</code></p>
+<h3 id="复制表结构"><a href="#复制表结构" class="headerlink" title="复制表结构"></a>复制表结构</h3><p><code>CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name  --创建表表名 --    LIKE existing_table_or_view_name  --被复制表的表名 --    [LOCATION hdfs_path]; --存储位置 create temporary external table if not exists hive_test1.test_hive3_copy like hive_test1.test_hive2 location &#39;/home/hadoop/hive_test1/copy/test_hive3_copy&#39;;</code></p>
+<h3 id="加载数据到表"><a href="#加载数据到表" class="headerlink" title="加载数据到表"></a>加载数据到表</h3><p><code>load data local inpath &#39;/home/hadoop/data/a.txt&#39; into table hive_test1.test_hive; select * from hive_test1.test_hive;</code></p>
+<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><p><code>ALTER TABLE table_name RENAME TO new_table_name;</code></p>
+<h3 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a>修改列</h3><p><code>ALTER TABLE table_name [PARTITION partition_spec] CHANGE [COLUMN] col_old_name col_new_name column_type --   [COMMENT col_comment] [FIRST|AFTER column_name] [CASCADE|RESTRICT];</code></p>
+<h3 id="新增列"><a href="#新增列" class="headerlink" title="新增列"></a>新增列</h3><p><code>ALTER TABLE emp_temp ADD COLUMNS (address STRING COMMENT &#39;home address&#39;);</code></p>
+<h3 id="清空表"><a href="#清空表" class="headerlink" title="清空表"></a>清空表</h3><ul>
+<li>清空整个表或表指定分区中的数据</li>
+</ul>
+<p><code>TRUNCATE TABLE table_name [PARTITION (partition_column = partition_col_value,  ...)];</code></p>
+<ul>
+<li>目前只有内部表才能执行 TRUNCATE 操作，外部表执行时会抛出异常 Cannot truncate non-managed table XXXX。</li>
+</ul>
+<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><p><code>DROP TABLE [IF EXISTS] table_name [PURGE];</code></p>
+<ul>
+<li>内部表：不仅会删除表的元数据，同时会删除 HDFS 上的数据；</li>
+<li>外部表：只会删除表的元数据，不会删除 HDFS 上的数据；</li>
+<li>删除视图引用的表时，不会给出警告（但视图已经无效了，必须由用户删除或重新创建）</li>
+</ul>
+<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><h4 id="Describe-查看数据库"><a href="#Describe-查看数据库" class="headerlink" title="Describe 查看数据库"></a>Describe 查看数据库</h4><p><code>DESCRIBE|Desc DATABASE [EXTENDED] db_name;  --EXTENDED 是否显示额外属性</code></p>
+<h4 id="查看表"><a href="#查看表" class="headerlink" title="查看表"></a>查看表</h4><p><code>DESCRIBE|Desc [EXTENDED|FORMATTED] table_name --FORMATTED 以友好的展现方式查看表详情</code></p>
+<h4 id="Show-查看数据库列表"><a href="#Show-查看数据库列表" class="headerlink" title="Show 查看数据库列表"></a>Show 查看数据库列表</h4><p><code>SHOW (DATABASES|SCHEMAS) [LIKE &#39;identifier_with_wildcards&#39;];</code><br>– LIKE 子句允许使用正则表达式进行过滤，但是 SHOW 语句当中的 LIKE 子句只支持 *（通配符）和 |（条件或）两个符号。例如 employees，emp *，emp * | * ees，所有这些都将匹配名为 employees 的数据库。</p>
+<h4 id="查看表的列表"><a href="#查看表的列表" class="headerlink" title="查看表的列表"></a>查看表的列表</h4><p><code>SHOW TABLES [IN database_name] [&#39;identifier_with_wildcards&#39;];</code></p>
+<h4 id="查看视图列表"><a href="#查看视图列表" class="headerlink" title="查看视图列表"></a>查看视图列表</h4><p><code>SHOW VIEWS [IN/FROM database_name] [LIKE &#39;pattern_with_wildcards&#39;];</code>   –仅支持 Hive 2.2.0 +</p>
+<h4 id="查看表的分区列表"><a href="#查看表的分区列表" class="headerlink" title="查看表的分区列表"></a>查看表的分区列表</h4><p><code>SHOW PARTITIONS table_name;</code></p>
+<h4 id="查看表-视图的创建语句"><a href="#查看表-视图的创建语句" class="headerlink" title="查看表/视图的创建语句"></a>查看表/视图的创建语句</h4><p><code>SHOW CREATE TABLE ([db_name.]table_name|view_name);</code></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/">Hive</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/centos7%E5%AE%89%E8%A3%85MySQL/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">centos7安装MySQL</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-07%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%BC%AB%E7%94%BB/">
+                        <span class="hidden-mobile">Hadoop-07 文件系统工作原理漫画</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备2021001450号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
