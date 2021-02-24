@@ -171,13 +171,19 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 30 篇文章</p>
+  <p class="h4">共计 31 篇文章</p>
   <hr>
   
   
     
       
       <p class="h5">2021</p>
+    
+    <a href="/2021/02/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/07-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">07-单例模式</span>
+      <time style="float: right;">02-24</time>
+    </a>
+  
     
     <a href="/2021/02/23/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/06-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">06-原型模式</span>
@@ -232,14 +238,20 @@
       <time style="float: right;">02-01</time>
     </a>
   
-    
-    <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/webpack/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">webpack</span>
-      <time style="float: right;">02-01</time>
-    </a>
-  
 </div>
 
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/archives/2021/02/page/2/">2</a><a class="extend next" rel="next" href="/archives/2021/02/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
