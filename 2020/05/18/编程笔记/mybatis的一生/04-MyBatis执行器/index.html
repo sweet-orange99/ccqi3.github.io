@@ -261,9 +261,15 @@
 <h2 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h2><p><code>SimpleExecutor</code></p>
 <ul>
 <li>每条SQL都要进行预处理。</li>
-<li>每次只执行一条SQL。<br><code>ReuseExecutor</code></li>
+<li>每次只执行一条SQL。</li>
+</ul>
+<p><code>ReuseExecutor</code></p>
+<ul>
 <li>相同SQL只需要预处理一次。</li>
-<li>每次只执行一条SQL。<br><code>BatchExecutor</code></li>
+<li>每次只执行一条SQL。</li>
+</ul>
+<p><code>BatchExecutor</code></p>
+<ul>
 <li>每条SQL都要处理一次。</li>
 <li>多条SQL可以一次批量执行。</li>
 <li>最后一定要调用commit()方法，否则不生效。</li>
