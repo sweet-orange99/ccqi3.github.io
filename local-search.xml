@@ -4,6 +4,114 @@
   
   
   <entry>
+    <title>Nebula Graph</title>
+    <link href="/2021/06/10/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/Nebula%20Graph/Nebula%20Graph/"/>
+    <url>/2021/06/10/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/Nebula%20Graph/Nebula%20Graph/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Nebula-Graph"><a href="#Nebula-Graph" class="headerlink" title="Nebula Graph"></a>Nebula Graph</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>Nebula Graph数据模型使用6种基本的数据结构：</p><ul><li><p>图空间（space）</p><p>图空间用于隔离不同团队或者项目的数据，不同图空间的数据是相互隔离的，可以指定不同的存储副本数，权限，分片等。</p></li><li><p>点（vertex）</p><p>点用来保存实体对象。特点：</p><ul><li>点是用标识符（VID）标识的。VID在同一空间里是唯一的。VID是一个<code>int64</code>或者是<code>fixed_string(N)</code>。</li><li>点至少必须有一个标签（Tag），也可以有多个标签。</li></ul></li><li><p>边（edge）</p><p>边是用来连接点的，表示两个点之间的关系或者行为。特点：</p><ul><li>两点之间可以由多条边。</li><li>边是有方向的，不存在无向边。</li><li>四元组<code>&lt;起点VID、边类型（edge type）、边排序值(rank)、终点VID&gt;</code>用于唯一标识一条边。边没有EID。</li><li>一条边有且只有一个边类型。</li><li>一条边有且仅有一个rank，其为int64，默认为0.</li></ul></li><li><p>标签（tag）</p><p> 标签由一组事先预定义的属性构成。</p></li><li><p>边类型（edge type）</p><p>  边类型由一组事先预定义的属性构成。</p></li><li><p>属性（properties）</p><p>属性是指键值对（key-value pair）形式存储的信息。</p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数据库</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>图数据库</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>StreamSets</title>
+    <link href="/2021/06/08/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/StreamSets/StreamSets/"/>
+    <url>/2021/06/08/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/StreamSets/StreamSets/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ETL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>初识MySQL</title>
+    <link href="/2021/05/26/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/00-%E5%88%9D%E8%AF%86MySQL/"/>
+    <url>/2021/05/26/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/00-%E5%88%9D%E8%AF%86MySQL/</url>
+    
+    <content type="html"><![CDATA[<h2 id="MySQL架构"><a href="#MySQL架构" class="headerlink" title="MySQL架构"></a>MySQL架构</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数据库</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MySQL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>聊聊ThreadLocal</title>
+    <link href="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/"/>
+    <url>/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/</url>
+    
+    <content type="html"><![CDATA[<h2 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h2><p>维持线程封闭性的一种规范方法是使用<code>ThreadLocal</code>，这个类能使线程中的某个值与保存值的对象关联起来。提供了<code>get</code>和<code>set</code>方法等访问接口和方法，这些方法为每个使用该变量的的线程都存有一份独立的副本，因此<code>get</code>总是返回由当前执行线程在调用<code>set</code>时设置的最新值。</p><h3 id="官方解释如下："><a href="#官方解释如下：" class="headerlink" title="官方解释如下："></a>官方解释如下：</h3><blockquote><p>This class provides thread-local variables. These variables differ from their normal counterparts in that each thread that accesses one (via its get or set method) has its own, independently initialized copy of the variable. ThreadLocal instances are typically private static fields in classes that wish to associate state with a thread (e.g., a user ID or Transaction ID).</p><p>Each thread holds an implicit reference to its copy of a thread-local variable as long as the thread is alive and the ThreadLocal instance is accessible; after a thread goes away, all of its copies of thread-local instances are subject to garbage collection (unless other references to these copies exist).</p></blockquote><p>就是说<code>ThreadLocal</code>提供了线程本地变量，简单点说就是为每个线程都初始化了一份完全独立的变量副本供线程使用。ThreadLocal通常用<code>private static</code>来修饰。当一个线程结束时，它所使用的所有ThreadLocal相对的实例副本都被回收。</p><h3 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h3><p><code>ThreadLocal</code>对象通常用于防止对可变的单实例变量(Singleton)或全局变量进行共享。</p><p>项目中经常会用到时间日期转换，所以新建<code>DateFormatUtils</code>工具类,获取我们会有如下写法：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> SimpleDateFormat sdf = <span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Date <span class="hljs-title">parse</span><span class="hljs-params">(String strDate)</span> <span class="hljs-keyword">throws</span> ParseException </span>&#123;<br>    <span class="hljs-keyword">return</span> sdf.parse(strDate);<br>&#125;<br></code></pre></td></tr></table></figure><p>这种常见写法首先解决了应用反复创建<code>SimpleDateFormat</code>对象所带来的系统损耗，但是又引来了一个非常重要的问题–并发问题。如果我们在并发环境下使用该方法：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>        <span class="hljs-keyword">new</span> Thread(() -&gt; &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                System.out.println(Thread.currentThread().getName() + <span class="hljs-string">&quot;:&quot;</span> + DateFormatUtils.parse(<span class="hljs-string">&quot;2013-05-24 06:02:20&quot;</span>));<br>            &#125; <span class="hljs-keyword">catch</span> (ParseException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;).start();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>系统运行情况如图所示：</p><img src="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5.png" class><p>由此我们发现，该方法在多线程环境下会有线程安全的问题。</p><p>解决并发问题的方式有很多，如<code>synchronized</code>，这里使用<code>ThreadLocal</code>来解决此问题。</p><p><code>DateFormatUtils</code>类改造如下：</p><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs aspectj"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ThreadLocal&lt;DateFormat&gt; threadLocal = <span class="hljs-keyword">new</span> ThreadLocal&lt;DateFormat&gt;()&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-function">DateFormat <span class="hljs-title">initialValue</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);<br>    &#125;<br>&#125;;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function">Date <span class="hljs-title">parse</span><span class="hljs-params">(String strDate)</span> <span class="hljs-keyword">throws</span> ParseException </span>&#123;<br>    DateFormat sdf = threadLocal.get();<br>    <span class="hljs-function"><span class="hljs-keyword">return</span> sdf.<span class="hljs-title">parse</span><span class="hljs-params">(strDate)</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>运行成功！</p><h3 id="源码阅读分析"><a href="#源码阅读分析" class="headerlink" title="源码阅读分析"></a>源码阅读分析</h3><ul><li><code>ThreadLocal</code> 结构</li></ul><img src="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/ThreadLocal.png" class><ul><li><code>Thread</code>、<code>ThreadLocal</code>、<code>ThreadLocalMap</code> 三者关系</li></ul><img src="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/Thread&ThreadLocal&ThreadLocalMap%E5%85%B3%E7%B3%BB%E5%9B%BE.png" class><p>可以发现每一个<code>Thread</code>中都有一个<code>ThreadLocalMap</code>。<code>ThreadLocalMap</code>可以看作是一个数组，数组元素是自定义的<code>Entry</code>类型，<code>Entry</code>的<strong>key</strong>是<code>ThreadLocal</code>类型，<strong>value</strong>是<code>Object</code>类型。也就是说一个<code>ThreadLocalMap</code>可以有多个<code>ThreadLocal</code>。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>Java</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>源码阅读</tag>
+      
+      <tag>并发编程的艺术</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>07-单例模式</title>
     <link href="/2021/02/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/07-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     <url>/2021/02/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/07-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
@@ -330,6 +438,35 @@
   
   
   <entry>
+    <title>禅道+gitlab+svn密码统一认证</title>
+    <link href="/2021/01/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/linux/%E7%A6%85%E9%81%93+gitlab+svn%E5%AF%86%E7%A0%81%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81/"/>
+    <url>/2021/01/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/linux/%E7%A6%85%E9%81%93+gitlab+svn%E5%AF%86%E7%A0%81%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81/</url>
+    
+    <content type="html"><![CDATA[<p>openldap+phpadmin 统一鉴权认证</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>工具方法</tag>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>elastic-search-环境搭建</title>
     <link href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-elastic-search/"/>
     <url>/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-compose-elastic-search/</url>
@@ -450,7 +587,7 @@
     <link href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-run/"/>
     <url>/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/docker-compose/docker-run/</url>
     
-    <content type="html"><![CDATA[<h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p>安装命令：</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs routeros">streamsets<br>docker <span class="hljs-builtin-name">run</span> --restart on-failure -p 18630:18630 -d --name sdc streamsets/datacollector<br><br>pgsql<br>docker <span class="hljs-builtin-name">run</span> --name postgres -e <span class="hljs-attribute">POSTGRES_PASSWORD</span>=password -p 5432:5432 -d postgres:9.5.24-alpine<br><br>jenkins<br>docker <span class="hljs-builtin-name">run</span> <span class="hljs-attribute">--restart</span>=always --name jenkins -p 18080:8080 -p 50000:50000 -v /root/docker/jenkins:/var/jenkins_home  jenkins/jenkins:latest<br><br><br>bitwarden 安装命令：<br>docker <span class="hljs-builtin-name">run</span> \<br>-itd \<br>-e <span class="hljs-attribute">PGID</span>=1000 \<br>-e <span class="hljs-attribute">PUID</span>=1000 \<br><span class="hljs-attribute">--name</span>=<span class="hljs-string">&#x27;bitwardenrs&#x27;</span> \<br><span class="hljs-attribute">--net</span>=<span class="hljs-string">&#x27;你的自定义网络名称&#x27;</span> \<br>-e <span class="hljs-attribute">TZ</span>=<span class="hljs-string">&quot;Asia/Shanghai&quot;</span> \<br>-e <span class="hljs-string">&#x27;SERVER_ADMIN_EMAIL&#x27;</span>=<span class="hljs-string">&#x27;你的email&#x27;</span> \<br>-e <span class="hljs-string">&#x27;SIGNUPS_ALLOWED&#x27;</span>=<span class="hljs-string">&#x27;false&#x27;</span> \<br>-e <span class="hljs-string">&#x27;INVITATIONS_ALLOWED&#x27;</span>=<span class="hljs-string">&#x27;true&#x27;</span> \<br>-e <span class="hljs-string">&#x27;WEBSOCKET_ENABLED&#x27;</span>=<span class="hljs-string">&#x27;true&#x27;</span> \<br>-e <span class="hljs-string">&#x27;ADMIN_TOKEN&#x27;</span>=<span class="hljs-string">&#x27;你的token&#x27;</span> \<br>-p <span class="hljs-string">&#x27;8086:80/tcp&#x27;</span> \<br>-v <span class="hljs-string">&#x27;/opt/docker/appdata/bitwarden&#x27;</span>:<span class="hljs-string">&#x27;/data&#x27;</span>:<span class="hljs-string">&#x27;rw&#x27;</span> <span class="hljs-string">&#x27;bitwardenrs/server:latest&#x27;</span><br><br>token生成命令： openssl rand -base64 48<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="docker-镜像"><a href="#docker-镜像" class="headerlink" title="docker 镜像"></a>docker 镜像</h2><p>修改<code>/etc/docker/daemon.json</code>（不存在就新建）</p><p><code>&quot;registry-mirrors&quot;: [&quot;https://sftc64t1.mirror.aliyuncs.com&quot;]</code></p><h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p>安装命令：</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs routeros">streamsets<br>docker <span class="hljs-builtin-name">run</span> --restart on-failure -p 18630:18630 -d --name sdc streamsets/datacollector<br><br>pgsql<br>docker <span class="hljs-builtin-name">run</span> --name postgres -e <span class="hljs-attribute">POSTGRES_PASSWORD</span>=password -p 5432:5432 -d postgres:9.5.24-alpine<br><br>jenkins<br>docker <span class="hljs-builtin-name">run</span> <span class="hljs-attribute">--restart</span>=always --name jenkins -p 18080:8080 -p 50000:50000 -v /root/docker/jenkins:/var/jenkins_home  jenkins/jenkins:latest<br><br><br>bitwarden 安装命令：<br>docker <span class="hljs-builtin-name">run</span> \<br>-itd \<br>-e <span class="hljs-attribute">PGID</span>=1000 \<br>-e <span class="hljs-attribute">PUID</span>=1000 \<br><span class="hljs-attribute">--name</span>=<span class="hljs-string">&#x27;bitwardenrs&#x27;</span> \<br><span class="hljs-attribute">--net</span>=<span class="hljs-string">&#x27;你的自定义网络名称&#x27;</span> \<br>-e <span class="hljs-attribute">TZ</span>=<span class="hljs-string">&quot;Asia/Shanghai&quot;</span> \<br>-e <span class="hljs-string">&#x27;SERVER_ADMIN_EMAIL&#x27;</span>=<span class="hljs-string">&#x27;你的email&#x27;</span> \<br>-e <span class="hljs-string">&#x27;SIGNUPS_ALLOWED&#x27;</span>=<span class="hljs-string">&#x27;false&#x27;</span> \<br>-e <span class="hljs-string">&#x27;INVITATIONS_ALLOWED&#x27;</span>=<span class="hljs-string">&#x27;true&#x27;</span> \<br>-e <span class="hljs-string">&#x27;WEBSOCKET_ENABLED&#x27;</span>=<span class="hljs-string">&#x27;true&#x27;</span> \<br>-e <span class="hljs-string">&#x27;ADMIN_TOKEN&#x27;</span>=<span class="hljs-string">&#x27;你的token&#x27;</span> \<br>-p <span class="hljs-string">&#x27;8086:80/tcp&#x27;</span> \<br>-v <span class="hljs-string">&#x27;/opt/docker/appdata/bitwarden&#x27;</span>:<span class="hljs-string">&#x27;/data&#x27;</span>:<span class="hljs-string">&#x27;rw&#x27;</span> <span class="hljs-string">&#x27;bitwardenrs/server:latest&#x27;</span><br><br>token生成命令： openssl rand -base64 48<br></code></pre></td></tr></table></figure>]]></content>
     
     
     <categories>
@@ -505,8 +642,8 @@
   
   <entry>
     <title>centos7安装MySQL</title>
-    <link href="/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/centos7%E5%AE%89%E8%A3%85MySQL/"/>
-    <url>/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/centos7%E5%AE%89%E8%A3%85MySQL/</url>
+    <link href="/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/centos7%E5%AE%89%E8%A3%85MySQL/"/>
+    <url>/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/centos7%E5%AE%89%E8%A3%85MySQL/</url>
     
     <content type="html"><![CDATA[<h2 id="centos7安装MySQL"><a href="#centos7安装MySQL" class="headerlink" title="centos7安装MySQL"></a>centos7安装MySQL</h2><ol><li><p>配置YUM源</p><p> <code>wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm</code></p><p> <code>yum localinstall mysql57-community-release-el7-8.noarch.rpm</code></p><p> <code>yum repolist enabled | grep &quot;mysql.*-community.*&quot;</code></p><p> 可以修改<code>vim /etc/yum.repos.d/mysql-community.repo</code>源，改变默认安装的mysql版本。比如要安装5.6版本，将5.7源的enabled=1改成enabled=0。然后再将5.6源的enabled=0改成enabled=1即可。</p></li><li><p>安装MySQL</p><p> <code>yum install mysql-community-server</code></p></li><li><p>启动MySQL服务</p><p> <code>service mysqld start</code></p></li><li><p>开机启动</p><p> <code>systemctl enable mysqld</code></p><p> <code>systemctl daemon-reload</code></p></li><li><p>修改root本地登录密码</p><p> <code>grep &#39;temporary password&#39; /var/log/mysqld.log   ---AkY&gt;ts#9)Dcv</code></p><p> <code>mysql -uroot -p</code></p><p> <code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;a1b2c3d4&#39;; </code></p><p> 修改密码策略</p><p> 在<code>/etc/my.cnf</code>文件添加validate_password_policy配置，指定密码策略<br>选择0（LOW），1（MEDIUM），2（STRONG）其中一种，选择2需要提供密码字典文件<br>validate_password_policy=0</p><p> 如果不需要密码策略，添加my.cnf文件中添加如下配置禁用即可：<br><code>validate_password = off</code></p></li><li><p>添加远程登录用户</p><p> 默认只允许root帐户在本地登录，如果要在其它机器上连接mysql，必须修改root允许远程连接，或者添加一个允许远程连接的帐户，为了安全起见，我添加一个新的帐户：<br> mysql&gt; <code>GRANT ALL PRIVILEGES ON *.* TO &#39;mysql&#39;@&#39;%&#39; IDENTIFIED BY &#39;mysql123&#39; WITH GRANT OPTION;</code></p><p> 设置root用户远程登录</p><pre><code> use mysql; update user set host = &#39;%&#39; where user = &#39;root&#39;; FLUSH PRIVILEGES;</code></pre></li><li><p>配置默认编码为utf8</p><p> 修改<code>/etc/my.cnf</code>配置文件，在[mysqld]下添加编码配置，如下所示：</p><p> [mysqld]</p><p> character_set_server=utf8</p><p> init_connect=’SET NAMES utf8’</p></li><li><p>不区分大小写</p><p> 在<code>[mysqld]</code>下加上<code>lower_case_table_names=1</code></p></li><li><p>mysql重启服务</p><p> <code>service mysqld restart</code></p></li></ol>]]></content>
     
@@ -522,7 +659,7 @@
     
     <tags>
       
-      <tag>mysql</tag>
+      <tag>MySQL</tag>
       
     </tags>
     
