@@ -17,7 +17,7 @@
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
-  <title>Nebula Graph - ccQi3</title>
+  <title>GitLab安装 - ccQi3</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Nebula Graph">
+            <span class="h2" id="subtitle" title="GitLab安装">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-06-10 13:32" pubdate>
-        2021年6月10日 下午
+      <time datetime="2021-06-25 17:29" pubdate>
+        2021年6月25日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      305 字
+      391 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      5
        分钟
     </span>
   
@@ -224,41 +224,32 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Nebula Graph</h1>
+            <h1 style="display: none">GitLab安装</h1>
             
             <div class="markdown-body">
-              <h2 id="Nebula-Graph"><a href="#Nebula-Graph" class="headerlink" title="Nebula Graph"></a>Nebula Graph</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>Nebula Graph数据模型使用6种基本的数据结构：</p>
-<ul>
-<li><p>图空间（space）</p>
-<p>图空间用于隔离不同团队或者项目的数据，不同图空间的数据是相互隔离的，可以指定不同的存储副本数，权限，分片等。</p>
+              <h2 id="GitLab"><a href="#GitLab" class="headerlink" title="GitLab"></a>GitLab</h2><p>GitLab是一个基于git实现的在线代码仓库托管软件，一般用于在企业、学校等内部网络搭建专属git仓库，越来越多的企业在使用gitlab作为项目托管仓库，社区版（ce）免费，大部分公司一般够用，企业版（ee）收费，功能更强大。</p>
+<ol>
+<li><p>配置yum源</p>
+<p> #下载此脚本并运行，会自动下载当前系统的yum源，/etc/yum.repos.d/gitlab_gitlab-ce.repo</p>
+ <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl https:<span class="hljs-regexp">//</span>packages.gitlab.com<span class="hljs-regexp">/install/</span>repositories<span class="hljs-regexp">/gitlab/gi</span>tlab-ce/script.rpm.sh | sudo bash<br></code></pre></td></tr></table></figure></li>
+<li><p>使用命令<code>ls /etc/yum.repos.d/</code> 可以看到已经下载的<code>yum</code>源<code>gitlab_gitlab-ee.repo</code></p>
+<p> 下载速度慢可以使用国内数据源，更换步骤如下：</p>
+<p> 删除<code>gitlab_gitlab-ee.repo</code>文件</p>
+<p> 新建文件<code>vim /etc/yum.repos.d/gitlab-ce.repo</code>,填入如下内容：</p>
+ <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[gitlab-ce]</span><br><span class="hljs-attr">name</span>=Gitlab CE Repository<br><span class="hljs-attr">baseurl</span>=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el<span class="hljs-variable">$releasever</span>/<br><span class="hljs-attr">gpgcheck</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">enabled</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure></li>
+<li><p>开始安装过程</p>
+ <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta">#刷新yum缓存</span><br>sudo yum makecache<br><span class="hljs-meta">#安装</span><br>sudo yum install -y gitlab-ce<br></code></pre></td></tr></table></figure></li>
+<li><p>配置访问地址</p>
+<p> <code>vim /etc/gitlab/gitlab.rb</code>，修改<code>external_url</code></p>
 </li>
-<li><p>点（vertex）</p>
-<p>点用来保存实体对象。特点：</p>
-<ul>
-<li>点是用标识符（VID）标识的。VID在同一空间里是唯一的。VID是一个<code>int64</code>或者是<code>fixed_string(N)</code>。</li>
-<li>点至少必须有一个标签（Tag），也可以有多个标签。</li>
-</ul>
+<li><p>应用初始化</p>
+<p> 执行<code>gitlab-ctl reconfigure</code> #执行此命令重新加载配置且同时启动gitlab所有服务</p>
 </li>
-<li><p>边（edge）</p>
-<p>边是用来连接点的，表示两个点之间的关系或者行为。特点：</p>
-<ul>
-<li>两点之间可以由多条边。</li>
-<li>边是有方向的，不存在无向边。</li>
-<li>四元组<code>&lt;起点VID、边类型（edge type）、边排序值(rank)、终点VID&gt;</code>用于唯一标识一条边。边没有EID。</li>
-<li>一条边有且只有一个边类型。</li>
-<li>一条边有且仅有一个rank，其为int64，默认为0.</li>
-</ul>
-</li>
-<li><p>标签（tag）</p>
-<p> 标签由一组事先预定义的属性构成。</p>
-</li>
-<li><p>边类型（edge type）</p>
-<p>  边类型由一组事先预定义的属性构成。</p>
-</li>
-<li><p>属性（properties）</p>
-<p>属性是指键值对（key-value pair）形式存储的信息。</p>
-</li>
-</ul>
+<li><p>常用命令</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">gitlab-ctl status <span class="hljs-comment">#查看是否启动</span><br>gitlab-ctl <span class="hljs-literal">start</span>  <span class="hljs-comment">#没有启动可以启动</span><br>gitlab-ctl restart <span class="hljs-comment">#重新启动下</span><br>gitlab-ctl <span class="hljs-literal">stop</span> <span class="hljs-comment">#停止</span><br>gitlab-ctl --help <span class="hljs-comment">#查看更多命令</span><br></code></pre></td></tr></table></figure></li>
+<li><p>修改root密码</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-meta">#1执行</span><br>gitlab-rails console -e production<br><span class="hljs-meta">#2 查询root用户</span><br>&gt; <span class="hljs-keyword">user</span> = <span class="hljs-keyword">User</span>.<span class="hljs-keyword">where</span>(username:&quot;root&quot;).first<br>=&gt; #&lt;<span class="hljs-keyword">User</span> id:<span class="hljs-number">1</span> @root&gt;<br><span class="hljs-meta">#3 新密码</span><br><span class="hljs-keyword">user</span>.<span class="hljs-keyword">password</span>=“test”<br><span class="hljs-meta">#4 密码确认</span><br><span class="hljs-keyword">user</span>.password_confirmation=“test”<br><span class="hljs-meta">#5 保存</span><br><span class="hljs-keyword">user</span>.save<br><span class="hljs-meta">#6 退出</span><br>quit<br></code></pre></td></tr></table></figure></li>
+</ol>
 
             </div>
             <hr>
@@ -270,7 +261,9 @@
                     
                       <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/">linux</a>
                     
                   </div>
                 
@@ -278,7 +271,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a>
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
                     
                   </div>
                 
@@ -291,18 +284,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/06/25/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/GitLab%E5%AE%89%E8%A3%85/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">GitLab安装</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/06/08/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/StreamSets/StreamSets/">
-                        <span class="hidden-mobile">StreamSets</span>
+                      <a href="/2021/06/10/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/Nebula%20Graph/Nebula%20Graph/">
+                        <span class="hidden-mobile">Nebula Graph</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
