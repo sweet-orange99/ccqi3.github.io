@@ -227,7 +227,7 @@
             <h1 style="display: none">禅道+gitlab+svn密码统一认证</h1>
             
             <div class="markdown-body">
-              <h1 id="OpenLDAP-phpadmin-统一鉴权认证"><a href="#OpenLDAP-phpadmin-统一鉴权认证" class="headerlink" title="OpenLDAP+phpadmin 统一鉴权认证"></a>OpenLDAP+phpadmin 统一鉴权认证</h1><h2 id="OpenLDAP-安装与配置"><a href="#OpenLDAP-安装与配置" class="headerlink" title="OpenLDAP 安装与配置"></a>OpenLDAP 安装与配置</h2><ol>
+              <h1 id="OpenLDAP-phpLDAPadmin-统一鉴权认证"><a href="#OpenLDAP-phpLDAPadmin-统一鉴权认证" class="headerlink" title="OpenLDAP+phpLDAPadmin 统一鉴权认证"></a>OpenLDAP+phpLDAPadmin 统一鉴权认证</h1><h2 id="OpenLDAP-安装与配置"><a href="#OpenLDAP-安装与配置" class="headerlink" title="OpenLDAP 安装与配置"></a>OpenLDAP 安装与配置</h2><ol>
 <li><p>使用yum安装OpenLDAP</p>
  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">yum -y <span class="hljs-keyword">install</span> openldap compat-openldap openldap-clients openldap-servers openldap-servers-<span class="hljs-keyword">sql</span> openldap-devel migrationtools<br></code></pre></td></tr></table></figure>
 <p> 使用命令<code>slapd -VV</code>可以查看OpenLDAP版本。</p>
@@ -270,7 +270,7 @@
   <figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ldif"><span class="hljs-attribute">dn</span>: cn=config<br><span class="hljs-attribute">changetype</span>: modify<br><span class="hljs-attribute">add</span>: olcLogLevel<br><span class="hljs-attribute">olcLogLevel</span>: 32   <br></code></pre></td></tr></table></figure>
 <p>  <code>ldapmodify -Y EXTERNAL -H ldapi:/// -f log.ldif SASL/EXTERNAL authentication started</code></p>
   <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkdir -p <span class="hljs-regexp">/var/</span>log/slapd<br>chown ldap:ldap <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/slapd/</span><br>echo <span class="hljs-string">&quot;local4.* /var/log/slapd/slapd.log&quot;</span> &gt;&gt; <span class="hljs-regexp">/etc/</span>rsyslog.conf<br>systemctl restart rsyslog<br>systemctl restart slapd<br>tail -n <span class="hljs-number">4</span> <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/slapd/</span>slapd.log<br></code></pre></td></tr></table></figure>
-<h2 id="phpldapadmin安装"><a href="#phpldapadmin安装" class="headerlink" title="phpldapadmin安装"></a>phpldapadmin安装</h2></li>
+<h2 id="phpLDAPadmin安装"><a href="#phpLDAPadmin安装" class="headerlink" title="phpLDAPadmin安装"></a>phpLDAPadmin安装</h2></li>
 </ul>
 </li>
 <li><p>yum安装apache+php环境</p>
