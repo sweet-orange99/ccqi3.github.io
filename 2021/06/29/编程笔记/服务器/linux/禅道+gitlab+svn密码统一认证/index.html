@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      505 字
+      501 字
     </span>
   
 
@@ -239,7 +239,7 @@
 </li>
 <li><p>修改olcDatabase={2}hdb.ldif文件</p>
 <p>   <code>vim /etc/openldap/slapd.d/cn=config/olcDatabase\=\&#123;2\&#125;hdb.ldif</code></p>
-   <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-attribute">olcSuffix</span>: dc=teracloud2,dc=cn<br><br><span class="hljs-attribute">olcRootDN</span>: cn=admin,dc=teracloud2,dc=cn<br><br><span class="hljs-attribute">olcRootPW</span>: &#123;SSHA&#125;dXgO/Ipy5SQiKFZ0u7m79Xo7uzKIr038<br></code></pre></td></tr></table></figure>
+   <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-attribute">olcSuffix</span>: dc=teracloud2,dc=cn<br><br><span class="hljs-attribute">olcRootDN</span>: cn=admin,dc=teracloud2,dc=cn<br><br><span class="hljs-attribute">olcRootPW</span>: password<br></code></pre></td></tr></table></figure>
 <p>   <strong>其中cn=admin中的admin表示OpenLDAP管理员的用户名，dc为ldap的服务器域名，导出而olcRootPW表示OpenLDAP管理员的密码。</strong></p>
 </li>
 <li><p>修改olcDatabase={1}monitor.ldif文件</p>
