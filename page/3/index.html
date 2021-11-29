@@ -1,22 +1,31 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
+  <meta name="description" content="橙橙橙的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ccQi3">
+<meta property="og:url" content="https://ccqi3.github.io/page/3/index.html">
+<meta property="og:site_name" content="ccQi3">
+<meta property="og:description" content="橙橙橙的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="ccQi3">
+<meta name="twitter:card" content="summary_large_image">
+  
   <title>ccQi3</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
@@ -39,7 +48,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -50,8 +59,9 @@
   <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>ccQi3</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>ccQi3</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -125,13 +135,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -181,11 +192,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-rocketMQ/">rocketMQ-环境搭建</a>
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-rocketMQ/" target="_self">
+          rocketMQ-环境搭建
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-rocketMQ/">
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-rocketMQ/" target="_self">
           
           
             
@@ -238,11 +251,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-zk/">zookeeper-环境搭建</a>
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-zk/" target="_self">
+          zookeeper-环境搭建
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-zk/">
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-zk/" target="_self">
           
           
             
@@ -293,11 +308,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">linux常见问题</a>
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" target="_self">
+          linux常见问题
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" target="_self">
           
           
             
@@ -353,11 +370,13 @@ max virtual memory areas vm.max_map_count [65530] is too low, increase to at lea
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-centos7/">docker-centos7</a>
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-centos7/" target="_self">
+          docker-centos7
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-centos7/">
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-centos7/" target="_self">
           
           
             
@@ -416,11 +435,13 @@ max virtual memory areas vm.max_map_count [65530] is too low, increase to at lea
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-run/">docker-run</a>
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-run/" target="_self">
+          docker-run
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-run/">
+        <a href="/2021/01/04/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-run/" target="_self">
           
           
             
@@ -473,11 +494,13 @@ docker run安装命令：
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/centos7%E5%AE%89%E8%A3%85MySQL/">centos7安装MySQL</a>
+        <a href="/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/centos7%E5%AE%89%E8%A3%85MySQL/" target="_self">
+          centos7安装MySQL
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/centos7%E5%AE%89%E8%A3%85MySQL/">
+        <a href="/2021/01/03/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/centos7%E5%AE%89%E8%A3%85MySQL/" target="_self">
           
           
             
@@ -527,11 +550,13 @@ docker run安装命令：
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/11/07/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive-%E5%B8%B8%E7%94%A8%E7%9A%84DDL%E8%AF%AD%E6%B3%95/">Hive-常用的DDL语法</a>
+        <a href="/2020/11/07/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive-%E5%B8%B8%E7%94%A8%E7%9A%84DDL%E8%AF%AD%E6%B3%95/" target="_self">
+          Hive-常用的DDL语法
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/11/07/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive-%E5%B8%B8%E7%94%A8%E7%9A%84DDL%E8%AF%AD%E6%B3%95/">
+        <a href="/2020/11/07/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive-%E5%B8%B8%E7%94%A8%E7%9A%84DDL%E8%AF%AD%E6%B3%95/" target="_self">
           
           
             
@@ -581,11 +606,13 @@ docker run安装命令：
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-07%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%BC%AB%E7%94%BB/">Hadoop-07 文件系统工作原理漫画</a>
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-07%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%BC%AB%E7%94%BB/" target="_self">
+          Hadoop-07 文件系统工作原理漫画
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-07%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%BC%AB%E7%94%BB/">
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-07%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%BC%AB%E7%94%BB/" target="_self">
           
           
             
@@ -637,11 +664,13 @@ docker run安装命令：
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-06%20other/">Hadoop-06 other</a>
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-06%20other/" target="_self">
+          Hadoop-06 other
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-06%20other/">
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-06%20other/" target="_self">
           
           
             
@@ -694,11 +723,13 @@ InputFormat：将我们输入的数据进行分片(split):
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-05%20MapReduce/">Hadoop-05 MapReduce</a>
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-05%20MapReduce/" target="_self">
+          Hadoop-05 MapReduce
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-05%20MapReduce/">
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-05%20MapReduce/" target="_self">
           
           
             
@@ -748,15 +779,9 @@ map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -768,7 +793,7 @@ map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: 
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -802,7 +827,7 @@ map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: 
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    
   </div>
   
 
@@ -821,8 +846,9 @@ map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: 
   
 </footer>
 
-<!-- SCRIPTS -->
 
+  <!-- SCRIPTS -->
+  
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
@@ -837,30 +863,25 @@ map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: 
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/lazyload.js" ></script>
-  
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
+  
 
 
-
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -880,20 +901,6 @@ map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: 
 
 
 
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
-  </script>
-
-
-
 
 
 
@@ -908,7 +915,6 @@ map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: 
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
-
 
 
 </body>

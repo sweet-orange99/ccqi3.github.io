@@ -1,22 +1,31 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
+  <meta name="description" content="橙橙橙的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ccQi3">
+<meta property="og:url" content="https://ccqi3.github.io/page/4/index.html">
+<meta property="og:site_name" content="ccQi3">
+<meta property="og:description" content="橙橙橙的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="ccQi3">
+<meta name="twitter:card" content="summary_large_image">
+  
   <title>ccQi3</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
@@ -39,7 +48,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -50,8 +59,9 @@
   <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>ccQi3</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>ccQi3</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -125,13 +135,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -181,11 +192,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-04%20yarn/">Hadoop-04 YARN</a>
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-04%20yarn/" target="_self">
+          Hadoop-04 YARN
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-04%20yarn/">
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-04%20yarn/" target="_self">
           
           
             
@@ -243,11 +256,13 @@ JobTracker完成了太多的任务，造成了过多的资源消耗，当MapRedu
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-03%20hdfs/">Hadoop-03 HDFS</a>
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-03%20hdfs/" target="_self">
+          Hadoop-03 HDFS
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-03%20hdfs/">
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-03%20hdfs/" target="_self">
           
           
             
@@ -303,11 +318,13 @@ DN：存储用户的文件对应的数据块，要定期向NN发送心跳信息�
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-02%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Hadoop-02 环境搭建</a>
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-02%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
+          Hadoop-02 环境搭建
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-02%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-02%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
           
           
             
@@ -363,11 +380,13 @@ Hadoop 环境安装
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-01%20%E5%88%9D%E8%AF%86Hadoop/">Hadoop-01 初识Hadoop</a>
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-01%20%E5%88%9D%E8%AF%86Hadoop/" target="_self">
+          Hadoop-01 初识Hadoop
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-01%20%E5%88%9D%E8%AF%86Hadoop/">
+        <a href="/2020/11/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop-01%20%E5%88%9D%E8%AF%86Hadoop/" target="_self">
           
           
             
@@ -430,11 +449,13 @@ Others: 利用YARN的资
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/09/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hexo/hexo/">基于gitee+hexo搭建个人博客</a>
+        <a href="/2020/09/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hexo/hexo/" target="_self">
+          基于gitee+hexo搭建个人博客
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hexo/hexo/">
+        <a href="/2020/09/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/Hexo/hexo/" target="_self">
           
           
             
@@ -486,11 +507,13 @@ git
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/09/01/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">我的博客</a>
+        <a href="/2020/09/01/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_self">
+          我的博客
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/01/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+        <a href="/2020/09/01/%E4%B8%AA%E4%BA%BA%E8%AE%A1%E5%88%92/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_self">
           
           
             
@@ -531,11 +554,13 @@ git
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/04-MyBatis%E6%89%A7%E8%A1%8C%E5%99%A8/">04-MyBatis执行器</a>
+        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/04-MyBatis%E6%89%A7%E8%A1%8C%E5%99%A8/" target="_self">
+          04-MyBatis执行器
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/04-MyBatis%E6%89%A7%E8%A1%8C%E5%99%A8/">
+        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/04-MyBatis%E6%89%A7%E8%A1%8C%E5%99%A8/" target="_self">
           
           
             
@@ -589,11 +614,13 @@ query|update(insert和delete也是使用update)。
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/03-MyBatis-%E4%BC%9A%E8%AF%9D%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B/">03-MyBatis-会话构建过程</a>
+        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/03-MyBatis-%E4%BC%9A%E8%AF%9D%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B/" target="_self">
+          03-MyBatis-会话构建过程
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/03-MyBatis-%E4%BC%9A%E8%AF%9D%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B/">
+        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/03-MyBatis-%E4%BC%9A%E8%AF%9D%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B/" target="_self">
           
           
             
@@ -642,11 +669,13 @@ query|update(insert和delete也是使用update)。
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/02-MyBatis-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">02-MyBatis-环境搭建</a>
+        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/02-MyBatis-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
+          02-MyBatis-环境搭建
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/02-MyBatis-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+        <a href="/2020/05/18/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/02-MyBatis-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
           
           
             
@@ -701,11 +730,13 @@ pom文件引入依赖123456789101112131415161718192021
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/05/17/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/01-MyBatis/">01-MyBatis</a>
+        <a href="/2020/05/17/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/01-MyBatis/" target="_self">
+          01-MyBatis
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/05/17/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/01-MyBatis/">
+        <a href="/2020/05/17/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/01-MyBatis/" target="_self">
           
           
             
@@ -752,15 +783,9 @@ pom文件引入依赖123456789101112131415161718192021
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -772,7 +797,7 @@ pom文件引入依赖123456789101112131415161718192021
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -806,7 +831,7 @@ pom文件引入依赖123456789101112131415161718192021
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    
   </div>
   
 
@@ -825,8 +850,9 @@ pom文件引入依赖123456789101112131415161718192021
   
 </footer>
 
-<!-- SCRIPTS -->
 
+  <!-- SCRIPTS -->
+  
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
@@ -841,30 +867,25 @@ pom文件引入依赖123456789101112131415161718192021
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/lazyload.js" ></script>
-  
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
+  
 
 
-
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -884,20 +905,6 @@ pom文件引入依赖123456789101112131415161718192021
 
 
 
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
-  </script>
-
-
-
 
 
 
@@ -912,7 +919,6 @@ pom文件引入依赖123456789101112131415161718192021
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
-
 
 
 </body>

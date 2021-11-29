@@ -1,22 +1,31 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
+  <meta name="description" content="橙橙橙的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ccQi3">
+<meta property="og:url" content="https://ccqi3.github.io/index.html">
+<meta property="og:site_name" content="ccQi3">
+<meta property="og:description" content="橙橙橙的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="ccQi3">
+<meta name="twitter:card" content="summary_large_image">
+  
   <title>ccQi3</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
@@ -39,7 +48,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -50,8 +59,9 @@
   <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>ccQi3</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>ccQi3</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -125,13 +135,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -181,11 +192,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/10/12/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%AF%8C%E7%88%B8%E7%88%B8%EF%BC%8C%E7%A9%B7%E7%88%B8%E7%88%B8/">富爸爸，穷爸爸</a>
+        <a href="/2021/10/12/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%AF%8C%E7%88%B8%E7%88%B8%EF%BC%8C%E7%A9%B7%E7%88%B8%E7%88%B8/" target="_self">
+          富爸爸，穷爸爸
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/10/12/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%AF%8C%E7%88%B8%E7%88%B8%EF%BC%8C%E7%A9%B7%E7%88%B8%E7%88%B8/">
+        <a href="/2021/10/12/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%AF%8C%E7%88%B8%E7%88%B8%EF%BC%8C%E7%A9%B7%E7%88%B8%E7%88%B8/" target="_self">
           
           
             
@@ -238,11 +251,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/06/29/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/%E7%A6%85%E9%81%93+gitlab+svn%E5%AF%86%E7%A0%81%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81/">禅道+gitlab+svn密码统一认证</a>
+        <a href="/2021/06/29/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/%E7%A6%85%E9%81%93+gitlab+svn%E5%AF%86%E7%A0%81%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81/" target="_self">
+          禅道+gitlab+svn密码统一认证
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/06/29/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/%E7%A6%85%E9%81%93+gitlab+svn%E5%AF%86%E7%A0%81%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81/">
+        <a href="/2021/06/29/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/%E7%A6%85%E9%81%93+gitlab+svn%E5%AF%86%E7%A0%81%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81/" target="_self">
           
           
             
@@ -295,11 +310,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/06/25/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/GitLab%E5%AE%89%E8%A3%85/">GitLab安装</a>
+        <a href="/2021/06/25/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/GitLab%E5%AE%89%E8%A3%85/" target="_self">
+          GitLab安装
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/06/25/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/GitLab%E5%AE%89%E8%A3%85/">
+        <a href="/2021/06/25/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/GitLab%E5%AE%89%E8%A3%85/" target="_self">
           
           
             
@@ -351,11 +368,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/06/10/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/Nebula%20Graph/Nebula%20Graph/">Nebula Graph</a>
+        <a href="/2021/06/10/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/Nebula%20Graph/Nebula%20Graph/" target="_self">
+          Nebula Graph
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/06/10/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/Nebula%20Graph/Nebula%20Graph/">
+        <a href="/2021/06/10/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/Nebula%20Graph/Nebula%20Graph/" target="_self">
           
           
             
@@ -410,11 +429,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/06/08/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/StreamSets/StreamSets/">StreamSets</a>
+        <a href="/2021/06/08/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/StreamSets/StreamSets/" target="_self">
+          StreamSets
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/06/08/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/StreamSets/StreamSets/">
+        <a href="/2021/06/08/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/StreamSets/StreamSets/" target="_self">
           
           
             
@@ -458,11 +479,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/05/26/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/00-%E5%88%9D%E8%AF%86MySQL/">初识MySQL</a>
+        <a href="/2021/05/26/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/00-%E5%88%9D%E8%AF%86MySQL/" target="_self">
+          初识MySQL
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/05/26/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/00-%E5%88%9D%E8%AF%86MySQL/">
+        <a href="/2021/05/26/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/00-%E5%88%9D%E8%AF%86MySQL/" target="_self">
           
           
             
@@ -508,11 +531,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/">聊聊ThreadLocal</a>
+        <a href="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/" target="_self">
+          聊聊ThreadLocal
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/">
+        <a href="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/" target="_self">
           
           
             
@@ -565,11 +590,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/07-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">07-单例模式</a>
+        <a href="/2021/02/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/07-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" target="_self">
+          07-单例模式
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/07-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+        <a href="/2021/02/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/07-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" target="_self">
           
           
             
@@ -629,11 +656,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/23/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/06-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/">06-原型模式</a>
+        <a href="/2021/02/23/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/06-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" target="_self">
+          06-原型模式
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/23/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/06-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/">
+        <a href="/2021/02/23/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/06-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" target="_self">
           
           
             
@@ -685,11 +714,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/20/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/05-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/">05-建造者模式</a>
+        <a href="/2021/02/20/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/05-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/" target="_self">
+          05-建造者模式
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/20/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/05-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/">
+        <a href="/2021/02/20/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/05-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/" target="_self">
           
           
             
@@ -738,15 +769,9 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -758,7 +783,7 @@
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -792,7 +817,7 @@
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    
   </div>
   
 
@@ -811,8 +836,9 @@
   
 </footer>
 
-<!-- SCRIPTS -->
 
+  <!-- SCRIPTS -->
+  
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
@@ -827,30 +853,25 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/lazyload.js" ></script>
-  
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
+  
 
 
-
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -870,20 +891,6 @@
 
 
 
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
-  </script>
-
-
-
 
 
 
@@ -898,7 +905,6 @@
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
-
 
 
 </body>

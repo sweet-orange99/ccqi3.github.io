@@ -1,22 +1,39 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
+  <meta name="description" content="ThreadLocal维持线程封闭性的一种规范方法是使用ThreadLocal，这个类能使线程中的某个值与保存值的对象关联起来。提供了get和set方法等访问接口和方法，这些方法为每个使用该变量的的线程都存有一份独立的副本，因此get总是返回由当前执行线程在调用set时设置的最新值。 官方解释如下：This class provides thread-local variables. These">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聊聊ThreadLocal">
+<meta property="og:url" content="https://ccqi3.github.io/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/index.html">
+<meta property="og:site_name" content="ccQi3">
+<meta property="og:description" content="ThreadLocal维持线程封闭性的一种规范方法是使用ThreadLocal，这个类能使线程中的某个值与保存值的对象关联起来。提供了get和set方法等访问接口和方法，这些方法为每个使用该变量的的线程都存有一份独立的副本，因此get总是返回由当前执行线程在调用set时设置的最新值。 官方解释如下：This class provides thread-local variables. These">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ccqi3.github.io/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5.png">
+<meta property="og:image" content="https://ccqi3.github.io/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/ThreadLocal.png">
+<meta property="og:image" content="https://ccqi3.github.io/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/Thread&ThreadLocal&ThreadLocalMap%E5%85%B3%E7%B3%BB%E5%9B%BE.png">
+<meta property="article:published_time" content="2021-03-05T02:29:00.000Z">
+<meta property="article:modified_time" content="2021-06-11T07:45:42.062Z">
+<meta property="article:author" content="ccQi3">
+<meta property="article:tag" content="源码阅读">
+<meta property="article:tag" content="并发编程的艺术">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ccqi3.github.io/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5.png">
+  
   <title>聊聊ThreadLocal - ccQi3</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
@@ -38,7 +55,6 @@
   
 
 
-
 <!-- 主题依赖的图标库，不要自行修改 -->
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
@@ -55,7 +71,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -66,8 +82,9 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>ccQi3</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>ccQi3</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -141,13 +158,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -181,21 +199,18 @@
 
 <div class="mt-1">
   
-    
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      701 字
+      undefined 字
     </span>
   
 
   
-    
     <span class="post-meta mr-2">
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
-       分钟
+      NaN 分钟
     </span>
   
 
@@ -239,7 +254,7 @@
 <p>这种常见写法首先解决了应用反复创建<code>SimpleDateFormat</code>对象所带来的系统损耗，但是又引来了一个非常重要的问题–并发问题。如果我们在并发环境下使用该方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>        <span class="hljs-keyword">new</span> Thread(() -&gt; &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                System.out.println(Thread.currentThread().getName() + <span class="hljs-string">&quot;:&quot;</span> + DateFormatUtils.parse(<span class="hljs-string">&quot;2013-05-24 06:02:20&quot;</span>));<br>            &#125; <span class="hljs-keyword">catch</span> (ParseException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;).start();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>系统运行情况如图所示：</p>
-<img src="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5.png" srcset="/img/loading.gif" class>
+<img src="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5.png" srcset="/img/loading.gif" lazyload class>
 
 <p>由此我们发现，该方法在多线程环境下会有线程安全的问题。</p>
 <p>解决并发问题的方式有很多，如<code>synchronized</code>，这里使用<code>ThreadLocal</code>来解决此问题。</p>
@@ -249,12 +264,12 @@
 <h3 id="源码阅读分析"><a href="#源码阅读分析" class="headerlink" title="源码阅读分析"></a>源码阅读分析</h3><ul>
 <li><code>ThreadLocal</code> 结构</li>
 </ul>
-<img src="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/ThreadLocal.png" srcset="/img/loading.gif" class>
+<img src="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/ThreadLocal.png" srcset="/img/loading.gif" lazyload class>
 
 <ul>
 <li><code>Thread</code>、<code>ThreadLocal</code>、<code>ThreadLocalMap</code> 三者关系</li>
 </ul>
-<img src="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/Thread&ThreadLocal&ThreadLocalMap%E5%85%B3%E7%B3%BB%E5%9B%BE.png" srcset="/img/loading.gif" class>
+<img src="/2021/03/05/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/%E8%81%8A%E8%81%8AThreadLocal/Thread&ThreadLocal&ThreadLocalMap%E5%85%B3%E7%B3%BB%E5%9B%BE.png" srcset="/img/loading.gif" lazyload class>
 
 <p>可以发现每一个<code>Thread</code>中都有一个<code>ThreadLocalMap</code>。<code>ThreadLocalMap</code>可以看作是一个数组，数组元素是自定义的<code>Entry</code>类型，<code>Entry</code>的<strong>key</strong>是<code>ThreadLocal</code>类型，<strong>value</strong>是<code>Object</code>类型。也就是说一个<code>ThreadLocalMap</code>可以有多个<code>ThreadLocal</code>。</p>
 
@@ -288,7 +303,11 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
                 <div class="post-prevnext">
@@ -339,7 +358,7 @@
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -373,7 +392,7 @@
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    
   </div>
   
 
@@ -392,8 +411,9 @@
   
 </footer>
 
-<!-- SCRIPTS -->
 
+  <!-- SCRIPTS -->
+  
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
@@ -408,36 +428,38 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/lazyload.js" ></script>
-  
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+  
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+  
 
 
 
@@ -457,20 +479,6 @@
 
 
 
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
-  </script>
-
-
-
 
 
 
@@ -485,7 +493,6 @@
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
-
 
 
 </body>
