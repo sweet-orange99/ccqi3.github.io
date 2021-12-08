@@ -365,19 +365,21 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-zk/" target="_self">
-          zookeeper-环境搭建
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-rocketMQ/" target="_self">
+          rocketMQ-环境搭建
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-zk/" target="_self">
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-rocketMQ/" target="_self">
           
           
             
           
-          zookeeper环境搭建新建文件docker-compose-zk.yml
-1234567891011121314151617181920212223242526272829303132version: &#x27;3.1&#x27;services:  zoo1:    image: zookeeper    restart: always    hostname: zoo1    ports
+          rocketMQ环境搭建git clone https://github.com/foxiswho/docker-rocketmq.git
+切换分支git checkout v4.4.0
+该项目目录结构为
+1234567891011121314151617181920212223docker-rocketmq/├── base│   ├── Dockerfile│   ├── readme.md│
         </a>
       </p>
 
@@ -422,21 +424,19 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-rocketMQ/" target="_self">
-          rocketMQ-环境搭建
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-zk/" target="_self">
+          zookeeper-环境搭建
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-rocketMQ/" target="_self">
+        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-zk/" target="_self">
           
           
             
           
-          rocketMQ环境搭建git clone https://github.com/foxiswho/docker-rocketmq.git
-切换分支git checkout v4.4.0
-该项目目录结构为
-1234567891011121314151617181920212223docker-rocketmq/├── base│   ├── Dockerfile│   ├── readme.md│
+          zookeeper环境搭建新建文件docker-compose-zk.yml
+1234567891011121314151617181920212223242526272829303132version: &#x27;3.1&#x27;services:  zoo1:    image: zookeeper    restart: always    hostname: zoo1    ports
         </a>
       </p>
 
