@@ -15,6 +15,8 @@
       
       <category>我的生活</category>
       
+      <category>图片处理</category>
+      
     </categories>
     
     
@@ -39,6 +41,8 @@
     <categories>
       
       <category>我的生活</category>
+      
+      <category>摄影笔记</category>
       
     </categories>
     
@@ -65,6 +69,8 @@
       
       <category>我的生活</category>
       
+      <category>摄影笔记</category>
+      
     </categories>
     
     
@@ -89,6 +95,8 @@
     <categories>
       
       <category>我的生活</category>
+      
+      <category>摄影笔记</category>
       
     </categories>
     
@@ -846,12 +854,14 @@
     <link href="/2020/12/31/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E6%91%84%E5%83%8F%20%E6%91%84%E5%BD%B1/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/Photoshop%20%E7%AC%94%E8%AE%B0/"/>
     <url>/2020/12/31/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E6%91%84%E5%83%8F%20%E6%91%84%E5%BD%B1/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/Photoshop%20%E7%AC%94%E8%AE%B0/</url>
     
-    <content type="html"><![CDATA[<h2 id="图片预处理"><a href="#图片预处理" class="headerlink" title="图片预处理"></a>图片预处理</h2><ol><li>画面校正</li><li>二次构图</li><li>白平衡校正</li><li>曝光，黑白场校正</li><li>适当的色彩</li><li>适当的锐化与降噪</li><li>暗角特效</li></ol><h2 id="修瑕疵"><a href="#修瑕疵" class="headerlink" title="修瑕疵"></a>修瑕疵</h2><h3 id="套索工具-amp-智能填充"><a href="#套索工具-amp-智能填充" class="headerlink" title="套索工具&amp;智能填充"></a>套索工具&amp;智能填充</h3><ol><li>使用套索工具选择瑕疵</li><li>快捷键<code>shift+f5</code> == 右键-填充</li><li>内容识别 - 颜色适应 - 正常 - 100%</li></ol><p><strong>可以将2，3步添加成动作，便于高效的完成瑕疵修整</strong></p><h3 id="磨皮"><a href="#磨皮" class="headerlink" title="磨皮"></a>磨皮</h3><p>磨皮操作可分为两种：提升人物质感，对光影的调整。</p><ol><li><code>Portraiture</code> 插件提升人物质感。</li><li><code>DR5</code> 插件调整光影。</li></ol><h2 id="形体形态调整"><a href="#形体形态调整" class="headerlink" title="形体形态调整"></a>形体形态调整</h2><p><strong>立七坐五盘三半</strong></p><h3 id="腿部拉长"><a href="#腿部拉长" class="headerlink" title="腿部拉长"></a>腿部拉长</h3><ol><li>矩形选框选择大腿/小腿及以下部分。</li><li><code>command</code>+<code>j</code> 复制选中图层。</li><li><code>command</code>+<code>t</code> 自由变换。</li><li><code>shift</code> + 鼠标拖动，拉长腿部。</li><li><code>command</code>+<code>option</code>+<code>shift</code>+<code>e</code> 盖印一个图层，便于后续处理。</li></ol><h3 id="液化工具"><a href="#液化工具" class="headerlink" title="液化工具"></a>液化工具</h3><p>常用工具有向前变形工具，褶皱工具，膨胀工具、冻结蒙版、解冻蒙板工具。使用技巧：</p><ol><li>根据不同位置调整画笔大小。</li><li>画笔压力建议在<strong>10</strong>-<strong>20</strong>，不易过大。</li><li>褶皱工具和膨胀工具会根据画笔速率导致影像做向内向外的畸变。</li><li>冻结蒙板可以使涂抹的位置固定，从而不发生形变。</li></ol><h2 id="五官形态调整"><a href="#五官形态调整" class="headerlink" title="五官形态调整"></a>五官形态调整</h2><p><strong>三庭五眼，四高三低</strong></p><ol><li>适当修整人物脸部五官形态，对称即可。</li><li>提升人物气质。</li></ol><h2 id="背景、穿帮修复"><a href="#背景、穿帮修复" class="headerlink" title="背景、穿帮修复"></a>背景、穿帮修复</h2><h3 id="仿制图章工具"><a href="#仿制图章工具" class="headerlink" title="仿制图章工具"></a>仿制图章工具</h3><ol><li>透明度和流量的设置。</li><li>取样源与目标距离的选择。</li></ol><h3 id="污点修复画笔工具"><a href="#污点修复画笔工具" class="headerlink" title="污点修复画笔工具"></a>污点修复画笔工具</h3><ol><li>污点修复画笔（适合纯色背景上的瑕疵修饰）</li><li>修补工具（使用时注意修饰主体边缘与背景的细节衔接）</li></ol><h3 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h3><ol><li>修补工具可结合内容填充识别配合使用。</li><li>换脸-选择脸部需要修饰的区域，复制新图层，自由变换。</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="图片预处理"><a href="#图片预处理" class="headerlink" title="图片预处理"></a>图片预处理</h2><ol><li>画面校正</li><li>二次构图</li><li>白平衡校正</li><li>曝光，黑白场校正</li><li>适当的色彩</li><li>适当的锐化与降噪</li><li>暗角特效</li></ol><h2 id="修瑕疵"><a href="#修瑕疵" class="headerlink" title="修瑕疵"></a>修瑕疵</h2><h3 id="套索工具-amp-智能填充"><a href="#套索工具-amp-智能填充" class="headerlink" title="套索工具&amp;智能填充"></a>套索工具&amp;智能填充</h3><ol><li>使用套索工具选择瑕疵</li><li>快捷键<code>shift+f5</code> == 右键-填充</li><li>内容识别 - 颜色适应 - 正常 - 100%</li></ol><p><strong>可以将2，3步添加成动作，便于高效的完成瑕疵修整</strong></p><h3 id="磨皮"><a href="#磨皮" class="headerlink" title="磨皮"></a>磨皮</h3><p>磨皮操作可分为两种：提升人物质感，对光影的调整。</p><ol><li><code>Portraiture</code> 插件提升人物质感。</li><li><code>DR5</code> 插件调整光影。</li></ol><h2 id="形体形态调整"><a href="#形体形态调整" class="headerlink" title="形体形态调整"></a>形体形态调整</h2><p><strong>立七坐五盘三半</strong></p><h3 id="腿部拉长"><a href="#腿部拉长" class="headerlink" title="腿部拉长"></a>腿部拉长</h3><ol><li>矩形选框选择大腿/小腿及以下部分。</li><li><code>command</code>+<code>j</code> 复制选中图层。</li><li><code>command</code>+<code>t</code> 自由变换。</li><li><code>shift</code> + 鼠标拖动，拉长腿部。</li><li><code>command</code>+<code>option</code>+<code>shift</code>+<code>e</code> 盖印一个图层，便于后续处理。</li></ol><h3 id="液化工具"><a href="#液化工具" class="headerlink" title="液化工具"></a>液化工具</h3><p>常用工具有向前变形工具，褶皱工具，膨胀工具、冻结蒙版、解冻蒙板工具。使用技巧：</p><ol><li>根据不同位置调整画笔大小。</li><li>画笔压力建议在<strong>10</strong>-<strong>20</strong>，不易过大。</li><li>褶皱工具和膨胀工具会根据画笔速率导致影像做向内向外的畸变。</li><li>冻结蒙板可以使涂抹的位置固定，从而不发生形变。</li></ol><h2 id="五官形态调整"><a href="#五官形态调整" class="headerlink" title="五官形态调整"></a>五官形态调整</h2><p><strong>三庭五眼，四高三低</strong></p><ol><li>适当修整人物脸部五官形态，对称即可。</li><li>提升人物气质。</li></ol><h2 id="背景、穿帮修复"><a href="#背景、穿帮修复" class="headerlink" title="背景、穿帮修复"></a>背景、穿帮修复</h2><h3 id="仿制图章工具"><a href="#仿制图章工具" class="headerlink" title="仿制图章工具"></a>仿制图章工具</h3><ol><li>透明度和流量的设置。</li><li>取样源与目标距离的选择。</li></ol><h3 id="污点修复画笔工具"><a href="#污点修复画笔工具" class="headerlink" title="污点修复画笔工具"></a>污点修复画笔工具</h3><ol><li>污点修复画笔（适合纯色背景上的瑕疵修饰）</li><li>修补工具（使用时注意修饰主体边缘与背景的细节衔接）</li></ol><h3 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h3><ol><li>修补工具可结合内容填充识别配合使用。</li><li>换脸-选择脸部需要修饰的区域，复制新图层，自由变换。</li></ol><h2 id="色彩调整工具"><a href="#色彩调整工具" class="headerlink" title="色彩调整工具"></a>色彩调整工具</h2><h3 id="色彩基础知识"><a href="#色彩基础知识" class="headerlink" title="色彩基础知识"></a>色彩基础知识</h3><ul><li>饱和度（saturation）：提升所有颜色的强度，可能导致过饱和，局部细节消失，最常见是皮肤的过饱和（变成橙色且不自然）。</li><li>自然饱和度：智能提升画面中比较柔和（即饱和度低）的颜色，而使原本饱和度够的颜色保持原状。类似于对照片补光，但是是对颜色的补光。可以防止皮肤颜色变得过饱和以及不自然。</li><li>色相饱和度，调整图像中特定颜色范围的色相、饱和度和明度，或者同时调整图像中的所有颜色。此调整尤其适用于微调 CMYK 图像中的颜色，以便它们处在输出设备的色域内。</li></ul><h3 id="自然饱和度"><a href="#自然饱和度" class="headerlink" title="自然饱和度"></a>自然饱和度</h3><p>快捷键： 图像-调整-自然饱和度</p><h3 id="色相饱和度"><a href="#色相饱和度" class="headerlink" title="色相饱和度"></a>色相饱和度</h3><p><strong>快捷键： <code>command</code>+<code>u</code></strong></p><h3 id="色彩平衡"><a href="#色彩平衡" class="headerlink" title="色彩平衡"></a>色彩平衡</h3><p><strong>快捷键： <code>command</code>+<code>b</code></strong></p>]]></content>
     
     
     <categories>
       
       <category>我的生活</category>
+      
+      <category>图片处理</category>
       
     </categories>
     
@@ -859,6 +869,33 @@
     <tags>
       
       <tag>PS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Final Cut Pro X</title>
+    <link href="/2020/12/31/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E6%91%84%E5%83%8F%20%E6%91%84%E5%BD%B1/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Final%20Cut%20Pro%20X/"/>
+    <url>/2020/12/31/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E6%91%84%E5%83%8F%20%E6%91%84%E5%BD%B1/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Final%20Cut%20Pro%20X/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Final-Cut-Pro-X"><a href="#Final-Cut-Pro-X" class="headerlink" title="Final Cut Pro X"></a>Final Cut Pro X</h1><h2 id="资源库"><a href="#资源库" class="headerlink" title="资源库"></a>资源库</h2><p>四颗星星图标   代表所有原材料的整合</p><h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>一颗星星图表   代表分类后的原材料</p><h2 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h2><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p><code>i</code>  <code>o</code>   <code>e</code>  截取视频片段添加到时间线</p><p>查看素材  <code>l</code>   <code>k</code>   <code>j</code>  双击变快</p><p>字幕  <code>q</code></p><p>两个素材中间插入  <code>w</code></p><h3 id="剪辑快捷键"><a href="#剪辑快捷键" class="headerlink" title="剪辑快捷键"></a>剪辑快捷键</h3><p>切割快捷键 <code>b</code>  <code>，</code> <code>。</code>   <code>option</code>+<code>/</code></p><p>b-roll  ： 主时间线上面的视频</p><p>删除主时间线保留b-roll   <code>option+command+del</code></p><p>影片速度  <code>command+R</code> 调整   <code>shift+b</code>分区调整视频速度</p><p>快捷键：</p><p>M标记</p><p>N吸附</p><p><code>command+Z</code> 撤销上一步</p><p>音频：</p><p>音频两端时间点，向内拖动——渐弱；用R选中部分音频，上下拖拽，调节局部音量大小；整条时间线，<code>control+/-</code>，精确调节音量大小</p><p>字幕：</p><p>光标右边，<code>shift+Q</code>光标左边</p><p><code>control+T</code>，基本字幕</p><p>转场：</p><p>双击自动添加，片段两侧均有，选择片段边缘，仅添加到片段一侧。快捷键<code>command+T</code>。</p><p>导出：</p><p><code>command+E</code>，母版文件，设置，解码器“H.264”，仅存储，导出格式为mov<br>导出mp4：格式“电脑”，编码器“H.264较好质量”<br>添加目的位置，对母版文件默认进行修改。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>我的生活</category>
+      
+      <category>视频处理</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>视频剪辑</tag>
       
     </tags>
     
