@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>nginx安装</title>
+    <link href="/2022/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/nginx%E5%AE%89%E8%A3%85/"/>
+    <url>/2022/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/nginx%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<p><code>CentOS 7</code> 中的 <code>yum</code> 无法直接使用 <code>yum install nginx</code> 这个指令安装<code>nginx</code></p><h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol><li>vim /etc/yum.repos.d/nginx.repo</li></ol><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[nginx]</span><br><span class="hljs-attr">name</span>=nginx repo<br><span class="hljs-attr">baseurl</span>=http://nginx.org/packages/centos/<span class="hljs-number">7</span>/x<span class="hljs-number">86_64</span>/<br><span class="hljs-attr">gpgcheck</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">enabled</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure><ol start="2"><li>再执行<code>yum install nginx</code>即可。</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>服务器</category>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>工具方法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Photoshop 常用快捷键</title>
     <link href="/2021/12/22/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E6%91%84%E5%83%8F%20%E6%91%84%E5%BD%B1/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/Photoshop%20%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     <url>/2021/12/22/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E6%91%84%E5%83%8F%20%E6%91%84%E5%BD%B1/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/Photoshop%20%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
