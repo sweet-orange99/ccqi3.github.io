@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="橙橙橙的博客">
+  <meta name="author" content="ccQi3">
+  <meta name="keywords" content="">
+  <meta name="description" content="基色：又称三基色，指的是红绿蓝这三种基色 混合色：红绿蓝三基色按照不同的比例相加合成混色称为混合色  加深组变暗(Darken)在变暗模式中，查看每个通道中的颜色信息，并选择基色或混合色中较暗的颜色作为结果色。比混合色亮的像素被替换，比混合色暗的像素保持不变。变暗模式将导致比背景颜色更淡的颜色从结果色中被去掉了 正片叠底(Multiply)在正片叠底模式中，查看每个通道中的颜色信息，并将基色与混">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Photoshop 混合模式">
+<meta property="og:url" content="https://ccqi3.github.io/2020/01/19/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E6%91%84%E5%83%8F%20%E6%91%84%E5%BD%B1/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/Photoshop%20%E6%B7%B7%E5%90%88%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="ccQi3">
+<meta property="og:description" content="基色：又称三基色，指的是红绿蓝这三种基色 混合色：红绿蓝三基色按照不同的比例相加合成混色称为混合色  加深组变暗(Darken)在变暗模式中，查看每个通道中的颜色信息，并选择基色或混合色中较暗的颜色作为结果色。比混合色亮的像素被替换，比混合色暗的像素保持不变。变暗模式将导致比背景颜色更淡的颜色从结果色中被去掉了 正片叠底(Multiply)在正片叠底模式中，查看每个通道中的颜色信息，并将基色与混">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-19T05:13:37.000Z">
+<meta property="article:modified_time" content="2022-01-19T05:25:34.307Z">
+<meta property="article:author" content="ccQi3">
+<meta property="article:tag" content="PS">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>Photoshop 混合模式 - ccQi3</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ccQi3</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                博客
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/coding.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Photoshop 混合模式">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-01-19 13:13" pubdate>
+        2020年1月19日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Photoshop 混合模式</h1>
+            
+            <div class="markdown-body">
+              <ul>
+<li>基色：又称三基色，指的是<code>红绿蓝</code>这三种<code>基色</code></li>
+<li>混合色：红绿蓝三基色按照不同的比例相加合成混色称为<code>混合色</code></li>
+</ul>
+<h2 id="加深组"><a href="#加深组" class="headerlink" title="加深组"></a>加深组</h2><h3 id="变暗-Darken"><a href="#变暗-Darken" class="headerlink" title="变暗(Darken)"></a>变暗(Darken)</h3><p>在<code>变暗</code>模式中，查看每个通道中的颜色信息，并选择<code>基色</code>或<code>混合色</code>中较暗的颜色作为<code>结果色</code>。比<code>混合色</code>亮的像素被替换，比<code>混合色</code>暗的像素保持不变。<code>变暗</code>模式将导致比背景颜色更淡的颜色从<code>结果色</code>中被去掉了</p>
+<h3 id="正片叠底-Multiply"><a href="#正片叠底-Multiply" class="headerlink" title="正片叠底(Multiply)"></a>正片叠底(Multiply)</h3><p>在<code>正片叠底</code>模式中，查看每个通道中的颜色信息，并将<code>基色</code>与<code>混合色</code>复合。<code>结果色</code>总是较暗的颜色。任何颜色与黑色复合产生黑色。任何颜色与白色复合保持不变。当用黑色或白色以外的颜色绘画时，绘画工具绘制的连续描边产生逐渐变暗的过渡色。其实<code>正片叠底</code>模式就是从<code>基色</code>中减去<code>混合色</code>的亮度值，得到最终的<code>结果色</code>。如果在<code>正片叠底</code>模式中使用较淡的颜色对图像的<code>结果色</code>是没有影响的。利用<code>正片叠底</code>模式可以形成一种光线穿透图层的幻灯片效果。其实就是将<code>基色</code>颜色与<code>混合色</code>颜色的数值相乘，然后再除以255，便得到了<code>结果色</code>的颜色值。例如，红色与黄色的<code>结果色</code>是橙色，红色与绿色的<code>结果色</code>是褐色，红色与蓝色的<code>结果色</code>是紫色等</p>
+<h3 id="颜色加深-ColorBurn"><a href="#颜色加深-ColorBurn" class="headerlink" title="颜色加深(ColorBurn)"></a>颜色加深(ColorBurn)</h3><p>在<code>颜色加深</code>模式中，查看每个通道中的颜色信息，并通过增加对比度使基色变暗以反映混合色，如果与白色混合的话将不会产生变化， <code>颜色加深</code>模式创建的效果和<code>正片叠底</code>模式创建的效果比较类似。</p>
+<h3 id="线性加深-LinearBurn"><a href="#线性加深-LinearBurn" class="headerlink" title="线性加深(LinearBurn)"></a>线性加深(LinearBurn)</h3><p>在<code>线性加深</code>模式中，查看每个通道中的颜色信息，并通过减小亮度使<code>基色</code>变暗以反映混合色。如果<code>混合色</code>与<code>基色</code>上的白色混合后将不会产生变化。</p>
+<h2 id="减淡组"><a href="#减淡组" class="headerlink" title="减淡组"></a>减淡组</h2><h3 id="变亮-Lighten"><a href="#变亮-Lighten" class="headerlink" title="变亮(Lighten)"></a>变亮(Lighten)</h3><p>在<code>变亮</code>模式中，查看每个通道中的颜色信息，并选择<code>基色</code>或<code>混合色</code>中较亮的颜色作为<code>结果色</code>。比<code>混合色</code>暗的像素被替换，比<code>混合色</code>亮的像素不变。在这种与<code>变暗</code>模式相反的模式下，较淡的颜色区域在最终的<code>合成色</code>中占主要地位。较暗区域并不出现在最终结<code>合成色</code>中。</p>
+<h3 id="滤色-Screen"><a href="#滤色-Screen" class="headerlink" title="滤色(Screen)"></a>滤色(Screen)</h3><p><code>滤色</code>模式与<code>正片叠底</code>模式正好相反，它将图像的<code>基色</code>颜色与<code>混合色</code>颜色结合起来产生比两种颜色都浅的第三种颜色，如下图所示。其实就是并将<code>混合色</code>的互补色与<code>基色</code>复合。<code>结果色</code>总是较亮的颜色。用黑色过滤时颜色保持不变。用白色过滤将产生白色。无论在<code>滤色</code>模式下用着色工具采用一种颜色，还是对<code>滤色</code>模式指定一个层，合并的<code>结果色</code>始终是相同的合成颜色或一种更淡的颜色。</p>
+<h3 id="颜色减淡-ColorDodge"><a href="#颜色减淡-ColorDodge" class="headerlink" title="颜色减淡(ColorDodge)"></a>颜色减淡(ColorDodge)</h3><p>在<code>颜色减淡</code>模式中，查看每个通道中的颜色信息，并通过减小对比度使基色变亮以反映混合色。与黑色混合则不发生变化。除了指定在这个模式的层上边缘区域更尖锐，以及在这个模式下着色的笔划之外，<code>颜色减淡</code>模式类似于<code>滤色</code>模式创建的效果。另外，不管何时定义<code>颜色减淡</code>模式混合<code>混合色</code>与<code>基色</code>像素，<code>基色</code>上的暗区域都将会消失。</p>
+<h3 id="线性减淡-LinearDodge"><a href="#线性减淡-LinearDodge" class="headerlink" title="线性减淡(LinearDodge)"></a>线性减淡(LinearDodge)</h3><p>在<code>线性减淡</code>模式中，查看每个通道中的颜色信息，并通过增加亮度使基色变亮以反映混合色。但是大家可不要与黑色混合，那样是不会发生变化的。</p>
+<h2 id="对比组"><a href="#对比组" class="headerlink" title="对比组"></a>对比组</h2><h3 id="叠加-Overlay"><a href="#叠加-Overlay" class="headerlink" title="叠加(Overlay)"></a>叠加(Overlay)</h3><p><code>叠加</code>模式把图像的<code>基色</code>颜色与<code>混合色</code>颜色相混合产生一种中间色。<code>基色</code>内颜色比<code>混合色</code>颜色暗的颜色使<code>混合色</code>颜色倍增，比<code>混合色</code>颜色亮的颜色将使<code>混合色</code>颜色被遮盖，而图像内的高亮部分和阴影部分保持不变，因此对黑色或白色像素着色时<code>叠加</code>模式不起作用。<code>叠加</code>模式以一种非艺术逻辑的方式把放置或应用到一个层上的颜色同背景色进行混合，然而，却能得到有趣的效果。背景图像中的纯黑色或纯白色区域无法在<code>叠加</code>模式下显示层上的<code>叠加</code>着色或图像区域。背景区域上落在黑色和白色之间的亮度值同<code>叠加</code>材料的颜色混合在一起，产生最终的合成颜色。</p>
+<h3 id="柔光-SoftLight"><a href="#柔光-SoftLight" class="headerlink" title="柔光(SoftLight)"></a>柔光(SoftLight)</h3><p><code>柔光</code>模式会产生一种柔光照射的效果。如果<code>混合色</code>颜色比<code>基色颜色的像素更亮一些，那么</code>结果色<code>将更亮；如果</code>混合色<code>颜色比</code>基色<code>颜色的像素更暗一些，那么</code>结果色`颜色将更暗，使图像的亮度反差增大。</p>
+<h3 id="强光-HardLight"><a href="#强光-HardLight" class="headerlink" title="强光(HardLight)"></a>强光(HardLight)</h3><p><code>强光</code>模式将产生一种强光照射的效果。如果<code>混合色</code>颜色<code>基色</code>颜色的像素更亮一些，那么<code>结果色</code>颜色将更亮；如果<code>混合色</code>颜色比<code>基色</code>颜色的像素更暗一些，那么<code>结果色</code>将更暗。除了根据背景中的颜色而使背景色是多重的或屏蔽的之外，这种模式实质上同<code>柔光</code>模式是一样的。它的效果要比<code>柔光</code>模式更强烈一些，同<code>叠加</code>一样，这种模式也可以在背景对象的表面模拟图案或文本。</p>
+<h3 id="亮光-VividLight"><a href="#亮光-VividLight" class="headerlink" title="亮光(VividLight)"></a>亮光(VividLight)</h3><p>通过增加或减小对比度来加深或减淡颜色，具体取决于混合色。如果混合色（光源）比50%灰色亮，则通过减小对比度使图像变亮。如果混合色比50%灰色暗，则通过增加对比度使图像变暗</p>
+<h3 id="线性光-LinearLight"><a href="#线性光-LinearLight" class="headerlink" title="线性光(LinearLight)"></a>线性光(LinearLight)</h3><p>通过减小或增加亮度来加深或减淡颜色，具体取决于混合色。如果混合色（光源）比50%灰色亮，则通过增加亮度使图像变亮。如果混合色比50%灰色暗，则通过减小亮度使图像变暗。</p>
+<h3 id="点光-PinLight"><a href="#点光-PinLight" class="headerlink" title="点光(PinLight)"></a>点光(PinLight)</h3><p><code>点光</code>模式其实就是替换颜色，其具体取决于<code>混合色</code>。如果<code>混合色</code>比50%灰色亮，则替换比<code>混合色</code>暗的像素，而不改变比<code>混合色</code>亮的像素。如果<code>混合色</code>比50%灰色暗，则替换比<code>混合色</code>亮的像素，而不改变比<code>混合色</code>暗的像素。这对于向图像添加特殊效果非常有用。</p>
+<h2 id="比较组"><a href="#比较组" class="headerlink" title="比较组"></a>比较组</h2><h3 id="差值-Diference"><a href="#差值-Diference" class="headerlink" title="差值(Diference)"></a>差值(Diference)</h3><p>在<code>差值</code>模式中，查看每个通道中的颜色信息，<code>差值</code>模式是将从图像中<code>基色</code>颜色的亮度值减去<code>混合色</code>颜色的亮度值，如果结果为负，则取正值，产生反相效果。由于黑色的亮度值为0，白色的亮度值为255，因此用黑色着色不会产生任何影响，用白色着色则产生被着色的原始像素颜色的反相。<code>差值</code>模式创建背景颜色的相反色彩。例如，在<code>差值</code>模式下，当把蓝色应用到绿色背景中时将产生一种青绿组合色。<code>差值</code>模式适用于模拟原始设计的底片，而且尤其可用来在其背景颜色从一个区域到另一区域发生变化的图像中生成突出效果。</p>
+<h3 id="排除-Exclusion"><a href="#排除-Exclusion" class="headerlink" title="排除(Exclusion)"></a>排除(Exclusion)</h3><p><code>排除</code>模式与<code>差值</code>模式相似，但是具有高对比度和低饱和度的特点。比用<code>差值</code>模式获得的颜色要柔和、更明亮一些。建议你在处理图像时，首先选择<code>差值</code>模式，若效果不够理想，可以选择<code>排除</code>模式来试试。其中与白色混合将反转<code>基色</code>值，而与黑色混合则不发生变化。其实无论是<code>差值</code>模式还是<code>排除</code>模式都能使人物或自然景色图像产生更真实或更吸引人的图像合成。</p>
+<h2 id="颜色组"><a href="#颜色组" class="headerlink" title="颜色组"></a>颜色组</h2><h3 id="色相-Hue"><a href="#色相-Hue" class="headerlink" title="色相(Hue)"></a>色相(Hue)</h3><p><code>色相</code>模式只用<code>混合色</code>颜色的色相值进行着色，而使饱和度和亮度值保持不变。当<code>基色</code>颜色与<code>混合色</code>颜色的色相值不同时，才能使用描绘颜色进行着色。但是要注意的是<code>色相</code>模式不能用于灰度模式的图像。<br>20.饱和度模式(Saturation)<br><code>饱和度</code>模式的作用方式与<code>色相</code>模式相似，它只用<code>混合色</code>颜色的饱和度值进行着色，而使色相值和亮度值保持不变。当<code>基色</code>颜色与<code>混合色</code>颜色的饱和度值不同时，才能使用描绘颜色进行着色处理。在无饱和度的区域上（也就是灰色区域中）用<code>饱和度</code>模式是不会产生任何效果的。</p>
+<h3 id="颜色-Color"><a href="#颜色-Color" class="headerlink" title="颜色(Color)"></a>颜色(Color)</h3><p><code>颜色</code>模式能够使用<code>混合色</code>颜色的饱和度值和色相值同时进行着色，而使<code>基色</code>颜色的亮度值保持不变。<code>颜色</code>模式模式可以看成是<code>饱合度</code>模式和<code>色相</code>模式的综合效果。该模式能够使灰色图像的阴影或轮廓透过着色的颜色显示出来，产生某种色彩化的效果。这样可以保留图像中的灰阶，并且对于给单色图像上色和给彩色图像着色都会非常有用。</p>
+<h3 id="亮度-Luminosity"><a href="#亮度-Luminosity" class="headerlink" title="亮度(Luminosity)"></a>亮度(Luminosity)</h3><p><code>亮度</code>模式能够使用<code>混合色</code>颜色的亮度值进行着色，而保持<code>基色</code>颜色的饱和度和色相数值不变。其实就是用<code>基色</code>中的<code>色相</code>和<code>饱和度</code>以及<code>混合色</code>的亮度创建<code>结果色</code>。此模式创建的效果是与<code>颜色</code>模式创建的效果相反。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/">我的生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%88%91%E7%9A%84%E7%94%9F%E6%B4%BB/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/">图片处理</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/PS/">PS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/17/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/mybatis%E7%9A%84%E4%B8%80%E7%94%9F/01-MyBatis/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">01-MyBatis</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备2021001450号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
