@@ -16,16 +16,16 @@
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
-  <meta name="description" content="简介Apache Flink 是一个在有界数据流和无界数据流上进行有状态计算分布式处理引擎和框架。Flink 设计旨在所有常见的集群环境中运行，以任意规模和内存级速度执行计算。 概览 事件驱动（Event-driven） 基于流的处理  流分为两种：  有界流（离线数据） 无界流（实时数据）   Flink 为流式&#x2F;批式处理应用程序的开发提供了不同级别的抽象。 越顶层越抽象，表达含义越简明，使用越">
+  <meta name="description" content="简介 https:&#x2F;&#x2F;nightlies.apache.org&#x2F;flink&#x2F;flink-docs-release-1.12&#x2F;zh&#x2F;  Apache Flink 是一个在有界数据流和无界数据流上进行有状态计算分布式处理引擎和框架。Flink 设计旨在所有常见的集群环境中运行，以任意规模和内存级速度执行计算。 概览 事件驱动（Event-driven） 基于流的处理  流分为两种：  有界流（离线数据">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flink">
 <meta property="og:url" content="https://ccqi3.github.io/2022/02/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="ccQi3">
-<meta property="og:description" content="简介Apache Flink 是一个在有界数据流和无界数据流上进行有状态计算分布式处理引擎和框架。Flink 设计旨在所有常见的集群环境中运行，以任意规模和内存级速度执行计算。 概览 事件驱动（Event-driven） 基于流的处理  流分为两种：  有界流（离线数据） 无界流（实时数据）   Flink 为流式&#x2F;批式处理应用程序的开发提供了不同级别的抽象。 越顶层越抽象，表达含义越简明，使用越">
+<meta property="og:description" content="简介 https:&#x2F;&#x2F;nightlies.apache.org&#x2F;flink&#x2F;flink-docs-release-1.12&#x2F;zh&#x2F;  Apache Flink 是一个在有界数据流和无界数据流上进行有状态计算分布式处理引擎和框架。Flink 设计旨在所有常见的集群环境中运行，以任意规模和内存级速度执行计算。 概览 事件驱动（Event-driven） 基于流的处理  流分为两种：  有界流（离线数据">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ccqi3.github.io/2022/02/24/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/levels_of_abstraction.svg">
 <meta property="article:published_time" content="2022-02-24T07:03:00.000Z">
-<meta property="article:modified_time" content="2022-02-25T01:29:26.868Z">
+<meta property="article:modified_time" content="2022-02-28T00:53:25.459Z">
 <meta property="article:author" content="ccQi3">
 <meta property="article:tag" content="工具方法">
 <meta property="article:tag" content="大数据">
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.3k 字
+      6.2k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      17 分钟
+      19 分钟
     </span>
   
 
@@ -240,7 +240,10 @@
             <h1 style="display: none">Flink</h1>
             
             <div class="markdown-body">
-              <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Apache Flink 是一个在有界数据流和无界数据流上进行有状态计算分布式处理引擎和框架。Flink 设计旨在所有常见的集群环境中运行，以任意规模和内存级速度执行计算。</p>
+              <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.12/zh/">https://nightlies.apache.org/flink/flink-docs-release-1.12/zh/</a></p>
+</blockquote>
+<p>Apache Flink 是一个在有界数据流和无界数据流上进行有状态计算分布式处理引擎和框架。Flink 设计旨在所有常见的集群环境中运行，以任意规模和内存级速度执行计算。</p>
 <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><ul>
 <li>事件驱动（Event-driven）</li>
 <li>基于流的处理</li>
@@ -302,7 +305,44 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.apache.flink.api.java.tuple.Tuple2;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.DataStream;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.DataStreamSource;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> ccQi</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Package</span> com.wordCount</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: TODO</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StreamDataSourceWordCount</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();<br>        env.setParallelism(<span class="hljs-number">8</span>);<br>        DataStream&lt;String&gt; streamSource = env.socketTextStream(<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">7777</span>);<br>        DataStream&lt;Tuple2&lt;String, Integer&gt;&gt; dataStream = streamSource.flatMap(<span class="hljs-keyword">new</span> WordCount.MyFlatMapper())<br>                .keyBy(item -&gt; item.f0)<br>                .sum(<span class="hljs-number">1</span>);<br>        dataStream.print();<br>        env.execute();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 <p>在本地开启的socket中输入数据，观察IDEA的console输出。</p>
-
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><blockquote>
+<p>下载地址</p>
+<p><code>https://flink.apache.org/zh/downloads.html</code></p>
+</blockquote>
+<h2 id="Local-模式"><a href="#Local-模式" class="headerlink" title="Local 模式"></a>Local 模式</h2><blockquote>
+<p>Local Cluster模式是开箱即用的，直接解压安装包，然后启动即可。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 解压</span><br>tar -zxvf flink-1.12.0-bin-scala_2.12.tgz<br><span class="hljs-comment"># 进入bin目录运行启动脚本</span><br><span class="hljs-built_in">cd</span> flink-1.12.0<br>./start-cluster.sh<br></code></pre></td></tr></table></figure>
+<p>浏览器访问：<code>http://localhost:8081</code>可以看到Flink的控制页面</p>
+<h2 id="Standalone模式"><a href="#Standalone模式" class="headerlink" title="Standalone模式"></a>Standalone模式</h2><blockquote>
+<p>Stanalone CLuster是一种独立的集群模式，集群运行不需要依赖外部系统，完全自己独立进行管理。</p>
+</blockquote>
+<h3 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h3><ol>
+<li>修改<strong>conf</strong>目录下的<code>flink-conf.yaml</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># jobmanager节点地址，也是master节点地址</span><br>jobmanager.rpc.address: server1<br></code></pre></td></tr></table></figure>
+<p>其他使用默认配置，其中有一些HA高可用、容错、安全、HistoryServer相关配置，按需进行配置即可，HistoryServer需单独运行启动脚本来启动服务。</p>
+<ol start="2">
+<li>修改<code>masters</code>文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim masters<br><span class="hljs-comment"># 添加</span><br>server:8081<br><br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>修改<code>slaves</code>文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim slaves<br><span class="hljs-comment"># 添加</span><br>server2<br>server3<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>将安装目录复制到另外两台节点</li>
+<li>配置环境变量，修改/etc/profile</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置flink环境变量</span><br><span class="hljs-built_in">export</span> FLINK_HOME=~/flink-1.10.0<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$FLINK_HOME</span>/bin<br>//使配置文件生效<br><span class="hljs-built_in">source</span> /etc/profile<br><br></code></pre></td></tr></table></figure>
+<ol start="6">
+<li>启动集群<br><code>start-cluster.sh</code></li>
+</ol>
+<p>浏览器访问：<code>http://localhost:8081</code>可以看到Flink的控制页面</p>
+<h2 id="yarn模式"><a href="#yarn模式" class="headerlink" title="yarn模式"></a>yarn模式</h2><blockquote>
+<p>YARN模式是使用YARN做为Flink运行平台，JobManager、TaskManager、用户提交的应用程序都运行在YARN上。</p>
+</blockquote>
+<h2 id="Kubernetes部署"><a href="#Kubernetes部署" class="headerlink" title="Kubernetes部署"></a>Kubernetes部署</h2>
             </div>
             <hr>
             <div>
