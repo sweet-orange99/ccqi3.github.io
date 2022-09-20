@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="橙橙橙的博客">
+  <meta name="author" content="ccQi3">
+  <meta name="keywords" content="">
+  <meta name="description" content="GitLab GitLab是一个基于git实现的在线代码仓库托管软件，一般用于在企业、学校等内部网络搭建专属git仓库，越来越多的企业在使用gitlab作为项目托管仓库，社区版（ce）免费，大部分公司一般够用，企业版（ee）收费，功能更强大。   配置yum源 #下载此脚本并运行，会自动下载当前系统的yum源，&#x2F;etc&#x2F;yum.repos.d&#x2F;gitlab_gitlab-ce.repo  1cur">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitLab安装">
+<meta property="og:url" content="https://ccqi3.github.io/2021/06/25/GitLab%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="ccQi3">
+<meta property="og:description" content="GitLab GitLab是一个基于git实现的在线代码仓库托管软件，一般用于在企业、学校等内部网络搭建专属git仓库，越来越多的企业在使用gitlab作为项目托管仓库，社区版（ce）免费，大部分公司一般够用，企业版（ee）收费，功能更强大。   配置yum源 #下载此脚本并运行，会自动下载当前系统的yum源，&#x2F;etc&#x2F;yum.repos.d&#x2F;gitlab_gitlab-ce.repo  1cur">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-25T09:29:05.000Z">
+<meta property="article:modified_time" content="2021-09-15T08:11:52.825Z">
+<meta property="article:author" content="ccQi3">
+<meta property="article:tag" content="工具方法">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>GitLab安装 - ccQi3</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ccQi3</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                博客
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/coding.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="GitLab安装">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-06-25 17:29" pubdate>
+        2021年6月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      3 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">GitLab安装</h1>
+            
+            <div class="markdown-body">
+              <h2 id="GitLab">GitLab</h2>
+<p>GitLab是一个基于git实现的在线代码仓库托管软件，一般用于在企业、学校等内部网络搭建专属git仓库，越来越多的企业在使用gitlab作为项目托管仓库，社区版（ce）免费，大部分公司一般够用，企业版（ee）收费，功能更强大。</p>
+<ol>
+<li>
+<p>配置yum源</p>
+<p>#下载此脚本并运行，会自动下载当前系统的yum源，/etc/yum.repos.d/gitlab_gitlab-ce.repo</p>
+ <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl https:<span class="hljs-regexp">//</span>packages.gitlab.com<span class="hljs-regexp">/install/</span>repositories<span class="hljs-regexp">/gitlab/gi</span>tlab-ce/script.rpm.sh | sudo bash<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用命令<code>ls /etc/yum.repos.d/</code> 可以看到已经下载的<code>yum</code>源<code>gitlab_gitlab-ee.repo</code></p>
+<p>下载速度慢可以使用国内数据源，更换步骤如下：</p>
+<p>删除<code>gitlab_gitlab-ee.repo</code>文件</p>
+<p>新建文件<code>vim /etc/yum.repos.d/gitlab-ce.repo</code>,填入如下内容：</p>
+ <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[gitlab-ce]</span><br><span class="hljs-attr">name</span>=Gitlab CE Repository<br><span class="hljs-attr">baseurl</span>=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el<span class="hljs-variable">$releasever</span>/<br><span class="hljs-attr">gpgcheck</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">enabled</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>开始安装过程</p>
+ <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta">#刷新yum缓存</span><br>sudo yum makecache<br><span class="hljs-meta">#安装</span><br>sudo yum install -y gitlab-ce<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>配置访问地址</p>
+<p><code>vim /etc/gitlab/gitlab.rb</code>，修改<code>external_url</code></p>
+</li>
+<li>
+<p>应用初始化</p>
+<p>执行<code>gitlab-ctl reconfigure</code> #执行此命令重新加载配置且同时启动gitlab所有服务</p>
+</li>
+<li>
+<p>常用命令</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">gitlab-ctl status <span class="hljs-comment">#查看是否启动</span><br>gitlab-ctl <span class="hljs-literal">start</span>  <span class="hljs-comment">#没有启动可以启动</span><br>gitlab-ctl restart <span class="hljs-comment">#重新启动下</span><br>gitlab-ctl <span class="hljs-literal">stop</span> <span class="hljs-comment">#停止</span><br>gitlab-ctl --help <span class="hljs-comment">#查看更多命令</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改root密码</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-meta">#1执行</span><br>gitlab-rails console -e production<br><span class="hljs-meta">#2 查询root用户</span><br>&gt; <span class="hljs-keyword">user</span> = <span class="hljs-keyword">User</span>.<span class="hljs-keyword">where</span>(username:&quot;root&quot;).first<br>=&gt; #&lt;<span class="hljs-keyword">User</span> id:<span class="hljs-number">1</span> @root&gt;<br><span class="hljs-meta">#3 新密码</span><br><span class="hljs-keyword">user</span>.<span class="hljs-keyword">password</span>=“test”<br><span class="hljs-meta">#4 密码确认</span><br><span class="hljs-keyword">user</span>.password_confirmation=“test”<br><span class="hljs-meta">#5 保存</span><br><span class="hljs-keyword">user</span>.save<br><span class="hljs-meta">#6 退出</span><br>quit<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ul>
+<li>忘记密码使用修改root密码方式即可。</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/">linux</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/06/29/%E7%A6%85%E9%81%93+gitlab+svn%E5%AF%86%E7%A0%81%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">禅道+gitlab+svn密码统一认证</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/06/10/Nebula%20Graph/">
+                        <span class="hidden-mobile">Nebula Graph</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备2021001450号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

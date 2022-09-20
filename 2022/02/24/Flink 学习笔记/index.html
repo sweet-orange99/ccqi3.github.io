@@ -1,0 +1,584 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="橙橙橙的博客">
+  <meta name="author" content="ccQi3">
+  <meta name="keywords" content="">
+  <meta name="description" content="简介  https:&#x2F;&#x2F;nightlies.apache.org&#x2F;flink&#x2F;flink-docs-release-1.12&#x2F;zh&#x2F;  Apache Flink 是一个在有界数据流和无界数据流上进行有状态计算分布式处理引擎和框架。Flink 设计旨在所有常见的集群环境中运行，以任意规模和内存级速度执行计算。 概览  事件驱动（Event-driven） 基于流的处理  流分为两种：  有界流（离线">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flink">
+<meta property="og:url" content="https://ccqi3.github.io/2022/02/24/Flink%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="ccQi3">
+<meta property="og:description" content="简介  https:&#x2F;&#x2F;nightlies.apache.org&#x2F;flink&#x2F;flink-docs-release-1.12&#x2F;zh&#x2F;  Apache Flink 是一个在有界数据流和无界数据流上进行有状态计算分布式处理引擎和框架。Flink 设计旨在所有常见的集群环境中运行，以任意规模和内存级速度执行计算。 概览  事件驱动（Event-driven） 基于流的处理  流分为两种：  有界流（离线">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ccqi3.github.io/2022/02/24/Flink%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/levels_of_abstraction.svg">
+<meta property="article:published_time" content="2022-02-24T07:03:00.000Z">
+<meta property="article:modified_time" content="2022-03-08T02:08:18.617Z">
+<meta property="article:author" content="ccQi3">
+<meta property="article:tag" content="工具方法">
+<meta property="article:tag" content="大数据">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ccqi3.github.io/2022/02/24/Flink%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/levels_of_abstraction.svg">
+  
+  <title>Flink - ccQi3</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ccQi3</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                博客
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/coding.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Flink">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-24 15:03" pubdate>
+        2022年2月24日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Flink</h1>
+            
+            <div class="markdown-body">
+              <h1>简介</h1>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.12/zh/">https://nightlies.apache.org/flink/flink-docs-release-1.12/zh/</a></p>
+</blockquote>
+<p>Apache Flink 是一个在有界数据流和无界数据流上进行有状态计算分布式处理引擎和框架。Flink 设计旨在所有常见的集群环境中运行，以任意规模和内存级速度执行计算。</p>
+<h1>概览</h1>
+<ul>
+<li>事件驱动（Event-driven）</li>
+<li>基于流的处理</li>
+</ul>
+<p>流分为两种：</p>
+<ol>
+<li>有界流（离线数据）</li>
+<li>无界流（实时数据）</li>
+</ol>
+<ul>
+<li>Flink 为流式/批式处理应用程序的开发提供了不同级别的抽象。
+<ul>
+<li>越顶层越抽象，表达含义越简明，使用越方便</li>
+<li>越底层越具体，表达能力越丰富，使用越灵活</li>
+</ul>
+</li>
+</ul>
+<img src="/2022/02/24/Flink%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/levels_of_abstraction.svg" srcset="/img/loading.gif" lazyload class>
+<ul>
+<li>Flink API 最底层的抽象为有状态实时流处理。</li>
+<li>Flink API 第二层抽象是 Core APIs。</li>
+<li>Flink API 第三层抽象是 Table API。</li>
+<li>Flink API 最顶层抽象是 SQL。</li>
+</ul>
+<h2 id="Flink-vs-Spark-Streaming">Flink vs Spark Streaming</h2>
+<ul>
+<li>数据模型
+<ul>
+<li>Spark采用RDD模型，Spark Streaming的Dstream实际上也就是一组小批数据的集合。</li>
+<li>Flink基本数据模型是数据流，以及事件（Event）序列。</li>
+</ul>
+</li>
+<li>运行时的架构
+<ul>
+<li>Spark是批计算，将DAG划分为不同的stage，一个完成后才可以计算一个。</li>
+<li>Flink是标准的流执行模式，一个事件在一个节点处理完后可以直接发往下一个节点进行处理。</li>
+</ul>
+</li>
+</ul>
+<h2 id="快速上手">快速上手</h2>
+<p>使用不同的方式实现WordCount</p>
+<blockquote>
+<p>flink-streaming-scala_2.12 =&gt; org.apache.flink:flink-runtime_2.12:1.12.0 =&gt; com.typesafe.akka:akka-actor_2.12:2.5.21，akka就是用scala实现的。即使这里我们用java语言，还是用到了scala实现的包</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span><br><span class="hljs-tag">         <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.flink<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>flink<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">flink.version</span>&gt;</span>1.12.0<span class="hljs-tag">&lt;/<span class="hljs-name">flink.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">scala.binary.version</span>&gt;</span>2.12<span class="hljs-tag">&lt;/<span class="hljs-name">scala.binary.version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.flink<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>flink-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;flink.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.flink<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>flink-streaming-scala_$&#123;scala.binary.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;flink.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.flink<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>flink-clients_$&#123;scala.binary.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;flink.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="批处理方式代码实现">批处理方式代码实现</h3>
+<blockquote>
+<p>批处理=&gt;几组或所有数据到达后才处理</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.apache.flink.api.common.functions.FlatMapFunction;<br><span class="hljs-keyword">import</span> org.apache.flink.api.java.DataSet;<br><span class="hljs-keyword">import</span> org.apache.flink.api.java.ExecutionEnvironment;<br><span class="hljs-keyword">import</span> org.apache.flink.api.java.tuple.Tuple2;<br><span class="hljs-keyword">import</span> org.apache.flink.util.Collector;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> ccQi</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Package</span> com.wordCount</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: TODO</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCount</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        <span class="hljs-comment">//创建Flink执行环境</span><br>        ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();<br>        <span class="hljs-comment">//从环境中读取文件数据</span><br>        DataSet&lt;String&gt; inputDataSet = env.readTextFile(<span class="hljs-string">&quot;/flink/src/main/resources/1.txt&quot;</span>);<br><br>        DataSet&lt;Tuple2&lt;String, Integer&gt;&gt; dataSet = inputDataSet<br><span class="hljs-comment">//                对数据集进行处理，按空格分词展开，转换成(word, 1)二元组进行统计</span><br>                .flatMap(<span class="hljs-keyword">new</span> MyFlatMapper())<br><span class="hljs-comment">//                用位置1的字段分组</span><br>                .groupBy(<span class="hljs-number">0</span>)<br><span class="hljs-comment">//                第二个字段数据相加</span><br>                .sum(<span class="hljs-number">1</span>);<br>        dataSet.print();<br>    &#125;<br><br>    <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyFlatMapper</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">FlatMapFunction</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Tuple2</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Integer</span>&gt;&gt; </span>&#123;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">flatMap</span><span class="hljs-params">(String value, Collector&lt;Tuple2&lt;String, Integer&gt;&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br><span class="hljs-comment">//            按空格分词</span><br><span class="hljs-comment">//            遍历所有word，包成二维元组输出</span><br>            String[] s = value.split(<span class="hljs-string">&quot; &quot;</span>);<br>            <span class="hljs-keyword">for</span> (String s1 : s) &#123;<br>                out.collect(<span class="hljs-keyword">new</span> Tuple2&lt;&gt;(s1, <span class="hljs-number">1</span>));<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<h3 id="流处理方式代码实现">流处理方式代码实现</h3>
+<blockquote>
+<p>流处理=&gt;有数据来就直接处理，不等数据堆叠到一定数量级</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.apache.flink.api.java.tuple.Tuple2;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.DataStream;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.DataStreamSource;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> ccQi</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Package</span> com.wordCount</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: TODO</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StreamWordCount</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();<br>        env.setParallelism(<span class="hljs-number">8</span>);<br>        DataStreamSource&lt;String&gt; streamSource = env.readTextFile(<span class="hljs-string">&quot;/flink/src/main/resources/1.txt&quot;</span>);<br>        DataStream&lt;Tuple2&lt;String, Integer&gt;&gt; dataStream = streamSource.flatMap(<span class="hljs-keyword">new</span> WordCount.MyFlatMapper())<br>                .keyBy(item-&gt;item.f0)<br>                .sum(<span class="hljs-number">1</span>);<br>        dataStream.print();<br>        env.execute();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>与批处理区别</p>
+<ol>
+<li>这里不像批处理有groupBy =&gt; 所有数据统一处理，而是用流处理的keyBy =&gt; 每一个数据都对key进行hash计算，进行类似分区的操作，来一个数据就处理一次，所有中间过程都会输出！</li>
+<li>并行度：开发环境的并行度默认就是计算机的CPU逻辑核数</li>
+<li>流处理前面的序号就是并行执行任务的线程编号。</li>
+<li>setParallelism()可以设置线程数。</li>
+</ol>
+<h3 id="流式数据源">流式数据源</h3>
+<blockquote>
+<p>这里要借用NetCat工具</p>
+<p>nc -lk 7777</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.apache.flink.api.java.tuple.Tuple2;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.DataStream;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.DataStreamSource;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> ccQi</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Package</span> com.wordCount</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: TODO</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StreamDataSourceWordCount</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();<br>        env.setParallelism(<span class="hljs-number">8</span>);<br>        DataStream&lt;String&gt; streamSource = env.socketTextStream(<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">7777</span>);<br>        DataStream&lt;Tuple2&lt;String, Integer&gt;&gt; dataStream = streamSource.flatMap(<span class="hljs-keyword">new</span> WordCount.MyFlatMapper())<br>                .keyBy(item -&gt; item.f0)<br>                .sum(<span class="hljs-number">1</span>);<br>        dataStream.print();<br>        env.execute();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>在本地开启的socket中输入数据，观察IDEA的console输出。</p>
+<h1>部署</h1>
+<blockquote>
+<p>下载地址</p>
+<p><code>https://flink.apache.org/zh/downloads.html</code></p>
+</blockquote>
+<h2 id="Local-模式">Local 模式</h2>
+<blockquote>
+<p>Local Cluster模式是开箱即用的，直接解压安装包，然后启动即可。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 解压</span><br>tar -zxvf flink-1.12.0-bin-scala_2.12.tgz<br><span class="hljs-comment"># 进入bin目录运行启动脚本</span><br><span class="hljs-built_in">cd</span> flink-1.12.0<br>./start-cluster.sh<br></code></pre></td></tr></table></figure>
+<p>浏览器访问：<code>http://localhost:8081</code>可以看到Flink的控制页面</p>
+<h2 id="Standalone模式">Standalone模式</h2>
+<blockquote>
+<p>Stanalone CLuster是一种独立的集群模式，集群运行不需要依赖外部系统，完全自己独立进行管理。</p>
+</blockquote>
+<h3 id="部署步骤">部署步骤</h3>
+<ol>
+<li>修改<strong>conf</strong>目录下的<code>flink-conf.yaml</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># jobmanager节点地址，也是master节点地址</span><br>jobmanager.rpc.address: server1<br></code></pre></td></tr></table></figure>
+<p>其他使用默认配置，其中有一些HA高可用、容错、安全、HistoryServer相关配置，按需进行配置即可，HistoryServer需单独运行启动脚本来启动服务。</p>
+<ol start="2">
+<li>修改<code>masters</code>文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim masters<br><span class="hljs-comment"># 添加</span><br>server:8081<br><br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>修改<code>slaves</code>文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim slaves<br><span class="hljs-comment"># 添加</span><br>server2<br>server3<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>将安装目录复制到另外两台节点</li>
+<li>配置环境变量，修改/etc/profile</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置flink环境变量</span><br><span class="hljs-built_in">export</span> FLINK_HOME=~/flink-1.10.0<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$FLINK_HOME</span>/bin<br>//使配置文件生效<br><span class="hljs-built_in">source</span> /etc/profile<br><br></code></pre></td></tr></table></figure>
+<ol start="6">
+<li>启动集群<br>
+<code>start-cluster.sh</code></li>
+</ol>
+<p>浏览器访问：<code>http://localhost:8081</code>可以看到Flink的控制页面</p>
+<h2 id="yarn模式">yarn模式</h2>
+<blockquote>
+<p>YARN模式是使用YARN做为Flink运行平台，JobManager、TaskManager、用户提交的应用程序都运行在YARN上。</p>
+</blockquote>
+<h2 id="Kubernetes部署">Kubernetes部署</h2>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/">Flink</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/08/01-Spring%E7%9A%84IOC%E5%AE%B9%E5%99%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">01-Spring IOC 容器?</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/19/Photoshop%20%E6%B7%B7%E5%90%88%E6%A8%A1%E5%BC%8F/">
+                        <span class="hidden-mobile">Photoshop 混合模式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备2021001450号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

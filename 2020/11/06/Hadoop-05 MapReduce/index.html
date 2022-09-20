@@ -1,0 +1,672 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="橙橙橙的博客">
+  <meta name="author" content="ccQi3">
+  <meta name="keywords" content="">
+  <meta name="description" content="MapReduce 旧的MapReduce的架构： 一种分布式的计算方式指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（规约）函数，用来保证所有映射对中的每一个共享相同的键组。 如图：  map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: (K2, list">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop-05 MapReduce">
+<meta property="og:url" content="https://ccqi3.github.io/2020/11/06/Hadoop-05%20MapReduce/index.html">
+<meta property="og:site_name" content="ccQi3">
+<meta property="og:description" content="MapReduce 旧的MapReduce的架构： 一种分布式的计算方式指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（规约）函数，用来保证所有映射对中的每一个共享相同的键组。 如图：  map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: (K2, list">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ccqi3.github.io/2020/11/06/Hadoop-05%20MapReduce/mapreduce-pattern.png">
+<meta property="og:image" content="https://ccqi3.github.io/2020/11/06/Hadoop-05%20MapReduce/mapreduce-process-overview.png">
+<meta property="og:image" content="https://ccqi3.github.io/2020/11/06/Hadoop-05%20MapReduce/mapreduce-process.png">
+<meta property="og:image" content="https://ccqi3.github.io/2020/11/06/Hadoop-05%20MapReduce/mapreduce-process-cluster.png">
+<meta property="og:image" content="https://ccqi3.github.io/2020/11/06/Hadoop-05%20MapReduce/mapreduce-data-process.png">
+<meta property="og:image" content="https://ccqi3.github.io/2020/11/06/Hadoop-05%20MapReduce/mapreduce-inputformat.png">
+<meta property="og:image" content="https://ccqi3.github.io/2020/11/06/Hadoop-05%20MapReduce/mapreduce-split.png">
+<meta property="og:image" content="https://ccqi3.github.io/2020/11/06/Hadoop-05%20MapReduce/mapreduce-process.png">
+<meta property="article:published_time" content="2020-11-05T20:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-29T02:42:15.095Z">
+<meta property="article:author" content="ccQi3">
+<meta property="article:tag" content="工具方法">
+<meta property="article:tag" content="大数据">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ccqi3.github.io/2020/11/06/Hadoop-05%20MapReduce/mapreduce-pattern.png">
+  
+  <title>Hadoop-05 MapReduce - ccQi3</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ccqi3.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ccQi3</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                博客
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/coding.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Hadoop-05 MapReduce">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-06 04:00" pubdate>
+        2020年11月6日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      11k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Hadoop-05 MapReduce</h1>
+            
+            <div class="markdown-body">
+              <h2 id="MapReduce-2">MapReduce</h2>
+<h3 id="旧的MapReduce的架构：-2">旧的MapReduce的架构：</h3>
+<p><strong>一种分布式的计算方式指定一个Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的Reduce（规约）函数，用来保证所有映射对中的每一个共享相同的键组。</strong></p>
+<p>如图：</p>
+<img src="/2020/11/06/Hadoop-05%20MapReduce/mapreduce-pattern.png" srcset="/img/loading.gif" lazyload class>
+<p>map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: (K2, list(V2)) → list(K3, V3)</p>
+<p>Map输出格式和Reduce输入格式一定是相同的</p>
+<h3 id="基本流程">基本流程</h3>
+<p>MapReduce主要是先读取文件数据，然后进行Map处理，接着Reduce处理，最后把处理结果写到文件中。</p>
+<img src="/2020/11/06/Hadoop-05%20MapReduce/mapreduce-process-overview.png" srcset="/img/loading.gif" lazyload class>
+<h3 id="详细流程">详细流程</h3>
+<img src="/2020/11/06/Hadoop-05%20MapReduce/mapreduce-process.png" srcset="/img/loading.gif" lazyload class>
+<h3 id="多节点下的流程">多节点下的流程</h3>
+<img src="/2020/11/06/Hadoop-05%20MapReduce/mapreduce-process-cluster.png" srcset="/img/loading.gif" lazyload class>
+<h3 id="主要过程">主要过程</h3>
+<img src="/2020/11/06/Hadoop-05%20MapReduce/mapreduce-data-process.png" srcset="/img/loading.gif" lazyload class>
+<h3 id="Map-Side">Map Side</h3>
+<h4 id="Record-reader">Record reader</h4>
+<p>记录阅读器会翻译由输入格式生成的记录，记录阅读器用于将数据解析给记录，并不分析记录自身。记录读取器的目的是将数据解析成记录，但不分析记录本身。它将数据以键值树的形式传输给mapper，通常是位置信息，值是构成记录的数据存储块，自定义记录不在本文讨论范围之内。</p>
+<h4 id="Map-2">Map</h4>
+<p>在映射器中用户提供的代称为中间对。对于键值的具体定义是慎重的，因为定义对于分布式任务的完成具有重要意义。键决定了数据分类的依据，而值决定了处理器中的分析信息。</p>
+<p>Shuffle and Sort</p>
+<p>reduce任务以随机和排序的步骤开始，此步骤写入输出文件并下载到本地计算机，这些数据采用键进行排序以把等价密钥组合到一起。</p>
+<h4 id="Reduce">Reduce</h4>
+<p>reduce采用分组数据作为输入，该功能传递键和此键相关值的迭代器。可以采用多种方式来汇总、过滤或者合并数据。当reduce功能完成，就会发送0个或多个键值对。</p>
+<h4 id="输出格式">输出格式</h4>
+<p>输出格式会转换最终的键值对并写人文件。默认情况下键和值以tab分割，各记录以换行符分割。因此可以自定义更多输出格式，最终数据会写入HDFS。</p>
+<h3 id="MapReude-读取数据">MapReude - 读取数据</h3>
+<p>通过InputFormat决定读取的数据类型，然后拆分成一个个InputSplit，每个InputSplit对应一个Map处理，RecordReader读取InputSplit的内容给Map。</p>
+<h4 id="InputFormat">InputFormat</h4>
+<p>决定读取数据的格式，可以是文件或者数据库等。</p>
+<p>功能：</p>
+<ol>
+<li>验证作业输入的正确性，如格式等。</li>
+<li>将输入文件切割成逻辑分片（InputSplit），一个InputSplit将会被分配给一个独立的Map任务。</li>
+<li>提供RecordReader实现，读取InputSplit中“K-V”对供Mapper使用。</li>
+</ol>
+<p>方法：</p>
+<p>List getSplits()：获取由输入文件计算出输入分片(InputSplit)，解决数据或文件分割成片问题。</p>
+<p>RecordReader createRecordReader(): 创建RecordReader，从InputSplit中读取数据，解决读取分片中的数据问题。</p>
+<h4 id="类结构">类结构</h4>
+<img src="/2020/11/06/Hadoop-05%20MapReduce/mapreduce-inputformat.png" srcset="/img/loading.gif" lazyload class>
+<ul>
+<li>TextInputFormat: 输入文件中的每一行就是一个记录，Key是这一行的byte offset，而value是这一行的内容</li>
+<li>KeyValueTextInputFormat: 输入文件中每一行就是一个记录，第一个分隔符字符切分每行。在分隔符字符之前的内容为Key，在之后的为Value。分隔符变量通过key.value.separator.in.input.line变量设置，默认为(\t)字符。</li>
+<li>NLineInputFormat: 与TextInputFormat一样，但每个数据块必须保证有且只有Ｎ行，mapred.line.input.format.linespermap属性，默认为１</li>
+<li>SequenceFileInputFormat: 一个用来读取字符流数据的InputFormat，&lt;key,value&gt;为用户自定义的。字符流数据是Hadoop自定义的压缩的二进制数据格式。它用来优化从一个MapReduce任务的输出到另一个MapReduce任务的输入之间的数据传输过程。&lt;/key,value&gt;</li>
+</ul>
+<h3 id="InputSplit">InputSplit</h3>
+<p>代表一个个逻辑分片，并没有真正存储数据，只是提供了一个如何将数据分片的方法</p>
+<p>Split内有Location信息，利于数据局部化</p>
+<p>一个InputSplit给一个单独的Map处理</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs groovy"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InputSplit</span> &#123;</span><br>      <span class="hljs-comment">/**</span><br><span class="hljs-comment">       * 获取Split的大小，支持根据size对InputSplit排序.</span><br><span class="hljs-comment">       */</span><br>      <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">long</span> getLength() <span class="hljs-keyword">throws</span> IOException, InterruptedException;<br><br>      <span class="hljs-comment">/**</span><br><span class="hljs-comment">       * 获取存储该分片的数据所在的节点位置.</span><br><span class="hljs-comment">       */</span><br>      <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String[] getLocations() <span class="hljs-keyword">throws</span> IOException, InterruptedException;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="RecordReader">RecordReader</h3>
+<p>将InputSplit拆分成一个个&lt;key,value&gt;对给Map处理，也是实际的文件读取分隔对象&lt;/key,value&gt;</p>
+<p>问题</p>
+<h4 id="大量小文件如何处理">大量小文件如何处理</h4>
+<p>CombineFileInputFormat可以将若干个Split打包成一个，目的是避免过多的Map任务（因为Split的数目决定了Map的数目，大量的Mapper Task创建销毁开销将是巨大的）</p>
+<h4 id="怎么计算split的">怎么计算split的</h4>
+<p>通常一个split就是一个block（FileInputFormat仅仅拆分比block大的文件），这样做的好处是使得Map可以在存储有当前数据的节点上运行本地的任务，而不需要通过网络进行跨节点的任务调度</p>
+<p>通过mapred.min.split.size， mapred.max.split.size, block.size来控制拆分的大小</p>
+<p>如果mapred.min.split.size大于block size，则会将两个block合成到一个split，这样有部分block数据需要通过网络读取</p>
+<p>如果mapred.max.split.size小于block size，则会将一个block拆成多个split，增加了Map任务数（Map对split进行计算并且上报结果，关闭当前计算打开新的split均需要耗费资源）</p>
+<p>先获取文件在HDFS上的路径和Block信息，然后根据splitSize对文件进行切分（ splitSize = computeSplitSize(blockSize, minSize, maxSize) ），默认splitSize 就等于blockSize的默认值（64m）</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">public List&lt;InputSplit&gt; get<span class="hljs-constructor">Splits(JobContext <span class="hljs-params">job</span>)</span> throws IOException &#123;<br>    <span class="hljs-comment">// 首先计算分片的最大和最小值。这两个值将会用来计算分片的大小</span><br>    long minSize = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Math</span>.</span></span>max(get<span class="hljs-constructor">FormatMinSplitSize()</span>, get<span class="hljs-constructor">MinSplitSize(<span class="hljs-params">job</span>)</span>);<br>    long maxSize = get<span class="hljs-constructor">MaxSplitSize(<span class="hljs-params">job</span>)</span>;<br><br>    <span class="hljs-comment">// generate splits</span><br>    List&lt;InputSplit&gt; splits = <span class="hljs-keyword">new</span> ArrayList&lt;InputSplit&gt;<span class="hljs-literal">()</span>;<br>    List&lt;FileStatus&gt; files = <span class="hljs-built_in">list</span><span class="hljs-constructor">Status(<span class="hljs-params">job</span>)</span>;<br>    <span class="hljs-keyword">for</span> (FileStatus file: files) &#123;<br>        Path path = file.get<span class="hljs-constructor">Path()</span>;<br>        long length = file.get<span class="hljs-constructor">Len()</span>;<br>        <span class="hljs-keyword">if</span> (length != <span class="hljs-number">0</span>) &#123;<br>              FileSystem fs = path.get<span class="hljs-constructor">FileSystem(<span class="hljs-params">job</span>.<span class="hljs-params">getConfiguration</span>()</span>);<br>            <span class="hljs-comment">// 获取该文件所有的block信息列表[hostname, offset, length]</span><br>              BlockLocation<span class="hljs-literal">[]</span> blkLocations = fs.get<span class="hljs-constructor">FileBlockLocations(<span class="hljs-params">file</span>, 0, <span class="hljs-params">length</span>)</span>;<br>            <span class="hljs-comment">// 判断文件是否可分割，通常是可分割的，但如果文件是压缩的，将不可分割</span><br>              <span class="hljs-keyword">if</span> (is<span class="hljs-constructor">Splitable(<span class="hljs-params">job</span>, <span class="hljs-params">path</span>)</span>) &#123;<br>                long blockSize = file.get<span class="hljs-constructor">BlockSize()</span>;<br>                <span class="hljs-comment">// 计算分片大小</span><br>                <span class="hljs-comment">// 即 Math.max(minSize, Math.min(maxSize, blockSize));</span><br>                long splitSize = compute<span class="hljs-constructor">SplitSize(<span class="hljs-params">blockSize</span>, <span class="hljs-params">minSize</span>, <span class="hljs-params">maxSize</span>)</span>;<br><br>                long bytesRemaining = length;<br>                <span class="hljs-comment">// 循环分片。</span><br>                <span class="hljs-comment">// 当剩余数据与分片大小比值大于Split_Slop时，继续分片， 小于等于时，停止分片</span><br>                <span class="hljs-keyword">while</span> (((double) bytesRemaining)/splitSize &gt; SPLIT_SLOP) &#123;<br>                      <span class="hljs-built_in">int</span> blkIndex = get<span class="hljs-constructor">BlockIndex(<span class="hljs-params">blkLocations</span>, <span class="hljs-params">length</span>-<span class="hljs-params">bytesRemaining</span>)</span>;<br>                      splits.add(make<span class="hljs-constructor">Split(<span class="hljs-params">path</span>, <span class="hljs-params">length</span>-<span class="hljs-params">bytesRemaining</span>, <span class="hljs-params">splitSize</span>, <span class="hljs-params">blkLocations</span>[<span class="hljs-params">blkIndex</span>].<span class="hljs-params">getHosts</span>()</span>));<br>                      bytesRemaining -= splitSize;<br>                &#125;<br>                <span class="hljs-comment">// 处理余下的数据</span><br>                <span class="hljs-keyword">if</span> (bytesRemaining != <span class="hljs-number">0</span>) &#123;<br>                    splits.add(make<span class="hljs-constructor">Split(<span class="hljs-params">path</span>, <span class="hljs-params">length</span>-<span class="hljs-params">bytesRemaining</span>, <span class="hljs-params">bytesRemaining</span>, <span class="hljs-params">blkLocations</span>[<span class="hljs-params">blkLocations</span>.<span class="hljs-params">length</span>-1].<span class="hljs-params">getHosts</span>()</span>));<br>                &#125;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-comment">// 不可split，整块返回</span><br>                splits.add(make<span class="hljs-constructor">Split(<span class="hljs-params">path</span>, 0, <span class="hljs-params">length</span>, <span class="hljs-params">blkLocations</span>[0].<span class="hljs-params">getHosts</span>()</span>));<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 对于长度为0的文件，创建空Hosts列表，返回</span><br>            splits.add(make<span class="hljs-constructor">Split(<span class="hljs-params">path</span>, 0, <span class="hljs-params">length</span>, <span class="hljs-params">new</span> String[0])</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 设置输入文件数量</span><br>    job.get<span class="hljs-constructor">Configuration()</span>.set<span class="hljs-constructor">Long(NUM_INPUT_FILES, <span class="hljs-params">files</span>.<span class="hljs-params">size</span>()</span>);<br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">LOG</span>.</span></span>debug(<span class="hljs-string">&quot;Total # of splits: &quot;</span> + splits.size<span class="hljs-literal">()</span>);<br>    return splits;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="分片间的数据如何处理">分片间的数据如何处理</h2>
+<p>split是根据文件大小分割的，而一般处理是根据分隔符进行分割的，这样势必存在一条记录横跨两个split</p>
+<img src="/2020/11/06/Hadoop-05%20MapReduce/mapreduce-split.png" srcset="/img/loading.gif" lazyload class>
+<p>解决办法是只要不是第一个split，都会远程读取一条记录。不是第一个split的都忽略到第一条记录</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">public</span> class LineRecordReader extends RecordReader&lt;LongWritable, Text&gt; &#123;<br>    <span class="hljs-keyword">private</span> CompressionCodecFactory compressionCodecs = <span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> start;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> pos;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> end;<br>    <span class="hljs-keyword">private</span> LineReader in;<br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> maxLineLength;<br>    <span class="hljs-keyword">private</span> LongWritable <span class="hljs-built_in">key</span> = <span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">private</span> Text value = <span class="hljs-keyword">null</span>;<br><br>    <span class="hljs-comment">// initialize函数即对LineRecordReader的一个初始化</span><br>    <span class="hljs-comment">// 主要是计算分片的始末位置，打开输入流以供读取K-V对，处理分片经过压缩的情况等</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> initialize(InputSplit genericSplit, TaskAttemptContext context) <span class="hljs-keyword">throws</span> IOException &#123;<br>        FileSplit <span class="hljs-built_in">split</span> = (FileSplit) genericSplit;<br>        Configuration job = context.getConfiguration();<br>        <span class="hljs-keyword">this</span>.maxLineLength = job.getInt(<span class="hljs-string">&quot;mapred.linerecordreader.maxlength&quot;</span>, Integer.MAX_VALUE);<br>        start = <span class="hljs-built_in">split</span>.getStart();<br>        end = start + <span class="hljs-built_in">split</span>.getLength();<br>        <span class="hljs-keyword">final</span> Path file = <span class="hljs-built_in">split</span>.getPath();<br>        compressionCodecs = <span class="hljs-keyword">new</span> CompressionCodecFactory(job);<br>        <span class="hljs-keyword">final</span> CompressionCodec codec = compressionCodecs.getCodec(file);<br><br>        <span class="hljs-comment">// 打开文件，并定位到分片读取的起始位置</span><br>        FileSystem fs = file.getFileSystem(job);<br>        FSDataInputStream fileIn = fs.<span class="hljs-built_in">open</span>(<span class="hljs-built_in">split</span>.getPath());<br><br>        <span class="hljs-built_in">boolean</span> skipFirstLine = <span class="hljs-keyword">false</span>;<br>        <span class="hljs-keyword">if</span> (codec != <span class="hljs-keyword">null</span>) &#123;<br>            <span class="hljs-comment">// 文件是压缩文件的话，直接打开文件</span><br>            in = <span class="hljs-keyword">new</span> LineReader(codec.createInputStream(fileIn), job);<br>            end = Long.MAX_VALUE;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 只要不是第一个split，则忽略本split的第一行数据</span><br>            <span class="hljs-keyword">if</span> (start != <span class="hljs-number">0</span>) &#123;<br>                skipFirstLine = <span class="hljs-keyword">true</span>;<br>                --start;<br>                <span class="hljs-comment">// 定位到偏移位置，下次读取就会从偏移位置开始</span><br>                fileIn.seek(start);<br>            &#125;<br>            in = <span class="hljs-keyword">new</span> LineReader(fileIn, job);<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (skipFirstLine) &#123;<br>            <span class="hljs-comment">// 忽略第一行数据，重新定位start</span><br>            start += in.readLine(<span class="hljs-keyword">new</span> Text(), <span class="hljs-number">0</span>, (<span class="hljs-built_in">int</span>) Math.<span class="hljs-built_in">min</span>((<span class="hljs-keyword">long</span>) Integer.MAX_VALUE, end - start));<br>        &#125;<br>        <span class="hljs-keyword">this</span>.pos = start;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">boolean</span> nextKeyValue() <span class="hljs-keyword">throws</span> IOException &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">key</span> == <span class="hljs-keyword">null</span>) &#123;<br>            <span class="hljs-built_in">key</span> = <span class="hljs-keyword">new</span> LongWritable();<br>        &#125;<br>        <span class="hljs-built_in">key</span>.<span class="hljs-built_in">set</span>(pos);<span class="hljs-comment">// key即为偏移量</span><br>        <span class="hljs-keyword">if</span> (value == <span class="hljs-keyword">null</span>) &#123;<br>            value = <span class="hljs-keyword">new</span> Text();<br>        &#125;<br>        <span class="hljs-built_in">int</span> newSize = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (pos &lt; end) &#123;<br>            newSize = in.readLine(value, maxLineLength,    Math.<span class="hljs-built_in">max</span>((<span class="hljs-built_in">int</span>) Math.<span class="hljs-built_in">min</span>(Integer.MAX_VALUE, end - pos), maxLineLength));<br>            <span class="hljs-comment">// 读取的数据长度为0，则说明已读完</span><br>            <span class="hljs-keyword">if</span> (newSize == <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            pos += newSize;<br>            <span class="hljs-comment">// 读取的数据长度小于最大行长度，也说明已读取完毕</span><br>            <span class="hljs-keyword">if</span> (newSize &lt; maxLineLength) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-comment">// 执行到此处，说明该行数据没读完，继续读入</span><br>        &#125;<br>        <span class="hljs-keyword">if</span> (newSize == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-built_in">key</span> = <span class="hljs-keyword">null</span>;<br>            value = <span class="hljs-keyword">null</span>;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="MapReduce-Mapper">MapReduce - Mapper</h2>
+<p>主要是读取InputSplit的每一个Key,Value对并进行处理</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Mapper</span>&lt;<span class="hljs-symbol">KEYIN, <span class="hljs-symbol">VALUEIN</span>, <span class="hljs-symbol">KEYOUT</span>, <span class="hljs-symbol">VALUEOUT</span></span>&gt; &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 预处理，仅在map task启动时运行一次</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-built_in">void</span> setup(Context context) throws  IOException, InterruptedException &#123;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 对于InputSplit中的每一对&lt;key, value&gt;都会运行一次</span><br><span class="hljs-comment">     */</span><br>    @SuppressWarnings(<span class="hljs-string">&quot;unchecked&quot;</span>)<br>    <span class="hljs-keyword">protected</span> <span class="hljs-built_in">void</span> map(KEYIN key, VALUEIN value, Context context) throws IOException, InterruptedException &#123;<br>        context.write((KEYOUT) key, (VALUEOUT) value);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 扫尾工作，比如关闭流等</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-built_in">void</span> cleanup(Context context) throws IOException, InterruptedException &#123;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * map task的驱动器</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> run(Context context) throws IOException, InterruptedException &#123;<br>        setup(context);<br>        <span class="hljs-keyword">while</span> (context.nextKeyValue()) &#123;<br>            map(context.getCurrentKey(), context.getCurrentValue(), context);<br>        &#125;<br>        cleanup(context);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">MapContext</span>&lt;<span class="hljs-symbol">KEYIN, <span class="hljs-symbol">VALUEIN</span>, <span class="hljs-symbol">KEYOUT</span>, <span class="hljs-symbol">VALUEOUT</span></span>&gt; <span class="hljs-symbol">extends</span> <span class="hljs-symbol">TaskInputOutputContext</span>&lt;<span class="hljs-symbol">KEYIN, <span class="hljs-symbol">VALUEIN</span>, <span class="hljs-symbol">KEYOUT</span>, <span class="hljs-symbol">VALUEOUT</span></span>&gt; &#123;<br>    <span class="hljs-keyword">private</span> RecordReader&lt;KEYIN, VALUEIN&gt; reader;<br>    <span class="hljs-keyword">private</span> InputSplit split;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * Get the input split for this map.</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> InputSplit getInputSplit() &#123;<br>        <span class="hljs-keyword">return</span> split;<br>    &#125;<br><br>    @Override<br>    <span class="hljs-keyword">public</span> KEYIN getCurrentKey() throws IOException, InterruptedException &#123;<br>        <span class="hljs-keyword">return</span> reader.getCurrentKey();<br>    &#125;<br><br>    @Override<br>    <span class="hljs-keyword">public</span> VALUEIN getCurrentValue() throws IOException, InterruptedException &#123;<br>        <span class="hljs-keyword">return</span> reader.getCurrentValue();<br>    &#125;<br><br>    @Override<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">bool</span>ean nextKeyValue() throws IOException, InterruptedException &#123;<br>        <span class="hljs-keyword">return</span> reader.nextKeyValue();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="MapReduce-Shuffle">MapReduce - Shuffle</h2>
+<p>对Map的结果进行排序并传输到Reduce进行处理Map的结果并不是直接存放在硬盘，而是利用缓存做一些与排序处理Map会调用Combiner，压缩，按key进行分区，排序等。尽量减少结果的大小每个Map完成后都会通知Task，然后Reduce就可以进行处理。</p>
+<img src="/2020/11/06/Hadoop-05%20MapReduce/mapreduce-process.png" srcset="/img/loading.gif" lazyload class>
+<h4 id="Map端">Map端</h4>
+<ol>
+<li>当Map程序开始产生结果的时候，并不是直接写到文件的，而是利用缓存做一些排序方面的预处理操作</li>
+<li>每个Map任务都有一个循环内存缓冲区（默认100MB），当缓存的内容达到80%时，后台线程开始将内容写到文件，此时Map任务可以继续输出结果，但如果缓冲区满了，Map任务则需要等待</li>
+<li>写文件使用round-robin方式。在写入文件之前，先将数据按照Reduce进行分区。对于每一个分区，都会在内存中根据key进行排序，如果配置了Combiner，则排序后执行Combiner（Combine之后可以减少写入文件和传输的数据）</li>
+<li>每次结果达到缓冲区的阀值时，都会创建一个文件，在Map结束时，可能会产生大量的文件。在Map完成前，会将这些文件进行合并和排序。如果文件的数量超过3个，则合并后会再次运行Combiner（1、2个文件就没有必要了）</li>
+<li>如果配置了压缩，则最终写入的文件会先进行压缩，这样可以减少写入和传输的数据</li>
+<li>一旦Map完成，则通知任务管理器，此时Reduce就可以开始复制结果数据</li>
+</ol>
+<h4 id="Reduce端">Reduce端</h4>
+<ol>
+<li>Map的结果文件都存放到运行Map任务的机器的本地硬盘中</li>
+<li>如果Map的结果很少，则直接放到内存，否则写入文件中</li>
+<li>同时后台线程将这些文件进行合并和排序到一个更大的文件中（如果文件是压缩的，则需要先解压）</li>
+<li>当所有的Map结果都被复制和合并后，就会调用Reduce方法<br>
+Reduce结果会写入到HDFS中</li>
+</ol>
+<h4 id="调优">调优</h4>
+<ol>
+<li>一般的原则是给shuffle分配尽可能多的内存，但前提是要保证Map、Reduce任务有足够的内存</li>
+<li>对于Map，主要就是避免把文件写入磁盘，例如使用Combiner，增大io.sort.mb的值</li>
+<li>对于Reduce，主要是把Map的结果尽可能地保存到内存中，同样也是要避免把中间结果写入磁盘。默认情况下，所有的内存都是分配给Reduce方法的，如果Reduce方法不怎么消耗内存，可以mapred.inmem.merge.threshold设成0，mapred.job.reduce.input.buffer.percent设成1.0</li>
+<li>在任务监控中可通过Spilled records counter来监控写入磁盘的数，但这个值是包括map和reduce的</li>
+<li>对于IO方面，可以Map的结果可以使用压缩，同时增大buffer size（io.file.buffer.size，默认4kb）</li>
+</ol>
+<h4 id="配置">配置</h4>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>io.sort.mb</td>
+<td>100</td>
+<td>映射输出分类时所使用缓冲区的大小.</td>
+</tr>
+<tr>
+<td>io.sort.record.percent</td>
+<td>0.05</td>
+<td>剩余空间用于映射输出自身记录.在1.X发布后去除此属性.随机代码用于使用映射所有内存并记录信息.</td>
+</tr>
+<tr>
+<td>io.sort.spill.percent</td>
+<td>0.80</td>
+<td>针对映射输出内存缓冲和记录索引的阈值使用比例.</td>
+</tr>
+<tr>
+<td>io.sort.factor</td>
+<td>10</td>
+<td>文件分类时合并流的最大数量。此属性也用于reduce。通常把数字设为100.</td>
+</tr>
+<tr>
+<td>min.num.spills.for.combine</td>
+<td>3</td>
+<td>组合运行所需最小溢出文件数目.</td>
+</tr>
+<tr>
+<td>mapred.compress.map.output</td>
+<td>false</td>
+<td>压缩映射输出.</td>
+</tr>
+<tr>
+<td>mapred.map.output.compression.codec</td>
+<td>DefaultCodec</td>
+<td>映射输出所需的压缩解编码器.</td>
+</tr>
+<tr>
+<td>mapred.reduce.parallel.copies</td>
+<td>5</td>
+<td>用于向reducer传送映射输出的线程数目.</td>
+</tr>
+<tr>
+<td>mapred.reduce.copy.backoff</td>
+<td>300</td>
+<td>时间的最大数量，以秒为单位，这段时间内若reducer失败则会反复尝试传输</td>
+</tr>
+<tr>
+<td>io.sort.factor</td>
+<td>10</td>
+<td>组合运行所需最大溢出文件数目.</td>
+</tr>
+<tr>
+<td>mapred.job.shuffle.input.buffer.percent</td>
+<td>0.70</td>
+<td>随机复制阶段映射输出缓冲器的堆栈大小比例</td>
+</tr>
+<tr>
+<td>mapred.job.shuffle.merge.percent</td>
+<td>0.66</td>
+<td>用于启动合并输出进程和磁盘传输的映射输出缓冲器的阀值使用比例</td>
+</tr>
+<tr>
+<td>mapred.inmem.merge.threshold</td>
+<td>1000</td>
+<td>用于启动合并输出和磁盘传输进程的映射输出的阀值数目。小于等于0意味着没有门槛，而溢出行为由 mapred.job.shuffle.merge.percent单独管理.</td>
+</tr>
+<tr>
+<td>mapred.job.reduce.input.buffer.percent</td>
+<td>0.0</td>
+<td>用于减少内存映射输出的堆栈大小比例，内存中映射大小不得超出此值。若reducer需要较少内存则可以提高该值.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="MapReduce-编程">MapReduce - 编程</h2>
+<p>处理</p>
+<ol>
+<li>select：直接分析输入数据，取出需要的字段数据即可</li>
+<li>where: 也是对输入数据处理的过程中进行处理，判断是否需要该数据</li>
+<li>aggregation:min, max, sum</li>
+<li>group by: 通过Reducer实现</li>
+<li>sort</li>
+<li>join: map join, reduce join</li>
+</ol>
+<p>优点：海量数据里离线处理，易开发，易运行</p>
+<p>缺点：实时流式计算</p>
+<p>(input) &lt;k1, v1&gt; -&gt; map -&gt; &lt;k2, v2&gt; -&gt; combine -&gt; &lt;k2, v2&gt; -&gt; reduce -&gt; &lt;k3, v3&gt; (output)</p>
+<p>核心概念：</p>
+<p>split：交由MapReduce作业来处理的数据块，是MapReduce中最小的计算单元。</p>
+<p>HDFS：blocksize 是hdfs中最小的存储单元， 128M</p>
+<p>默认情况下：他们两是一一对应的，可以手工设置（不建议）</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/">Hadoop</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/06/Hadoop-06%20other/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hadoop-06 other</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/06/Hadoop-04%20yarn/">
+                        <span class="hidden-mobile">Hadoop-04 YARN</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备2021001450号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

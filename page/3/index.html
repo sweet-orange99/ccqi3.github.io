@@ -192,24 +192,273 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/03-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" target="_self">
+        <a href="/2021/02/24/07-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" target="_self">
+          07-单例模式
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/24/07-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" target="_self">
+          
+          
+            
+          
+          原型模式
+单例(Singleton)模式指一个类只有一个实例，且该类能够自主创建该实例。
+单例模式的3个特点：
+
+单例类只有一个实例对象。
+单例对象必须由单例类来创建。
+单例类对外提供一个访问该单例的全局访问点。
+
+模式的结构与实现
+单例模式的主要角色：
+
+单例类：包含一个实例且能自行创建这个实例的类。
+访问类：使用单例的类。
+
+UML类图
+
+实例
+需求：竞选美国总统
+实现代码步骤如下：
+
+懒汉式
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-24 09:00" pubdate>
+              2021-02-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/23/06-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" target="_self">
+          06-原型模式
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/23/06-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" target="_self">
+          
+          
+            
+          
+          原型模式
+原型(Prototype)模式指用一个已经创建的实例作为原型，通过复制该对象来创建一个和对象相同的或者相似的新对象。
+由于无须关心对象具体创建的细节，所以原型模式创建对象非常高效。
+模式的结构与实现
+原型模式的主要角色：
+
+抽象原型类：规定了具体原型对象必须实现的接口。
+具体原型类：实现抽象原型类的clone()方法，它是可被复制的对象。
+访问类：使用具体原型类中的clone()方法来复
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-23 09:00" pubdate>
+              2021-02-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/20/05-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/" target="_self">
+          05-建造者模式
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/20/05-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/" target="_self">
+          
+          
+            
+          
+          建造者模式
+建造者(Builder)模式又称生成器模式，可以实现分步骤创建复杂对象，使用相同的创建代码生成不同类型和形式的对象。
+建造者模式和工厂模式的关注点不同，建造者模式关注的是对象的组装过程，而工厂模式更注重的是对象的创建过程。两者可以结合使用。
+模式的结构与实现
+建造者模式的主要角色：
+
+产品角色(Product):包含多个组成部件的复杂对象，由具体创建者来创建其各个零部件。
+抽象建造者(
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-20 09:00" pubdate>
+              2021-02-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/19/04-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" target="_self">
+          04-抽象工厂模式
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/19/04-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" target="_self">
+          
+          
+            
+          
+          抽象工厂模式
+抽象工厂（AbstractFactory）模式是一种为访问类提供一个创建一组相关或互相依赖对象的接口，且访问者无需指定所要产品的具体类就能得到同族的不同等级的产品的模式结构。
+抽象工厂模式是工厂方法模式的升级版本，工厂方法模式一个工厂只能生产一个产品，而抽象工厂模式一个工厂可以生成多个产品。
+模式的结构与实现
+简单工厂模式的主要角色：
+
+抽象工厂(Abstract Factory):
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-19 11:00" pubdate>
+              2021-02-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/19/03-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" target="_self">
           03-工厂方法模式
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/03-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" target="_self">
+        <a href="/2021/02/19/03-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" target="_self">
           
           
             
           
-          工厂方法模式工厂方法模式是对简单工厂模式的进一步抽象化，好处是可以是系统在不修改原有代码情况下引入新的产品，即满足开闭原则。
-模式的结构与实现简单工厂模式的主要角色：
+          工厂方法模式
+工厂方法模式是对简单工厂模式的进一步抽象化，好处是可以是系统在不修改原有代码情况下引入新的产品，即满足开闭原则。
+模式的结构与实现
+简单工厂模式的主要角色：
 
 抽象工厂(Abstract Factory):提供了创建产品的接口，调用者通过它访问具体工厂的工厂方法来创建产品。
-
 具体工厂(Factory)：主要实现抽象工厂中的抽象方法，完成具体产品的创建。
-
 抽象产品(AbstractPr
         </a>
       </p>
@@ -251,23 +500,24 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/02-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" target="_self">
+        <a href="/2021/02/19/02-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" target="_self">
           02-简单工厂模式
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/02-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" target="_self">
+        <a href="/2021/02/19/02-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" target="_self">
           
           
             
           
-          简单工厂模式简单工厂模式又叫静态方法模式。因为在简单工厂模式中创建的实例的方法通常为静态(static)方法。
-模式的结构与实现简单工厂模式的主要角色：
+          简单工厂模式
+简单工厂模式又叫静态方法模式。因为在简单工厂模式中创建的实例的方法通常为静态(static)方法。
+模式的结构与实现
+简单工厂模式的主要角色：
 
 简单工厂(SimpleFactory)：简单工厂模式的核心，负责实现创建所有实例的内部逻辑。工厂类的创建产品类的方法可以直接被外部调用，创建所需的产品对象。
-
-抽象产品(AbstractProduct)：简单工厂创建对象的所有对象的父类，负责描
+抽象产品(AbstractProduct)：简单工厂创建对象的所有对象的父类，负责
         </a>
       </p>
 
@@ -308,18 +558,19 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/01-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_self">
+        <a href="/2021/02/19/01-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_self">
           01-设计模式
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/01-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_self">
+        <a href="/2021/02/19/01-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_self">
           
           
             
           
-          设计模式设计模式是软件设计中常见问题的典型解决方案。
+          设计模式
+设计模式是软件设计中常见问题的典型解决方案。
 模式包含的内容：
 
 意图部分简单描述问题和解决方案。
@@ -327,8 +578,9 @@
 结构部分展示模式的每个部分和他们之间的关系。
 在不同的语言中实现提供流行编程语言的代码，让读者更好地理解模式背后的思想。
 
-设计模式分类不同设计模式的复杂程度，细节层次以及整个系统中应用范围等方面各不相同。
-最基础的、底层的模式通常被称
+设计模式分类
+不同设计模式的复杂程度，细节层次以及整个系统中应用范围等方面各不相同。
+最基础的、底层的模式通常
         </a>
       </p>
 
@@ -369,19 +621,22 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Babel/" target="_self">
+        <a href="/2021/02/01/Babel/" target="_self">
           Babel
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Babel/" target="_self">
+        <a href="/2021/02/01/Babel/" target="_self">
           
           
             
           
-          BabelBabel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有环境执行。
-配置文件.babelrc   Babel的配置文件是.babelrc，存放在项目的根目录下。使用Babel的第一步，就是配置这个文件。该文件用来设置转码规则和插件，基本格式如下:   1234&#123;  &quot;presets&quot;: [],  &quot;plugins&quot;: 
+          Babel
+Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有环境执行。
+配置文件.babelrc
+Babel的配置文件是.babelrc，存放在项目的根目录下。使用Babel的第一步，就是配置这个文件。该文件用来设置转码规则和插件，基本格式如下:
+   1234&#123;  &quot;presets&quot;: [],  &quot;plugins&quot;: 
         </a>
       </p>
 
@@ -422,22 +677,25 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ES6/" target="_self">
+        <a href="/2021/02/01/ES6/" target="_self">
           ES6
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ES6/" target="_self">
+        <a href="/2021/02/01/ES6/" target="_self">
           
           
             
           
           常用ES6语法
+
+
 var  let  const区别
  在js中通常使用var，会发生变量提升，即脚本开始运行时，变量已经存在了，但是没有值，所以会输出undefined。
  let不会发生变量提升,这表示在声明它之前，变量是不存在的，这时如果用到它，就会抛出一个错误。
- 12345678910&#123;    var a     let b&#125;console.log(a)console.
+
+ 12345678910&#123;    var a     let b&#125;console.log(a)conso
         </a>
       </p>
 
@@ -478,23 +736,23 @@ var  let  const区别
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/NodeJS/" target="_self">
+        <a href="/2021/02/01/NodeJS/" target="_self">
           Node.js
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/NodeJS/" target="_self">
+        <a href="/2021/02/01/NodeJS/" target="_self">
           
           
             
           
-          Node.js 简介官网 https://nodejs.org/zh-cn/
+          Node.js 简介
+官网 https://nodejs.org/zh-cn/
 Node.js 是一个开源与跨平台的 JavaScript 运行时环境。 它是一个可用于几乎任何项目的流行工具！
 Node.js 在浏览器外运行 V8 JavaScript 引擎（Google Chrome 的内核）。 这使 Node.js 表现得非常出色。
 HelloWorld
 新建 HelloWorld.js 文件
-
         </a>
       </p>
 
@@ -522,238 +780,6 @@ HelloWorld
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/webpack/" target="_self">
-          webpack
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/webpack/" target="_self">
-          
-          
-            
-          
-          WebpackWebpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。
-
-
-
-
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-01 13:04" pubdate>
-              2021-02-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/frp/" target="_self">
-          frp
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/19/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/frp/" target="_self">
-          
-          
-            
-          
-          frpfrp 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。
-原理frp 主要由 客户端(frpc) 和 服务端(frps) 组成，服务端通常部署在具有公网 IP 的机器上，客户端通常部署在需要穿透的内网服务所在的机器上。
-内网服务由于没有公网 IP，不能被非局域网内的其
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-19 17:29" pubdate>
-              2021-01-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/">linux</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-Elasticsearch/" target="_self">
-          Elasticsearch-环境搭建
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-Elasticsearch/" target="_self">
-          
-          
-            
-          
-          Elasticsearch环境搭建创建目录结构为
-1234567891011121314151617docker-es/├── docker-compose.yaml├── master│   ├── conf│   │   └── elasticsearch.yml│   ├── data│   └── logs├── node1│   ├── conf│   │   └── elasticse
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-06 22:14" pubdate>
-              2021-01-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/">docker</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/docker/">docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-rocketMQ/" target="_self">
-          rocketMQ-环境搭建
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/06/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/docker-compose/docker-compose-rocketMQ/" target="_self">
-          
-          
-            
-          
-          rocketMQ环境搭建git clone https://github.com/foxiswho/docker-rocketmq.git
-切换分支git checkout v4.4.0
-该项目目录结构为
-1234567891011121314151617181920212223docker-rocketmq/├── base│   ├── Dockerfile│   ├── readme.md│
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-06 22:14" pubdate>
-              2021-01-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/">docker</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/docker/">docker</a>
             
           </div>
         
