@@ -192,6 +192,67 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/01/06/nginx%E5%AE%89%E8%A3%85/" target="_self">
+          nginx安装
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/06/nginx%E5%AE%89%E8%A3%85/" target="_self">
+          
+          
+            
+          
+          CentOS 7 中的 yum 无法直接使用 yum install nginx 这个指令安装nginx
+安装步骤
+
+vim /etc/yum.repos.d/nginx.repo
+
+12345[nginx]name=nginx repobaseurl=http://nginx.org/packages/centos/7/x86_64/gpgcheck=0enabled=1
+
+再执行yum ins
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-06 17:29" pubdate>
+              2022-01-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/">linux</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/12/22/Photoshop%20%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" target="_self">
           Photoshop 常用快捷键
         </a>
@@ -772,75 +833,6 @@ Nebula Graph数据模型使用6种基本的数据结构：
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/MySQL/">MySQL</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/29/centos%207%E5%AE%89%E8%A3%85jdk/" target="_self">
-          Centos 7安装jdk
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/29/centos%207%E5%AE%89%E8%A3%85jdk/" target="_self">
-          
-          
-            
-          
-          Centos 7安装jdk
-
-
-列举匹配已安装的java的软件包：yum list installed | grep java
-
-
-卸载安装的jdk：(yum命令参考：http://man.linuxde.net/yum)
-yum -y remove java-1.7.0-openjdk*
-yum -y remove java-1.8.0-openjdk*
-
-
-安装jdk
-
-设置对所有用户有效方式
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-29 15:29" pubdate>
-              2021-04-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/">linux</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/linux/">linux</a>
             
           </div>
         
