@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>SSL 证书</title>
+    <link href="/2022/12/09/SSL%E8%AF%81%E4%B9%A6/"/>
+    <url>/2022/12/09/SSL%E8%AF%81%E4%B9%A6/</url>
+    
+    <content type="html"><![CDATA[<h1>SSL 证书</h1><h2 id="Let‘s-Encrypt">Let‘s Encrypt</h2><ol><li><p>安装cerbot。cerbot是let’s Encrypt推荐的管理客户端，可以自动续签</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install certbot -y<br></code></pre></td></tr></table></figure></li><li><p>生成证书</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">先停用nginx，再生成证书，</span><br>sudo nignx -s stop<br><br><span class="hljs-meta">#</span><span class="bash"> 不清楚自己网站根目录时这样生成、需要根据自己的域名修改</span><br>certbot certonly --standalone -d domain.com -d www.domian.com<br><br><span class="hljs-meta">#</span><span class="bash">知道网站根目录时生成方式：这里的根目录是/var/www/domain 、需要根据自己的域名修改，</span><br>certbot certonly --webroot -w /var/www/domain -d domain.com -d www.domain.com<br></code></pre></td></tr></table></figure></li><li><p>证书就生成成功一般会放在<code>/etc/letsencrypt/live</code>目录内</p></li><li><p>配置nginx</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">将listen 80部分按自己的域名做如下修改，去掉location / 及 location /api/ 等部分</span><br>    server &#123;<br>        listen       80;<br>        listen       [::]:80;<br>        server_name www.domain.com domain.com;<br>        add_header Strict-Transport-Security max-age=15768000;<br>        return 301 https://$server_name$request_uri;  #重定向到https<br>    &#125;<br><br><span class="hljs-meta">#</span><span class="bash">增加一个listen 443，按自己域名做如下修改。将原listen 80内的 location / 及 location /api/ 等部分copy过来</span><br>  server &#123;<br>    listen 443 ssl http2;<br>    server_name www.domain.com domain.com;<br>    add_header X-Frame-Options DENY;<br>    add_header X-Content-Type-Options nosniff;<br>    root /var/www/domain;<br>    ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;<br>    ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;<br>    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;<br>    ssl_prefer_server_ciphers on;<br>    ssl_session_cache shared:SSL:10m;<br>    ssl_session_timeout 60m;<br><br>    location / &#123;<br>        proxy_http_version 1.1;<br>        proxy_set_header Upgrade $http_upgrade;<br>        proxy_set_header Connection &quot;upgrade&quot;;<br>        proxy_set_header Host $host;<br>        proxy_set_header X-Nginx-Proxy true;<br>        proxy_cache_bypass $http_upgrade;<br>        proxy_pass http://nuxtapp; #反向代理nuxt<br>    &#125;<br><br>    location /api/ &#123;<br>        proxy_pass http://127.0.0.1:8000;<br>        proxy_set_header Host $host;<br>    &#125;<br><br>    # Load configuration files for the default server block.<br>    include /etc/nginx/default.d/*.conf;<br><br>    error_page 404 /404.html;<br>    location = /404.html &#123;<br>    &#125;<br><br>    error_page 500 502 503 504 /50x.html;<br>    location = /50x.html &#123;<br>    &#125;<br>  &#125;<br><br></code></pre></td></tr></table></figure></li><li><p>自动续签。</p></li></ol><blockquote><p>Let’s Encrypt默认3个月过期，需要我们设置cerbot客户端，让其自动更新证书，这里需要用到 crontab</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">终端输入 crontab -e</span><br>crontab -e<br><span class="hljs-meta">#</span><span class="bash">输入i，进入插入模式，按如下格式写上更新命令，意思是每个月1号凌晨3点更新</span><br>0 0 3 * * certbot renew --force-renew --renew-hook &quot;nginx -s reload&quot;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>服务器</category>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>工具方法</tag>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Ubuntu</title>
     <link href="/2022/12/08/Ubuntu/"/>
     <url>/2022/12/08/Ubuntu/</url>
