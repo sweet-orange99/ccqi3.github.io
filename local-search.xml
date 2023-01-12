@@ -362,11 +362,11 @@
   
   
   <entry>
-    <title>nginx安装</title>
-    <link href="/2022/01/06/nginx%E5%AE%89%E8%A3%85/"/>
-    <url>/2022/01/06/nginx%E5%AE%89%E8%A3%85/</url>
+    <title>nginx</title>
+    <link href="/2022/01/06/nginx/"/>
+    <url>/2022/01/06/nginx/</url>
     
-    <content type="html"><![CDATA[<p><code>CentOS 7</code> 中的 <code>yum</code> 无法直接使用 <code>yum install nginx</code> 这个指令安装<code>nginx</code></p><h2 id="安装步骤">安装步骤</h2><ol><li>vim /etc/yum.repos.d/nginx.repo</li></ol><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[nginx]</span><br><span class="hljs-attr">name</span>=nginx repo<br><span class="hljs-attr">baseurl</span>=http://nginx.org/packages/centos/<span class="hljs-number">7</span>/x<span class="hljs-number">86_64</span>/<br><span class="hljs-attr">gpgcheck</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">enabled</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure><ol start="2"><li>再执行<code>yum install nginx</code>即可。</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="安装步骤">安装步骤</h2><h3 id="yum方式安装"><code>yum</code>方式安装</h3><p><strong><code>CentOS 7</code> 中的 <code>yum</code> 无法直接使用 <code>yum install nginx</code> 这个指令安装<code>nginx</code></strong></p><ol><li><p>新建<code>nginx.repo</code>源文件。</p><p><code>vim /etc/yum.repos.d/nginx.repo</code></p><p>写入以下内容</p></li></ol><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[nginx]</span><br><span class="hljs-attr">name</span>=nginx repo<br><span class="hljs-attr">baseurl</span>=http://nginx.org/packages/centos/<span class="hljs-number">7</span>/x<span class="hljs-number">86_64</span>/<br><span class="hljs-attr">gpgcheck</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">enabled</span>=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure><ol start="2"><li>再执行<code>yum install nginx</code>即可。</li></ol>]]></content>
     
     
     <categories>

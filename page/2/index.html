@@ -320,25 +320,28 @@ Apache Flink 是一个在有界数据流和无界数据流上进行有状态计�
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/01/06/nginx%E5%AE%89%E8%A3%85/" target="_self">
-          nginx安装
+        <a href="/2022/01/06/nginx/" target="_self">
+          nginx
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2022/01/06/nginx%E5%AE%89%E8%A3%85/" target="_self">
+        <a href="/2022/01/06/nginx/" target="_self">
           
           
             
           
-          CentOS 7 中的 yum 无法直接使用 yum install nginx 这个指令安装nginx
-安装步骤
+          安装步骤
+yum方式安装
+CentOS 7 中的 yum 无法直接使用 yum install nginx 这个指令安装nginx
 
+
+新建nginx.repo源文件。
 vim /etc/yum.repos.d/nginx.repo
+写入以下内容
 
-12345[nginx]name=nginx repobaseurl=http://nginx.org/packages/centos/7/x86_64/gpgcheck=0enabled=1
 
-再执行yum ins
+12345[nginx]name=nginx repobaseurl=http://nginx.org/packages/centos/7/x86_
         </a>
       </p>
 
