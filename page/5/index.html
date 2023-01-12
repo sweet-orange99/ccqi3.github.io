@@ -192,6 +192,64 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/01/06/docker-compose-zk/" target="_self">
+          zookeeper-环境搭建
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/06/docker-compose-zk/" target="_self">
+          
+          
+            
+          
+          zookeeper环境搭建
+新建文件docker-compose-zk.yml
+1234567891011121314151617181920212223242526272829303132version: &#x27;3.1&#x27;services:  zoo1:    image: zookeeper    restart: always    hostname: zoo1    port
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-06 22:14" pubdate>
+              2021-01-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/">docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
+            
+              <a href="/tags/docker/">docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/01/04/docker-run/" target="_self">
           docker-run
         </a>
@@ -726,73 +784,6 @@ map: (K1, V1) → list(K2, V2) combine: (K2, list(V2)) → list(K2, V2) reduce: 
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
             <time datetime="2020-11-06 04:00" pubdate>
-              2020-11-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/">Hadoop</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-            
-              <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/11/06/Hadoop-04%20yarn/" target="_self">
-          Hadoop-04 YARN
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/11/06/Hadoop-04%20yarn/" target="_self">
-          
-          
-            
-          
-          YARN
-旧的MapReduce的架构：
-
-
-JobTracker：负责资源管理，跟踪资源消耗和可用性，作业生命周期管理（调度作业任务，跟踪进度，为任务提供容错）
-TaskTracker：加载或关闭任务，定时报告任务状态。
-
-
-此架构会有以下问题：
-
-JobTracker是MapReduce的集中处理点，存在单点故障。
-JobTracker完成了太多的任务，造成了过多的资源消耗，当MapReduc
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-11-06 03:00" pubdate>
               2020-11-06
             </time>
           </div>

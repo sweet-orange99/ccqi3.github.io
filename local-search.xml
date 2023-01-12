@@ -642,6 +642,37 @@
   
   
   <entry>
+    <title>CentOS 7</title>
+    <link href="/2021/04/29/CentOS%207%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <url>/2021/04/29/CentOS%207%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="安装-jdk1-8">安装 jdk1.8</h2><ol><li><p>列举匹配已安装的java的软件包：<code>yum list installed | grep java</code></p></li><li><p>卸载安装的jdk：(yum命令参考：<a href="http://man.linuxde.net/yum">http://man.linuxde.net/yum</a>)</p><p><code>yum -y remove java-1.7.0-openjdk*</code></p><p><code>yum -y remove java-1.8.0-openjdk*</code></p></li><li><p>安装jdk</p><ul><li>设置对所有用户有效方式：修改/etc/profile文件设置系统变量，设置jdk环境变量，该方式对所有用户有效。</li><li>设置对当前用户有效方式：修改.bashrc文件设置用户变量，设置jdk环境变量，该方式仅对当前用户有效，对其它用户无效，其它用户没有运行java命令的权限。</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">export JAVA_HOME=/usr/local/jdk1.8.0_151 # 需要修改为自己的路径<br>export JRE_HOME=$JAVA_HOME/jre  <br>export PATH=$PATH:$JAVA_HOME/bin  <br>export CLASSPATH=./:$JAVA_HOME/lib:$JAVA_HOME/jre/lib<br></code></pre></td></tr></table></figure></li><li><p>重新加载环境变量<code>source /etc/profile</code></p></li></ol><h2 id="扩容">扩容</h2><ol><li>查询磁盘使用情况</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 查询磁盘使用情况</span><br><span class="hljs-meta">$</span><span class="bash"> df -hl</span><br></code></pre></td></tr></table></figure><p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/04d3f32c98c814c229e6d53d3b720eb8.png" alt="20220212194923"></p><ol start="2"><li>查询磁盘</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 查询磁盘</span><br><span class="hljs-meta">$</span><span class="bash"> fdisk -l</span><br></code></pre></td></tr></table></figure><p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/b1617added89038886b147929ca1afb0.png" alt="20220212195119"></p><p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/038431d7a0c9fb948e20219bde2ec8c6.png" alt="20220212195235"></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> fdisk /dev/sdb</span><br><span class="hljs-meta">#</span><span class="bash"> 使用添加的磁盘</span><br></code></pre></td></tr></table></figure><p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/fbe4afb9a16f605654403e8c2d49823f.png" alt="20220212201638"></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> pvcreate /dev/sdb1</span><br><span class="hljs-meta">#</span><span class="bash"> 创建物理卷</span><br><span class="hljs-meta">$</span><span class="bash"> pvdisplay</span><br><span class="hljs-meta">#</span><span class="bash"> 查询创建的物理卷</span><br></code></pre></td></tr></table></figure><p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/f5051b85ab1691b35a5333e0e6b2191e.png" alt="20220212203944"></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> vgdisplay</span><br><span class="hljs-meta">#</span><span class="bash"> 查看卷组名称</span><br></code></pre></td></tr></table></figure><p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/aea325b7d80d8d12dbc47bc102c8b5ca.png" alt="20220212205455"></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> vgextend centos /dev/sdb1</span><br><span class="hljs-meta">#</span><span class="bash"> 通过vgextend将新添加卷加入到卷组centos中</span><br></code></pre></td></tr></table></figure><p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/f0630190a2096bc01223dab87cd3e89e.png" alt="20220212205550"></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> lvextend -L +60G /dev/mapper/centos-root</span><br><span class="hljs-meta">#</span><span class="bash"> 通过 lvextend 命令扩展根目录挂载点 /dev/mapper/centos-root</span><br><span class="hljs-meta">$</span><span class="bash"> xfs_growfs /dev/mapper/centos-root</span><br><span class="hljs-meta">#</span><span class="bash"> 同步文件系统</span><br></code></pre></td></tr></table></figure><p><strong>resize2fs 针对文件系统ext2 ext3 ext4</strong></p><p><strong>xfs_growfs 针对文件系统xfs</strong></p><p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/ba431058a2b98bdc2573150b43b65627.png" alt="20220212210235"></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> df -hl</span><br><span class="hljs-meta">#</span><span class="bash"> 查看扩容情况</span><br></code></pre></td></tr></table></figure><p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/fbc302188356e8e25e7ab457f612f093.png" alt="20220212210719"></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 查看新增磁盘信息</span><br><span class="hljs-meta">$</span><span class="bash"> lsblk</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>服务器</category>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>工具方法</tag>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Centos 7安装jdk</title>
     <link href="/2021/04/29/centos%207%E5%AE%89%E8%A3%85jdk/"/>
     <url>/2021/04/29/centos%207%E5%AE%89%E8%A3%85jdk/</url>
