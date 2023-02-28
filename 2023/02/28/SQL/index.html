@@ -16,21 +16,20 @@
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
-  <meta name="description" content="SSL 证书 Let‘s Encrypt   安装cerbot。cerbot是let’s Encrypt推荐的管理客户端，可以自动续签 1yum install certbot -y   生成证书 12345678#先停用nginx，再生成证书，sudo nignx -s stop# 不清楚自己网站根目录时这样生成、需要根据自己的域名修改certbot certonly --standalone">
+  <meta name="description" content="常用SQL整理 查询当天、本周、本月、本年的数据 查询天 12# 查询当天select * from tb where DATE(create_time) &#x3D; curdate() 查询周 1234567# 查询本周(从上个星期的周日开始计算，到这个星期的周六)select * from tb where YEARWEEK(date_format(create_time,&amp;#x27;%Y-%m-%d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSL 证书">
-<meta property="og:url" content="https://ccqi3.github.io/2022/12/09/SSL%E8%AF%81%E4%B9%A6/index.html">
+<meta property="og:title" content="常用SQL整理">
+<meta property="og:url" content="https://ccqi3.github.io/2023/02/28/SQL/index.html">
 <meta property="og:site_name" content="ccQi3">
-<meta property="og:description" content="SSL 证书 Let‘s Encrypt   安装cerbot。cerbot是let’s Encrypt推荐的管理客户端，可以自动续签 1yum install certbot -y   生成证书 12345678#先停用nginx，再生成证书，sudo nignx -s stop# 不清楚自己网站根目录时这样生成、需要根据自己的域名修改certbot certonly --standalone">
+<meta property="og:description" content="常用SQL整理 查询当天、本周、本月、本年的数据 查询天 12# 查询当天select * from tb where DATE(create_time) &#x3D; curdate() 查询周 1234567# 查询本周(从上个星期的周日开始计算，到这个星期的周六)select * from tb where YEARWEEK(date_format(create_time,&amp;#x27;%Y-%m-%d">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-12-09T07:29:05.000Z">
-<meta property="article:modified_time" content="2022-12-09T05:45:06.146Z">
+<meta property="article:published_time" content="2023-02-28T05:32:37.000Z">
+<meta property="article:modified_time" content="2023-02-28T06:03:26.832Z">
 <meta property="article:author" content="ccQi3">
-<meta property="article:tag" content="工具方法">
-<meta property="article:tag" content="linux">
+<meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>SSL 证书 - ccQi3</title>
+  <title>常用SQL整理 - ccQi3</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -176,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="SSL 证书">
+            <span class="h2" id="subtitle" title="常用SQL整理">
               
             </span>
 
@@ -186,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-12-09 15:29" pubdate>
-        2022年12月9日 下午
+      <time datetime="2023-02-28 13:32" pubdate>
+        2023年2月28日 下午
       </time>
     </span>
   
@@ -197,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.9k 字
+      1k 字
     </span>
   
 
@@ -206,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6 分钟
+      3 分钟
     </span>
   
 
@@ -235,35 +234,21 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">SSL 证书</h1>
+            <h1 style="display: none">常用SQL整理</h1>
             
             <div class="markdown-body">
-              <h1>SSL 证书</h1>
-<h2 id="Let‘s-Encrypt">Let‘s Encrypt</h2>
-<ol>
-<li>
-<p>安装cerbot。cerbot是let’s Encrypt推荐的管理客户端，可以自动续签</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install certbot -y<br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p>生成证书</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">先停用nginx，再生成证书，</span><br>sudo nignx -s stop<br><br><span class="hljs-meta">#</span><span class="bash"> 不清楚自己网站根目录时这样生成、需要根据自己的域名修改</span><br>certbot certonly --standalone -d domain.com -d www.domian.com<br><br><span class="hljs-meta">#</span><span class="bash">知道网站根目录时生成方式：这里的根目录是/var/www/domain 、需要根据自己的域名修改，</span><br>certbot certonly --webroot -w /var/www/domain -d domain.com -d www.domain.com<br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p>证书就生成成功一般会放在<code>/etc/letsencrypt/live</code>目录内</p>
-</li>
-<li>
-<p>配置nginx</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">将listen 80部分按自己的域名做如下修改，去掉location / 及 location /api/ 等部分</span><br>    server &#123;<br>        listen       80;<br>        listen       [::]:80;<br>        server_name www.domain.com domain.com;<br>        add_header Strict-Transport-Security max-age=15768000;<br>        return 301 https://$server_name$request_uri;  #重定向到https<br>    &#125;<br><br><span class="hljs-meta">#</span><span class="bash">增加一个listen 443，按自己域名做如下修改。将原listen 80内的 location / 及 location /api/ 等部分copy过来</span><br>  server &#123;<br>    listen 443 ssl http2;<br>    server_name www.domain.com domain.com;<br>    add_header X-Frame-Options DENY;<br>    add_header X-Content-Type-Options nosniff;<br>    root /var/www/domain;<br>    ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;<br>    ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;<br>    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;<br>    ssl_prefer_server_ciphers on;<br>    ssl_session_cache shared:SSL:10m;<br>    ssl_session_timeout 60m;<br><br>    location / &#123;<br>        proxy_http_version 1.1;<br>        proxy_set_header Upgrade $http_upgrade;<br>        proxy_set_header Connection &quot;upgrade&quot;;<br>        proxy_set_header Host $host;<br>        proxy_set_header X-Nginx-Proxy true;<br>        proxy_cache_bypass $http_upgrade;<br>        proxy_pass http://nuxtapp; #反向代理nuxt<br>    &#125;<br><br>    location /api/ &#123;<br>        proxy_pass http://127.0.0.1:8000;<br>        proxy_set_header Host $host;<br>    &#125;<br><br>    # Load configuration files for the default server block.<br>    include /etc/nginx/default.d/*.conf;<br><br>    error_page 404 /404.html;<br>    location = /404.html &#123;<br>    &#125;<br><br>    error_page 500 502 503 504 /50x.html;<br>    location = /50x.html &#123;<br>    &#125;<br>  &#125;<br><br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p>自动续签。</p>
-</li>
-</ol>
-<blockquote>
-<p>Let’s Encrypt默认3个月过期，需要我们设置cerbot客户端，让其自动更新证书，这里需要用到 crontab</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">终端输入 crontab -e</span><br>crontab -e<br><span class="hljs-meta">#</span><span class="bash">输入i，进入插入模式，按如下格式写上更新命令，意思是每个月1号凌晨3点更新</span><br>0 0 3 * * certbot renew --force-renew --renew-hook &quot;nginx -s reload&quot;<br></code></pre></td></tr></table></figure>
+              <h1>常用SQL整理</h1>
+<h2 id="查询当天、本周、本月、本年的数据">查询当天、本周、本月、本年的数据</h2>
+<h3 id="查询天">查询天</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment"># 查询当天</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb <span class="hljs-keyword">where</span> <span class="hljs-built_in">DATE</span>(create_time) = <span class="hljs-keyword">curdate</span>()<br></code></pre></td></tr></table></figure>
+<h3 id="查询周">查询周</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment"># 查询本周(从上个星期的周日开始计算，到这个星期的周六)</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb <span class="hljs-keyword">where</span> <span class="hljs-keyword">YEARWEEK</span>(<span class="hljs-keyword">date_format</span>(create_time,<span class="hljs-string">&#x27;%Y-%m-%d&#x27;</span>)) = <span class="hljs-keyword">YEARWEEK</span>(<span class="hljs-keyword">now</span>())<br><span class="hljs-comment"># 查询上周</span><br><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> tb <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">WEEK</span>(create_time)=<span class="hljs-keyword">WEEK</span>(<span class="hljs-keyword">DATE_SUB</span>(<span class="hljs-keyword">NOW</span>(),<span class="hljs-built_in">INTERVAL</span> <span class="hljs-number">1</span> <span class="hljs-keyword">WEEK</span>))<br><span class="hljs-keyword">AND</span> <span class="hljs-keyword">YEAR</span>(create_time) = <span class="hljs-keyword">YEAR</span>(<span class="hljs-keyword">NOW</span>()) <br><span class="hljs-comment"># 查询近七天的数据</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb <span class="hljs-keyword">where</span> <span class="hljs-keyword">date_sub</span>(<span class="hljs-keyword">curdate</span>(), <span class="hljs-built_in">interval</span> <span class="hljs-number">7</span> <span class="hljs-keyword">day</span>) &lt;= <span class="hljs-built_in">date</span>(create_time)<br></code></pre></td></tr></table></figure>
+<h3 id="查询月">查询月</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment"># 查询本月</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb <span class="hljs-keyword">where</span> <span class="hljs-keyword">date_format</span>(create_time,<span class="hljs-string">&#x27;%Y-%m&#x27;</span>) = <span class="hljs-keyword">date_format</span>(<span class="hljs-keyword">now</span>(),<span class="hljs-string">&#x27;%Y-%m&#x27;</span>)<br><span class="hljs-comment"># 查询上月的数据</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb<br>	<span class="hljs-keyword">where</span> <span class="hljs-keyword">date_format</span>(create_time, <span class="hljs-string">&#x27;%Y-%m&#x27;</span>)=<span class="hljs-keyword">date_format</span>(<span class="hljs-keyword">DATE_SUB</span>(<span class="hljs-keyword">curdate</span>(), <span class="hljs-built_in">INTERVAL</span> <span class="hljs-number">1</span> <span class="hljs-keyword">MONTH</span>),<span class="hljs-string">&#x27;%Y-%m&#x27;</span>) <br></code></pre></td></tr></table></figure>
+<h3 id="查询季度">查询季度</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment"># 查询本季度</span><br><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> tb <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">QUARTER</span>(create_time)=<span class="hljs-keyword">QUARTER</span>(<span class="hljs-keyword">NOW</span>())<br><span class="hljs-keyword">AND</span> <span class="hljs-keyword">YEAR</span>(create_time) = <span class="hljs-keyword">YEAR</span>(<span class="hljs-keyword">NOW</span>())<br><span class="hljs-comment"># 查询上季度</span><br><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> tb <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">QUARTER</span>(create_time)=<span class="hljs-keyword">QUARTER</span>(<span class="hljs-keyword">DATE_SUB</span>(<span class="hljs-keyword">NOW</span>(),<span class="hljs-built_in">INTERVAL</span> <span class="hljs-number">1</span> <span class="hljs-keyword">QUARTER</span>)) <span class="hljs-keyword">AND</span> <span class="hljs-keyword">YEAR</span>(create_time) = <span class="hljs-keyword">YEAR</span>(<span class="hljs-keyword">NOW</span>())<br></code></pre></td></tr></table></figure>
+<h3 id="查询年">查询年</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment"># 查询本年</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb <span class="hljs-keyword">where</span> <span class="hljs-keyword">date_format</span>(create_time,<span class="hljs-string">&#x27;%Y&#x27;</span>) = <span class="hljs-keyword">date_format</span>(<span class="hljs-keyword">now</span>(),<span class="hljs-string">&#x27;%Y&#x27;</span>)<br><span class="hljs-comment"># 查询上年</span><br><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> tb <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">YEAR</span>(create_time)=<span class="hljs-keyword">YEAR</span>(<span class="hljs-keyword">DATE_SUB</span>(<span class="hljs-keyword">NOW</span>(),<span class="hljs-built_in">INTERVAL</span> <span class="hljs-number">1</span> <span class="hljs-keyword">YEAR</span>))<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -275,9 +260,7 @@
                     
                       <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/">linux</a>
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
                     
                   </div>
                 
@@ -285,9 +268,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
-                    
-                      <a class="hover-with-bg" href="/tags/linux/">linux</a>
+                      <a class="hover-with-bg" href="/tags/SQL/">SQL</a>
                     
                   </div>
                 
@@ -304,18 +285,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/28/SQL/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">常用SQL整理</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/08/Ubuntu/">
-                        <span class="hidden-mobile">Ubuntu</span>
+                      <a href="/2022/12/09/SSL%E8%AF%81%E4%B9%A6/">
+                        <span class="hidden-mobile">SSL 证书</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
