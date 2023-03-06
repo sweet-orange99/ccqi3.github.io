@@ -16,20 +16,20 @@
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
-  <meta name="description" content="常用SQL整理 查询当天、本周、本月、本年的数据 查询天 12# 查询当天select * from tb where DATE(create_time) &#x3D; curdate() 查询周 1234567# 查询本周(从上个星期的周日开始计算，到这个星期的周六)select * from tb where YEARWEEK(date_format(create_time,&amp;#x27;%Y-%m-%d">
+  <meta name="description" content="Windows 10 下离线安装mysql 一、下载 MySQL 5.7 免安装版本 二、解压到指定目录 三、环境变量配置  右击我的电脑 --&gt; 属性 --&gt; 高级系统设置 --&gt; 环境变量 找到系统Path ，单击编辑 ，添加值 （解压后的bin目录）: D:\MySQL\mysql-8.0.32-winx64\bin 用户变量以及系统变量的区别：如果只编辑了用户变量中的Pa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常用SQL整理">
-<meta property="og:url" content="https://ccqi3.github.io/2023/02/28/SQL/index.html">
+<meta property="og:title" content="Windows 10 下离线安装mysql">
+<meta property="og:url" content="https://ccqi3.github.io/2023/03/06/windows%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/index.html">
 <meta property="og:site_name" content="ccQi3">
-<meta property="og:description" content="常用SQL整理 查询当天、本周、本月、本年的数据 查询天 12# 查询当天select * from tb where DATE(create_time) &#x3D; curdate() 查询周 1234567# 查询本周(从上个星期的周日开始计算，到这个星期的周六)select * from tb where YEARWEEK(date_format(create_time,&amp;#x27;%Y-%m-%d">
+<meta property="og:description" content="Windows 10 下离线安装mysql 一、下载 MySQL 5.7 免安装版本 二、解压到指定目录 三、环境变量配置  右击我的电脑 --&gt; 属性 --&gt; 高级系统设置 --&gt; 环境变量 找到系统Path ，单击编辑 ，添加值 （解压后的bin目录）: D:\MySQL\mysql-8.0.32-winx64\bin 用户变量以及系统变量的区别：如果只编辑了用户变量中的Pa">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-28T05:32:37.000Z">
-<meta property="article:modified_time" content="2023-02-28T06:03:26.832Z">
+<meta property="article:published_time" content="2023-03-06T05:13:37.000Z">
+<meta property="article:modified_time" content="2023-03-06T03:39:35.203Z">
 <meta property="article:author" content="ccQi3">
-<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>常用SQL整理 - ccQi3</title>
+  <title>Windows 10 下离线安装mysql - ccQi3</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="常用SQL整理">
+            <span class="h2" id="subtitle" title="Windows 10 下离线安装mysql">
               
             </span>
 
@@ -185,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-02-28 13:32" pubdate>
-        2023年2月28日 下午
+      <time datetime="2023-03-06 13:13" pubdate>
+        2023年3月6日 下午
       </time>
     </span>
   
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      984 字
     </span>
   
 
@@ -234,21 +234,26 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">常用SQL整理</h1>
+            <h1 style="display: none">Windows 10 下离线安装mysql</h1>
             
             <div class="markdown-body">
-              <h1>常用SQL整理</h1>
-<h2 id="查询当天、本周、本月、本年的数据">查询当天、本周、本月、本年的数据</h2>
-<h3 id="查询天">查询天</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment"># 查询当天</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb <span class="hljs-keyword">where</span> <span class="hljs-built_in">DATE</span>(create_time) = <span class="hljs-keyword">curdate</span>()<br></code></pre></td></tr></table></figure>
-<h3 id="查询周">查询周</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment"># 查询本周(从上个星期的周日开始计算，到这个星期的周六)</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb <span class="hljs-keyword">where</span> <span class="hljs-keyword">YEARWEEK</span>(<span class="hljs-keyword">date_format</span>(create_time,<span class="hljs-string">&#x27;%Y-%m-%d&#x27;</span>)) = <span class="hljs-keyword">YEARWEEK</span>(<span class="hljs-keyword">now</span>())<br><span class="hljs-comment"># 查询上周</span><br><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> tb <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">WEEK</span>(create_time)=<span class="hljs-keyword">WEEK</span>(<span class="hljs-keyword">DATE_SUB</span>(<span class="hljs-keyword">NOW</span>(),<span class="hljs-built_in">INTERVAL</span> <span class="hljs-number">1</span> <span class="hljs-keyword">WEEK</span>))<br><span class="hljs-keyword">AND</span> <span class="hljs-keyword">YEAR</span>(create_time) = <span class="hljs-keyword">YEAR</span>(<span class="hljs-keyword">NOW</span>()) <br><span class="hljs-comment"># 查询近七天的数据</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb <span class="hljs-keyword">where</span> <span class="hljs-keyword">date_sub</span>(<span class="hljs-keyword">curdate</span>(), <span class="hljs-built_in">interval</span> <span class="hljs-number">7</span> <span class="hljs-keyword">day</span>) &lt;= <span class="hljs-built_in">date</span>(create_time)<br></code></pre></td></tr></table></figure>
-<h3 id="查询月">查询月</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment"># 查询本月</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb <span class="hljs-keyword">where</span> <span class="hljs-keyword">date_format</span>(create_time,<span class="hljs-string">&#x27;%Y-%m&#x27;</span>) = <span class="hljs-keyword">date_format</span>(<span class="hljs-keyword">now</span>(),<span class="hljs-string">&#x27;%Y-%m&#x27;</span>)<br><span class="hljs-comment"># 查询上月的数据</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb<br>	<span class="hljs-keyword">where</span> <span class="hljs-keyword">date_format</span>(create_time, <span class="hljs-string">&#x27;%Y-%m&#x27;</span>)=<span class="hljs-keyword">date_format</span>(<span class="hljs-keyword">DATE_SUB</span>(<span class="hljs-keyword">curdate</span>(), <span class="hljs-built_in">INTERVAL</span> <span class="hljs-number">1</span> <span class="hljs-keyword">MONTH</span>),<span class="hljs-string">&#x27;%Y-%m&#x27;</span>) <br></code></pre></td></tr></table></figure>
-<h3 id="查询季度">查询季度</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment"># 查询本季度</span><br><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> tb <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">QUARTER</span>(create_time)=<span class="hljs-keyword">QUARTER</span>(<span class="hljs-keyword">NOW</span>())<br><span class="hljs-keyword">AND</span> <span class="hljs-keyword">YEAR</span>(create_time) = <span class="hljs-keyword">YEAR</span>(<span class="hljs-keyword">NOW</span>())<br><span class="hljs-comment"># 查询上季度</span><br><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> tb <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">QUARTER</span>(create_time)=<span class="hljs-keyword">QUARTER</span>(<span class="hljs-keyword">DATE_SUB</span>(<span class="hljs-keyword">NOW</span>(),<span class="hljs-built_in">INTERVAL</span> <span class="hljs-number">1</span> <span class="hljs-keyword">QUARTER</span>)) <span class="hljs-keyword">AND</span> <span class="hljs-keyword">YEAR</span>(create_time) = <span class="hljs-keyword">YEAR</span>(<span class="hljs-keyword">NOW</span>())<br></code></pre></td></tr></table></figure>
-<h3 id="查询年">查询年</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment"># 查询本年</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb <span class="hljs-keyword">where</span> <span class="hljs-keyword">date_format</span>(create_time,<span class="hljs-string">&#x27;%Y&#x27;</span>) = <span class="hljs-keyword">date_format</span>(<span class="hljs-keyword">now</span>(),<span class="hljs-string">&#x27;%Y&#x27;</span>)<br><span class="hljs-comment"># 查询上年</span><br><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> tb <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">YEAR</span>(create_time)=<span class="hljs-keyword">YEAR</span>(<span class="hljs-keyword">DATE_SUB</span>(<span class="hljs-keyword">NOW</span>(),<span class="hljs-built_in">INTERVAL</span> <span class="hljs-number">1</span> <span class="hljs-keyword">YEAR</span>))<br></code></pre></td></tr></table></figure>
+              <h1>Windows 10 下离线安装mysql</h1>
+<h3 id="一、下载-MySQL-5-7-免安装版本">一、<a href="https://link.zhihu.com/?target=https%3A//dev.mysql.com/downloads/mysql/">下载</a> MySQL 5.7 免安装版本</h3>
+<h3 id="二、解压到指定目录">二、解压到指定目录</h3>
+<h3 id="三、环境变量配置">三、环境变量配置</h3>
+<blockquote>
+<p>右击我的电脑 --&gt; 属性 --&gt; 高级系统设置 --&gt; 环境变量<br>
+找到系统Path ，单击编辑 ，添加值 （解压后的bin目录）: D:\MySQL\mysql-8.0.32-winx64\bin<br>
+用户变量以及系统变量的区别：如果只编辑了用户变量中的Path值，则只对该用户生效，其它用户无法使用，而系统变量中编辑的Path 值，所有用户都可以使用。</p>
+</blockquote>
+<h3 id="四、创建配置文件">四、创建配置文件</h3>
+<p>在 <code>D:\MySQL\mysql-8.0.32-winx64</code><strong>安装目录下</strong>新建文本文件<code>my.ini</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[mysql]</span><br><br><span class="hljs-comment">; 设置mysql客户端默认字符集</span><br><span class="hljs-attr">default-character-set</span>=utf8<br><br><span class="hljs-section">[mysqld]</span><br><br><span class="hljs-comment">;设置3306端口</span><br><span class="hljs-attr">port</span> = <span class="hljs-number">3306</span><br><br><span class="hljs-comment">; 设置mysql的安装目录</span><br><span class="hljs-attr">basedir</span>=E:\mysql<br><br><span class="hljs-comment">; 设置mysql数据库的数据的存放目录</span><br><span class="hljs-attr">datadir</span>=E:\mysql\data<br><br><span class="hljs-comment">; 允许最大连接数</span><br><span class="hljs-attr">max_connections</span>=<span class="hljs-number">200</span><br><br><span class="hljs-comment">; 服务端使用字符集utf-8</span><br><span class="hljs-attr">character-set-server</span>=utf8<br><br><span class="hljs-comment">; 创建新表时将使用的默认存储引擎</span><br><span class="hljs-attr">default-storage-engine</span>=INNODB<br></code></pre></td></tr></table></figure>
+<h3 id="五、初始化安装">五、初始化安装</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 初始化MySQL(管理员权限打开cmd命令行)</span><br>mysqld --initialize-insecure --user=mysql<br>mysqld install	# 安装mysql<br>net start mysql	# 启动服务<br></code></pre></td></tr></table></figure>
+<h3 id="六、登录数据库">六、登录数据库</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 第一次无密码，直接回车</span><br>mysql -u root -p   <br><br><br><span class="hljs-meta">#</span><span class="bash"> 显示所有数据库</span><br>show databases;	<br><br><span class="hljs-meta">#</span><span class="bash"> 使用某个库</span><br>use mysql;<br><span class="hljs-meta">#</span><span class="bash"> 更改root密码</span><br>update mysql.user   <br>set authentication_string = password(&#x27;123456&#x27;) ,<br>password_expired = &#x27;N&#x27;  <br> where User = &#x27;root&#x27; <br> AND Host = &#x27;localhost&#x27;;  <br><br><span class="hljs-meta">#</span><span class="bash"> 刷新权限</span><br>flush privileges;<br></code></pre></td></tr></table></figure>
+<p>完成安装， 初始密码为<code>123456</code></p>
 
             </div>
             <hr>
@@ -262,13 +267,15 @@
                     
                       <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
                     
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/">MySQL</a>
+                    
                   </div>
                 
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/SQL/">SQL</a>
+                      <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a>
                     
                   </div>
                 
@@ -285,18 +292,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/06/windows%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Windows 10 下离线安装mysql</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/09/SSL%E8%AF%81%E4%B9%A6/">
-                        <span class="hidden-mobile">SSL 证书</span>
+                      <a href="/2023/02/28/SQL/">
+                        <span class="hidden-mobile">常用SQL整理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

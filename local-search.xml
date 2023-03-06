@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Windows 10 下离线安装mysql</title>
+    <link href="/2023/03/06/windows%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/"/>
+    <url>/2023/03/06/windows%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/</url>
+    
+    <content type="html"><![CDATA[<h1>Windows 10 下离线安装mysql</h1><h3 id="一、下载-MySQL-5-7-免安装版本">一、<a href="https://link.zhihu.com/?target=https%3A//dev.mysql.com/downloads/mysql/">下载</a> MySQL 5.7 免安装版本</h3><h3 id="二、解压到指定目录">二、解压到指定目录</h3><h3 id="三、环境变量配置">三、环境变量配置</h3><blockquote><p>右击我的电脑 --&gt; 属性 --&gt; 高级系统设置 --&gt; 环境变量<br>找到系统Path ，单击编辑 ，添加值 （解压后的bin目录）: D:\MySQL\mysql-8.0.32-winx64\bin<br>用户变量以及系统变量的区别：如果只编辑了用户变量中的Path值，则只对该用户生效，其它用户无法使用，而系统变量中编辑的Path 值，所有用户都可以使用。</p></blockquote><h3 id="四、创建配置文件">四、创建配置文件</h3><p>在 <code>D:\MySQL\mysql-8.0.32-winx64</code><strong>安装目录下</strong>新建文本文件<code>my.ini</code></p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[mysql]</span><br><br><span class="hljs-comment">; 设置mysql客户端默认字符集</span><br><span class="hljs-attr">default-character-set</span>=utf8<br><br><span class="hljs-section">[mysqld]</span><br><br><span class="hljs-comment">;设置3306端口</span><br><span class="hljs-attr">port</span> = <span class="hljs-number">3306</span><br><br><span class="hljs-comment">; 设置mysql的安装目录</span><br><span class="hljs-attr">basedir</span>=E:\mysql<br><br><span class="hljs-comment">; 设置mysql数据库的数据的存放目录</span><br><span class="hljs-attr">datadir</span>=E:\mysql\data<br><br><span class="hljs-comment">; 允许最大连接数</span><br><span class="hljs-attr">max_connections</span>=<span class="hljs-number">200</span><br><br><span class="hljs-comment">; 服务端使用字符集utf-8</span><br><span class="hljs-attr">character-set-server</span>=utf8<br><br><span class="hljs-comment">; 创建新表时将使用的默认存储引擎</span><br><span class="hljs-attr">default-storage-engine</span>=INNODB<br></code></pre></td></tr></table></figure><h3 id="五、初始化安装">五、初始化安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 初始化MySQL(管理员权限打开cmd命令行)</span><br>mysqld --initialize-insecure --user=mysql<br>mysqld install# 安装mysql<br>net start mysql# 启动服务<br></code></pre></td></tr></table></figure><h3 id="六、登录数据库">六、登录数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 第一次无密码，直接回车</span><br>mysql -u root -p   <br><br><br><span class="hljs-meta">#</span><span class="bash"> 显示所有数据库</span><br>show databases;<br><br><span class="hljs-meta">#</span><span class="bash"> 使用某个库</span><br>use mysql;<br><span class="hljs-meta">#</span><span class="bash"> 更改root密码</span><br>update mysql.user   <br>set authentication_string = password(&#x27;123456&#x27;) ,<br>password_expired = &#x27;N&#x27;  <br> where User = &#x27;root&#x27; <br> AND Host = &#x27;localhost&#x27;;  <br><br><span class="hljs-meta">#</span><span class="bash"> 刷新权限</span><br>flush privileges;<br></code></pre></td></tr></table></figure><p>完成安装， 初始密码为<code>123456</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数据库</category>
+      
+      <category>MySQL</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MySQL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>常用SQL整理</title>
     <link href="/2023/02/28/SQL/"/>
     <url>/2023/02/28/SQL/</url>
