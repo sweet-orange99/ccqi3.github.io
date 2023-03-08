@@ -16,20 +16,20 @@
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
-  <meta name="description" content="Windows 10 下离线安装mysql 一、下载 MySQL 8.0.X 免安装版本 二、解压到指定目录 三、环境变量配置  右击我的电脑 --&gt; 属性 --&gt; 高级系统设置 --&gt; 环境变量 找到系统Path ，单击编辑 ，添加值 （解压后的bin目录）: D:\MySQL\mysql-8.0.32\bin 用户变量以及系统变量的区别：如果只编辑了用户变量中的Path值，则">
+  <meta name="description" content="SVNAdmin - 基于web的SVN管理系统 介绍  SVNAdmin2 是一款通过图形界面管理服务端SVN的web程序。 正常情况下配置SVN仓库的人员权限需要登录到服务器手动修改 authz 和 passwd 两个文件，当仓库结构和人员权限上了规模后，手动管理就变的非常容易出错，本系统能够识别人员和权限并提供管理和拓展功能。 SVNAdmin2 支持SVN协议检出、HTTP协议检出，并且支">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows 10 下离线安装mysql">
-<meta property="og:url" content="https://ccqi3.github.io/2023/03/06/windows%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/index.html">
+<meta property="og:title" content="SVNAdmin">
+<meta property="og:url" content="https://ccqi3.github.io/2023/03/08/SVNAdmin/index.html">
 <meta property="og:site_name" content="ccQi3">
-<meta property="og:description" content="Windows 10 下离线安装mysql 一、下载 MySQL 8.0.X 免安装版本 二、解压到指定目录 三、环境变量配置  右击我的电脑 --&gt; 属性 --&gt; 高级系统设置 --&gt; 环境变量 找到系统Path ，单击编辑 ，添加值 （解压后的bin目录）: D:\MySQL\mysql-8.0.32\bin 用户变量以及系统变量的区别：如果只编辑了用户变量中的Path值，则">
+<meta property="og:description" content="SVNAdmin - 基于web的SVN管理系统 介绍  SVNAdmin2 是一款通过图形界面管理服务端SVN的web程序。 正常情况下配置SVN仓库的人员权限需要登录到服务器手动修改 authz 和 passwd 两个文件，当仓库结构和人员权限上了规模后，手动管理就变的非常容易出错，本系统能够识别人员和权限并提供管理和拓展功能。 SVNAdmin2 支持SVN协议检出、HTTP协议检出，并且支">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-06T05:13:37.000Z">
-<meta property="article:modified_time" content="2023-03-08T01:03:13.222Z">
+<meta property="article:published_time" content="2023-03-08T06:29:05.000Z">
+<meta property="article:modified_time" content="2023-03-08T06:27:31.472Z">
 <meta property="article:author" content="ccQi3">
-<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="工具方法">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>Windows 10 下离线安装mysql - ccQi3</title>
+  <title>SVNAdmin - ccQi3</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Windows 10 下离线安装mysql">
+            <span class="h2" id="subtitle" title="SVNAdmin">
               
             </span>
 
@@ -185,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-03-06 13:13" pubdate>
-        2023年3月6日 下午
+      <time datetime="2023-03-08 14:29" pubdate>
+        2023年3月8日 下午
       </time>
     </span>
   
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      922 字
+      939 字
     </span>
   
 
@@ -234,29 +234,39 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Windows 10 下离线安装mysql</h1>
+            <h1 style="display: none">SVNAdmin</h1>
             
             <div class="markdown-body">
-              <h1>Windows 10 下离线安装mysql</h1>
-<h3 id="一、下载-MySQL-8-0-X-免安装版本">一、<a href="https://link.zhihu.com/?target=https%3A//dev.mysql.com/downloads/mysql/">下载</a> MySQL 8.0.X 免安装版本</h3>
-<h3 id="二、解压到指定目录">二、解压到指定目录</h3>
-<h3 id="三、环境变量配置">三、环境变量配置</h3>
-<blockquote>
-<p>右击我的电脑 --&gt; 属性 --&gt; 高级系统设置 --&gt; 环境变量<br>
-找到系统Path ，单击编辑 ，添加值 （解压后的bin目录）: D:\MySQL\mysql-8.0.32\bin<br>
-用户变量以及系统变量的区别：如果只编辑了用户变量中的Path值，则只对该用户生效，其它用户无法使用，而系统变量中编辑的Path 值，所有用户都可以使用。</p>
-</blockquote>
-<h3 id="四、创建配置文件">四、创建配置文件</h3>
-<p>在 <code>D:\MySQL\mysql-8.0.32</code><strong>安装目录下</strong>新建文本文件<code>my.ini</code></p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[mysql]</span><br><br><span class="hljs-comment">; 设置mysql客户端默认字符集</span><br><span class="hljs-attr">default-character-set</span>=utf8<br><br><span class="hljs-section">[mysqld]</span><br><br><span class="hljs-comment">;设置3306端口</span><br><span class="hljs-attr">port</span> = <span class="hljs-number">3306</span><br><br><span class="hljs-comment">; 设置mysql的安装目录</span><br><span class="hljs-attr">basedir</span>=D:\\MySQL\\mysql-<span class="hljs-number">8.0</span>.<span class="hljs-number">32</span><br><br><span class="hljs-comment">; 设置mysql数据库的数据的存放目录</span><br><span class="hljs-attr">datadir</span>=D:\\MySQL\\mysql-<span class="hljs-number">8.0</span>.<span class="hljs-number">32</span>data<br><br><span class="hljs-comment">; 允许最大连接数</span><br><span class="hljs-attr">max_connections</span>=<span class="hljs-number">200</span><br><br><span class="hljs-comment">; 服务端使用字符集utf-8</span><br><span class="hljs-attr">character-set-server</span>=utf8<br><br><span class="hljs-comment">; 创建新表时将使用的默认存储引擎</span><br><span class="hljs-attr">default-storage-engine</span>=INNODB<br></code></pre></td></tr></table></figure>
-<h3 id="五、初始化安装">五、初始化安装</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 初始化MySQL(管理员权限打开cmd命令行)</span><br>mysqld --initialize --console<br><span class="hljs-meta">#</span><span class="bash"> 不要漏写`console` 初始化完可以看到默认root密码</span><br>mysqld install	# 安装mysql  <br>net start mysql	# 启动服务<br></code></pre></td></tr></table></figure>
-<h3 id="六、登录数据库">六、登录数据库</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment"># 登陆数据库，输入上面的密码</span><br>mysql -u root -p   <br><br><span class="hljs-comment"># 显示所有数据库</span><br><span class="hljs-keyword">show</span> <span class="hljs-keyword">databases</span>;	<br><span class="hljs-comment"># 修改root密码</span><br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> ‘root’@‘localhost’ <span class="hljs-keyword">IDENTIFIED</span> <span class="hljs-keyword">BY</span> ‘新的密码’;<br><br><span class="hljs-comment"># 刷新权限</span><br><span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;<br></code></pre></td></tr></table></figure>
-<p>完成安装， 初始密码为<code>123456</code></p>
-<h3 id="七、常用命令">七、常用命令</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">删除mysql服务，卸载的时候可以使用</span><br>sc delete mysql<br></code></pre></td></tr></table></figure>
-
+              <h1>SVNAdmin - 基于web的SVN管理系统</h1>
+<h2 id="介绍">介绍</h2>
+<ul>
+<li>SVNAdmin2 是一款<strong>通过图形界面管理服务端SVN的web程序</strong>。</li>
+<li>正常情况下配置SVN仓库的人员权限需要登录到服务器手动修改 authz 和 passwd 两个文件，当仓库结构和人员权限上了规模后，手动管理就变的非常容易出错，本系统能够识别人员和权限并提供管理和拓展功能。</li>
+<li>SVNAdmin2 支持<strong>SVN协议检出、HTTP协议检出</strong>，并且支持两种协议之间互相切换，支持docker部署或源码部署。</li>
+<li>SVNAdmin2 支持进行<strong>LDAP的接入</strong>，进而达到使用原有的人员架构和分组规则的目的。</li>
+<li>SVNAdmin2 第一个版本（20年初）被开发用来个人管理SVN仓库使用，无意中开源后发现用户渐多，于是开始专门维护迭代。</li>
+</ul>
+<h3 id="Docker安装">Docker安装</h3>
+<ul>
+<li>启动一个临时的容器用于复制配置文件出来</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -d --name svnadmintemp --privileged witersencom/svnadmin:2.4.7 /usr/sbin/init<br></code></pre></td></tr></table></figure>
+<ul>
+<li>把配置文件复制到本机的 <code>/home/svnadmin</code> 目录</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /home/<br>docker cp svnadmintemp:/home/svnadmin ./<br>docker cp svnadmintemp:/etc/httpd/conf.d ./svnadmin/<br>docker cp svnadmintemp:/etc/sasl2 ./svnadmin/<br></code></pre></td></tr></table></figure>
+<ul>
+<li>删除掉临时容器</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker stop svnadmintemp &amp;&amp; docker rm svnadmintemp<br></code></pre></td></tr></table></figure>
+<ul>
+<li>启动正式的容器</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -d -p 80:80 -p 3690:3690 \<br>-v /home/svnadmin/:/home/svnadmin/ \<br>-v /home/svnadmin/conf.d/:/etc/httpd/conf.d/ \<br>-v /home/svnadmin/sasl2/:/etc/sasl2/ \<br>--privileged \<br>--name svnadmin \<br>witersencom/svnadmin:2.4.7<br></code></pre></td></tr></table></figure>
+<ul>
+<li>进入容器内进行文件授权</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker exec -it svnadmin bash<br>chown -R apache:apache /home/svnadmin<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -267,9 +277,9 @@
                     
                       <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">编程笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/">MySQL</a>
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux/">linux</a>
                     
                   </div>
                 
@@ -277,7 +287,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a>
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7%E6%96%B9%E6%B3%95/">工具方法</a>
                     
                   </div>
                 
@@ -294,18 +304,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/08/SVNAdmin/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SVNAdmin</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/28/SQL/">
-                        <span class="hidden-mobile">常用SQL整理</span>
+                      <a href="/2023/03/06/windows%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85mysql/">
+                        <span class="hidden-mobile">Windows 10 下离线安装mysql</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
