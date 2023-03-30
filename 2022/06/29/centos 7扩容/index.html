@@ -16,12 +16,12 @@
   <meta name="description" content="橙橙橙的博客">
   <meta name="author" content="ccQi3">
   <meta name="keywords" content="">
-  <meta name="description" content="centos 7扩容  查询磁盘使用情况  12# 查询磁盘使用情况$ df -hl   查询磁盘  12# 查询磁盘$ fdisk -l   12$ fdisk &#x2F;dev&#x2F;sdb# 使用添加的磁盘  1234$ pvcreate &#x2F;dev&#x2F;sdb1# 创建物理卷$ pvdisplay# 查询创建的物理卷  12$ vgdisplay# 查看卷组名称  12$ vgextend centos &#x2F;d">
+  <meta name="description" content="centos 7扩容  查询磁盘使用情况  12# 查询磁盘使用情况$ df -hl   查询磁盘  12# 查询磁盘$ fdisk -l   12# 使用添加的磁盘$ fdisk &#x2F;dev&#x2F;sdb  12345# 创建物理卷$ pvcreate &#x2F;dev&#x2F;sdb1# 查询创建的物理卷$ pvdisplay 注：如果报错Device &#x2F;dev&#x2F;sdb not found. 说明内核没有成功同步分区">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos 7扩容">
 <meta property="og:url" content="https://ccqi3.github.io/2022/06/29/centos%207%E6%89%A9%E5%AE%B9/index.html">
 <meta property="og:site_name" content="ccQi3">
-<meta property="og:description" content="centos 7扩容  查询磁盘使用情况  12# 查询磁盘使用情况$ df -hl   查询磁盘  12# 查询磁盘$ fdisk -l   12$ fdisk &#x2F;dev&#x2F;sdb# 使用添加的磁盘  1234$ pvcreate &#x2F;dev&#x2F;sdb1# 创建物理卷$ pvdisplay# 查询创建的物理卷  12$ vgdisplay# 查看卷组名称  12$ vgextend centos &#x2F;d">
+<meta property="og:description" content="centos 7扩容  查询磁盘使用情况  12# 查询磁盘使用情况$ df -hl   查询磁盘  12# 查询磁盘$ fdisk -l   12# 使用添加的磁盘$ fdisk &#x2F;dev&#x2F;sdb  12345# 创建物理卷$ pvcreate &#x2F;dev&#x2F;sdb1# 查询创建的物理卷$ pvdisplay 注：如果报错Device &#x2F;dev&#x2F;sdb not found. 说明内核没有成功同步分区">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://nas.ccqi.icu:15890/images/2022/08/29/04d3f32c98c814c229e6d53d3b720eb8.png">
 <meta property="og:image" content="https://nas.ccqi.icu:15890/images/2022/08/29/b1617added89038886b147929ca1afb0.png">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://nas.ccqi.icu:15890/images/2022/08/29/ba431058a2b98bdc2573150b43b65627.png">
 <meta property="og:image" content="https://nas.ccqi.icu:15890/images/2022/08/29/fbc302188356e8e25e7ab457f612f093.png">
 <meta property="article:published_time" content="2022-06-29T07:29:05.000Z">
-<meta property="article:modified_time" content="2022-09-20T03:19:58.444Z">
+<meta property="article:modified_time" content="2023-03-30T06:02:38.590Z">
 <meta property="article:author" content="ccQi3">
 <meta property="article:tag" content="工具方法">
 <meta property="article:tag" content="linux">
@@ -207,7 +207,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      385 字
+      490 字
     </span>
   
 
@@ -216,7 +216,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      2 分钟
     </span>
   
 
@@ -260,20 +260,22 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 查询磁盘</span><br><span class="hljs-meta">$</span><span class="bash"> fdisk -l</span><br></code></pre></td></tr></table></figure>
 <p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/b1617added89038886b147929ca1afb0.png" srcset="/img/loading.gif" lazyload alt="20220212195119"></p>
 <p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/038431d7a0c9fb948e20219bde2ec8c6.png" srcset="/img/loading.gif" lazyload alt="20220212195235"></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> fdisk /dev/sdb</span><br><span class="hljs-meta">#</span><span class="bash"> 使用添加的磁盘</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 使用添加的磁盘</span><br><span class="hljs-meta">$</span><span class="bash"> fdisk /dev/sdb</span><br></code></pre></td></tr></table></figure>
 <p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/fbe4afb9a16f605654403e8c2d49823f.png" srcset="/img/loading.gif" lazyload alt="20220212201638"></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> pvcreate /dev/sdb1</span><br><span class="hljs-meta">#</span><span class="bash"> 创建物理卷</span><br><span class="hljs-meta">$</span><span class="bash"> pvdisplay</span><br><span class="hljs-meta">#</span><span class="bash"> 查询创建的物理卷</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 创建物理卷</span><br><span class="hljs-meta">$</span><span class="bash"> pvcreate /dev/sdb1</span><br><br><span class="hljs-meta">#</span><span class="bash"> 查询创建的物理卷</span><br><span class="hljs-meta">$</span><span class="bash"> pvdisplay</span><br></code></pre></td></tr></table></figure>
+<p>注：如果报错<code>Device /dev/sdb not found.</code> 说明内核没有成功同步分区信息，需要使用<code>partprobe</code>命令来手动同步</p>
 <p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/f5051b85ab1691b35a5333e0e6b2191e.png" srcset="/img/loading.gif" lazyload alt="20220212203944"></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> vgdisplay</span><br><span class="hljs-meta">#</span><span class="bash"> 查看卷组名称</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 查看卷组名称</span><br><span class="hljs-meta">$</span><span class="bash"> vgdisplay</span><br></code></pre></td></tr></table></figure>
 <p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/aea325b7d80d8d12dbc47bc102c8b5ca.png" srcset="/img/loading.gif" lazyload alt="20220212205455"></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> vgextend centos /dev/sdb1</span><br><span class="hljs-meta">#</span><span class="bash"> 通过vgextend将新添加卷加入到卷组centos中</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 通过vgextend将新添加卷加入到卷组centos中</span><br><span class="hljs-meta">$</span><span class="bash"> vgextend centos /dev/sdb1</span><br><span class="hljs-meta">#</span><span class="bash"> 查询扩容后的卷组信息</span><br><span class="hljs-meta">$</span><span class="bash"> vgdisplay</span><br></code></pre></td></tr></table></figure>
 <p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/f0630190a2096bc01223dab87cd3e89e.png" srcset="/img/loading.gif" lazyload alt="20220212205550"></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> lvextend -L +60G /dev/mapper/centos-root</span><br><span class="hljs-meta">#</span><span class="bash"> 通过 lvextend 命令扩展根目录挂载点 /dev/mapper/centos-root</span><br><span class="hljs-meta">$</span><span class="bash"> xfs_growfs /dev/mapper/centos-root</span><br><span class="hljs-meta">#</span><span class="bash"> 同步文件系统</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 通过 lvextend 命令扩展根目录挂载点 /dev/mapper/centos-root</span><br><span class="hljs-meta">$</span><span class="bash"> lvextend -L +60G /dev/mapper/centos-root</span><br><span class="hljs-meta">#</span><span class="bash"> 同步文件系统</span><br><span class="hljs-meta">$</span><span class="bash"> xfs_growfs /dev/mapper/centos-root</span><br></code></pre></td></tr></table></figure>
 <p><strong>resize2fs 针对文件系统ext2 ext3 ext4</strong></p>
 <p><strong>xfs_growfs 针对文件系统xfs</strong></p>
 <p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/ba431058a2b98bdc2573150b43b65627.png" srcset="/img/loading.gif" lazyload alt="20220212210235"></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> df -hl</span><br><span class="hljs-meta">#</span><span class="bash"> 查看扩容情况</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 查看扩容情况</span><br><span class="hljs-meta">$</span><span class="bash"> df -hl</span><br></code></pre></td></tr></table></figure>
 <p><img src="https://nas.ccqi.icu:15890/images/2022/08/29/fbc302188356e8e25e7ab457f612f093.png" srcset="/img/loading.gif" lazyload alt="20220212210719"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 查看新增磁盘信息</span><br><span class="hljs-meta">$</span><span class="bash"> lsblk</span><br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>

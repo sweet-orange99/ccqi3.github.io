@@ -783,13 +783,10 @@ https://download.docker.com/linux/static/stable/x86_64/
 12# 查询磁盘$ fdisk -l
 
 
-12$ fdisk /dev/sdb# 使用添加的磁盘
+12# 使用添加的磁盘$ fdisk /dev/sdb
 
-1234$ pvcreate /dev/sdb1# 创建物理卷$ pvdisplay# 查询创建的物理卷
-
-12$ vgdisplay# 查看卷组名称
-
-12$ vgextend centos /d
+12345# 创建物理卷$ pvcreate /dev/sdb1# 查询创建的物理卷$ pvdisplay
+注：如果报错Device /dev/sdb not found. 说明内核没有成功同步分区
         </a>
       </p>
 
